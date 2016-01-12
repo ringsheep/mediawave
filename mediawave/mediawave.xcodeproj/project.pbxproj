@@ -19,9 +19,14 @@
 		995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7831C380074002D9776 /* GZSearchResultsController.swift */; };
 		995CF7861C3828EF002D9776 /* GZFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7851C3828EF002D9776 /* GZFeedViewController.swift */; };
 		995CF78A1C394273002D9776 /* GZPostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7891C394273002D9776 /* GZPostManager.swift */; };
-		995CF78E1C3943B1002D9776 /* GZTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF78D1C3943B1002D9776 /* GZTrack.swift */; };
 		995CF7961C3D3426002D9776 /* GZSearchEndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7951C3D3426002D9776 /* GZSearchEndController.swift */; };
 		99AD26621C299C8D00A2CCA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */; };
+		99F6EE471C3E77F1000E4D77 /* trackAdvancedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */; };
+		99F6EE491C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */; };
+		99F6EE541C3FF373000E4D77 /* GZLFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE531C3FF373000E4D77 /* GZLFObject.swift */; };
+		99F6EE561C4297C5000E4D77 /* GZArtistDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */; };
+		99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */; };
+		99F6EE5D1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +65,15 @@
 		995CF7831C380074002D9776 /* GZSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchResultsController.swift; sourceTree = "<group>"; };
 		995CF7851C3828EF002D9776 /* GZFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZFeedViewController.swift; sourceTree = "<group>"; };
 		995CF7891C394273002D9776 /* GZPostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZPostManager.swift; sourceTree = "<group>"; };
-		995CF78D1C3943B1002D9776 /* GZTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTrack.swift; sourceTree = "<group>"; };
 		995CF7951C3D3426002D9776 /* GZSearchEndController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchEndController.swift; sourceTree = "<group>"; };
 		99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = trackAdvancedCell.xib; sourceTree = "<group>"; };
+		99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZtrackAdvancedCellTableViewCell.swift; sourceTree = "<group>"; };
+		99F6EE4A1C3EB5BB000E4D77 /* mediawave-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mediawave-Bridging-Header.h"; sourceTree = "<group>"; };
+		99F6EE531C3FF373000E4D77 /* GZLFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZLFObject.swift; sourceTree = "<group>"; };
+		99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZArtistDetails.swift; sourceTree = "<group>"; };
+		99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTagCollectionViewCell.xib; sourceTree = "<group>"; };
+		99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F095448A50778CBED7C68244 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +145,7 @@
 				995CF78F1C3D3087002D9776 /* Controllers */,
 				995BEF051C2984D3001F8518 /* Assets.xcassets */,
 				995BEF0A1C2984D3001F8518 /* Info.plist */,
+				99F6EE4A1C3EB5BB000E4D77 /* mediawave-Bridging-Header.h */,
 			);
 			path = mediawave;
 			sourceTree = "<group>";
@@ -159,8 +171,10 @@
 		995CF78F1C3D3087002D9776 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				995CF7831C380074002D9776 /* GZSearchResultsController.swift */,
 				995CF7851C3828EF002D9776 /* GZFeedViewController.swift */,
+				99F6EE591C42A980000E4D77 /* Cells */,
+				99F6EE581C42A96F000E4D77 /* Search */,
+				99F6EE571C42A95F000E4D77 /* Details */,
 				995BEF001C2984D3001F8518 /* ViewController.swift */,
 				995CF7951C3D3426002D9776 /* GZSearchEndController.swift */,
 			);
@@ -180,7 +194,7 @@
 		995CF7911C3D30CB002D9776 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				995CF78D1C3943B1002D9776 /* GZTrack.swift */,
+				99F6EE531C3FF373000E4D77 /* GZLFObject.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -205,8 +219,35 @@
 		995CF7941C3D3102002D9776 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */,
+				99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		99F6EE571C42A95F000E4D77 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */,
+			);
+			name = Details;
+			sourceTree = "<group>";
+		};
+		99F6EE581C42A96F000E4D77 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				995CF7831C380074002D9776 /* GZSearchResultsController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		99F6EE591C42A980000E4D77 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */,
+				99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		C7F1D8F5080ADA7CB7D4FE8F /* Pods */ = {
@@ -329,6 +370,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				995BEF091C2984D3001F8518 /* LaunchScreen.storyboard in Resources */,
+				99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */,
+				99F6EE471C3E77F1000E4D77 /* trackAdvancedCell.xib in Resources */,
 				995BEF061C2984D3001F8518 /* Assets.xcassets in Resources */,
 				995BEF041C2984D3001F8518 /* Main.storyboard in Resources */,
 			);
@@ -405,13 +448,16 @@
 			files = (
 				995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */,
 				995CF7961C3D3426002D9776 /* GZSearchEndController.swift in Sources */,
+				99F6EE491C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift in Sources */,
 				995CF7861C3828EF002D9776 /* GZFeedViewController.swift in Sources */,
+				99F6EE5D1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift in Sources */,
 				995BEF011C2984D3001F8518 /* ViewController.swift in Sources */,
+				99F6EE541C3FF373000E4D77 /* GZLFObject.swift in Sources */,
 				995BEEFF1C2984D3001F8518 /* AppDelegate.swift in Sources */,
 				995BEF2D1C298519001F8518 /* GZAPI_Wrapper.swift in Sources */,
 				995CF78A1C394273002D9776 /* GZPostManager.swift in Sources */,
-				995CF78E1C3943B1002D9776 /* GZTrack.swift in Sources */,
 				99AD26621C299C8D00A2CCA6 /* SwiftyJSON.swift in Sources */,
+				99F6EE561C4297C5000E4D77 /* GZArtistDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,10 +598,13 @@
 			baseConfigurationReference = DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zinyakov.mediawave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -564,10 +613,12 @@
 			baseConfigurationReference = F095448A50778CBED7C68244 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zinyakov.mediawave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
 			};
 			name = Release;
 		};

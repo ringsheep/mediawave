@@ -12,15 +12,19 @@ class GZFeedViewController: UITableViewController, UISearchControllerDelegate {
     
     var searchResultsController: GZSearchResultsController?
     var searchController: UISearchController?
-    var tracksArray:Array<GZTrack> = Array<GZTrack>()
+    var tracksArray:Array<GZLFObject> = Array<GZLFObject>()
+    var selectedRow:Int?
+    var perPage = 3
+    var searchRequestIsMade:Bool = false
+    var searchDataIsRecieved:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.searchResultsController = GZSearchResultsController()
+        self.searchResultsController?.FeedVCDelegate = self
         // Register cell class for the identifier.
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-
         
         self.searchController = UISearchController(searchResultsController: self.searchResultsController!)
         self.searchController?.searchResultsUpdater = self
@@ -29,26 +33,19 @@ class GZFeedViewController: UITableViewController, UISearchControllerDelegate {
         self.searchController?.searchBar.delegate = self
         self.searchController?.dimsBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = self.searchController?.searchBar
-        
         self.definesPresentationContext = true
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController!.active && searchController!.searchBar.text != ""
-        {
-        return tracksArray.count
-        }
-        else
-        {
         return 1
-        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         if searchController!.active && searchController!.searchBar.text != "" {
-            let track:GZTrack = tracksArray[indexPath.row]
+            let track:GZLFObject = tracksArray[indexPath.row]
             cell.textLabel?.text = track.name
+            print("\(cell.textLabel?.text)")
         }
         return cell
     }
@@ -58,13 +55,28 @@ class GZFeedViewController: UITableViewController, UISearchControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // general function for performing search on lastfm api
     func searchContentForQuery( query: String )
     {
-        GZPostManager.getTracksLF(query, perPage: 3, pageNumber: 1) { (tracks) -> Void in
+        GZPostManager.getTracksLF(query, perPage: perPage*2, pageNumber: 1) { (tracks) -> Void in
             self.searchResultsController?.tracksArray = tracks
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.searchResultsController?.tableView.reloadData()
-            })
+            GZPostManager.getAlbumsLF(query, perPage: self.perPage, pageNumber: 1) { (albums) -> Void in
+                self.searchResultsController?.albumsArray = albums
+                GZPostManager.getArtistsLF(query, perPage: self.perPage, pageNumber: 1) { (artists) -> Void in
+                    self.searchResultsController?.artistsArray = artists
+                    self.reloadTableViewAsync()
+                }
+            }
+        }
+        
+        
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toArtistFromSearchResults" {
+            let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails
+            viewController.artistQuery = (searchResultsController?.selectedItemName)!
         }
     }
 
@@ -73,16 +85,36 @@ class GZFeedViewController: UITableViewController, UISearchControllerDelegate {
 extension GZFeedViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        // hide keyboard
         searchBar.resignFirstResponder()
-        print("results controller there should be")
+        // refresh search results with advanced layout
+        searchResultsController?.searchIsEnded = true
+        reloadTableViewAsync()
     }
 }
 
 extension GZFeedViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if searchController.active && searchController.searchBar.text != "" {
-        searchContentForQuery(searchController.searchBar.text!)
+        if ( searchController.active && searchController.searchBar.text != "" && searchController.searchBar.isFirstResponder() ) {
+        // search for content each time the search field is updated
+        NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "startSearchWithTImer", userInfo: nil, repeats: false)
         }
+    }
+}
+
+extension GZFeedViewController
+{
+    func startSearchWithTImer()
+    {
+        self.searchContentForQuery(self.searchController!.searchBar.text!)
+        self.searchResultsController?.searchIsEnded = false
+    }
+    
+    func reloadTableViewAsync()
+    {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.searchResultsController?.tableView.reloadData()
+        })
     }
 }

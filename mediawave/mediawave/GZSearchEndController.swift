@@ -10,6 +10,10 @@ import UIKit
 
 class GZSearchEndController: UITableViewController {
     
-    var track:GZTrack = GZTrack()
+    var query:String = ""
 
+    
+    override func viewDidLoad() {
+    
+    }
 }

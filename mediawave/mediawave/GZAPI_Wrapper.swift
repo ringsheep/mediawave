@@ -89,7 +89,7 @@ class GZAPI_WRAPPER: NSObject
     class func getAllYoutubeMediaByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
         print("query is \(escapedSearchQuery)")
         parameteresDictionary.setObject("snippet", forKey : "part")
         parameteresDictionary.setObject("10", forKey : "videoCategoryId")
@@ -116,7 +116,7 @@ class GZAPI_WRAPPER: NSObject
     class func getAllSoundcloudTracksByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
         print("query is \(escapedSearchQuery)")
         parameteresDictionary.setObject("\(perPage)", forKey : "limit")
         parameteresDictionary.setObject("\(escapedSearchQuery)", forKey: "q")
@@ -141,7 +141,7 @@ class GZAPI_WRAPPER: NSObject
     class func getAllLastfmArtistsByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
         print("query is \(escapedSearchQuery)")
         parameteresDictionary.setObject("artist.search", forKey : "method")
         parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
@@ -166,8 +166,9 @@ class GZAPI_WRAPPER: NSObject
     
     class func getAllLastfmAlbumsByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
+        print("initial query is \(searchQuery)")
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
         print("query is \(escapedSearchQuery)")
         parameteresDictionary.setObject("album.search", forKey : "method")
         parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
@@ -216,27 +217,26 @@ class GZAPI_WRAPPER: NSObject
         
     }
     
-    class func postReleaseReview ( postTitle : String , postType : String , postYear : String , postCountry : String , postStyles : String , postReview : String , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+    class func getLastFmData ( method: String , searchKey: String , searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
-        parameteresDictionary.setObject("\(postTitle)", forKey : "title")
-        parameteresDictionary.setObject("\(postType)", forKey: "type")
-        parameteresDictionary.setObject("\(postYear)", forKey: "year")
-        parameteresDictionary.setObject("\(postCountry)", forKey: "country")
-        parameteresDictionary.setObject("\(postStyles)", forKey: "styles")
-        parameteresDictionary.setObject("\(postReview)", forKey: "review")
+        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        print("query is \(escapedSearchQuery)")
+        parameteresDictionary.setObject("\(method)", forKey : "method")
+        parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
+        parameteresDictionary.setObject("json", forKey: "format")
+        parameteresDictionary.setObject("\(perPage)", forKey : "limit")
+        parameteresDictionary.setObject("\(pageNumber)", forKey : "page")
+        parameteresDictionary.setObject("\(escapedSearchQuery)", forKey: "\(searchKey)")
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://zapier.com/hooks/catch/3fpp6l/")!)
+        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "lastfm", endpoint: "")
         //request - получили объект классса NSURLRequest
-        request.HTTPMethod = "POST"
-        let postString = composeBODYWithParameters(parameteresDictionary)
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
             
             // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
             genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)
-                        
+            
         } //task  - объект типа NSURLSessionDataTask
         
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
@@ -252,7 +252,7 @@ class GZAPI_WRAPPER: NSObject
         if ( data != nil) // Если данные не пустые
         {
             let jsonResponse = JSON ( data: data!, options: NSJSONReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
-            print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
+            //print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
             success ( jsonResponse: jsonResponse) // Возвращаем результаты в success block
         }
         else
