@@ -1,5 +1,5 @@
 //
-//  GZPostManager.swift
+//  GZLastFmSearchManager.swift
 //  mediawave
 //
 //  Created by George Zinyakov on 1/3/16.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class GZPostManager: NSObject {
+class GZLastFmSearchManager: NSObject {
+}
 
+// MARK: Search tracks by query
+extension GZLastFmSearchManager {
     class func getTracksLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((tracks: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
@@ -38,7 +41,10 @@ class GZPostManager: NSObject {
                 
         }
     }
-    
+}
+
+// MARK: Search albums by query
+extension GZLastFmSearchManager {
     class func getAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((albums: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
@@ -64,10 +70,13 @@ class GZPostManager: NSObject {
             success(albums: objects)
             
             }) { () -> Void in
-            
+                
         }
     }
-    
+}
+
+// MARK: Search artists by query
+extension GZLastFmSearchManager {
     class func getArtistsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((artists: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
@@ -92,15 +101,18 @@ class GZPostManager: NSObject {
             success(artists: objects)
             
             }) { () -> Void in
-            
+                
         }
     }
-    
-    class func getArtistTopAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((albums: Array<GZLFObject>) -> Void))
+}
+
+// MARK: Search top albums by artist MBID
+extension GZLastFmSearchManager {
+    class func getArtistTopAlbumsLF(artistMBID: String, perPage: Int, pageNumber: Int, success: ((albums: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
         
-        GZAPI_WRAPPER.getLastFmData("artist.getTopAlbums", searchKey: "mbid", searchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
+        GZAPI_WRAPPER.getTopLastfmAlbumsByArtist(artistMBID, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
             
             let albums:Array<JSON> = jsonResponse["topalbums"]["album"].arrayValue
             
@@ -125,12 +137,15 @@ class GZPostManager: NSObject {
                 
         }
     }
-    
-    class func getArtistTopTracksLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((tracks: Array<GZLFObject>) -> Void))
+}
+
+// MARK: Search for top tracks by artist MBID
+extension GZLastFmSearchManager {
+    class func getArtistTopTracksLF(artistMBID: String, perPage: Int, pageNumber: Int, success: ((tracks: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
         
-        GZAPI_WRAPPER.getLastFmData("artist.getTopTracks", searchKey: "mbid", searchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
+        GZAPI_WRAPPER.getTopLastfmTracksByArtist(artistMBID, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
             
             let tracks:Array<JSON> = jsonResponse["toptracks"]["track"].arrayValue
             
@@ -155,12 +170,15 @@ class GZPostManager: NSObject {
                 
         }
     }
-    
-    class func getArtistTopTagsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ((tags: Array<GZLFObject>) -> Void))
+}
+
+// MARK: Search for top tags by artist MBID
+extension GZLastFmSearchManager {
+    class func getArtistTopTagsLF(artistMBID: String, perPage: Int, pageNumber: Int, success: ((tags: Array<GZLFObject>) -> Void))
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
         
-        GZAPI_WRAPPER.getLastFmData("artist.getTopTags", searchKey: "mbid", searchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
+        GZAPI_WRAPPER.getTopLastfmTagsByArtist(artistMBID, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
             
             let tags:Array<JSON> = jsonResponse["toptags"]["tag"].arrayValue
             
@@ -177,20 +195,23 @@ class GZPostManager: NSObject {
                 
         }
     }
-    
-    class func getArtistInfoLF(searchQuery: String, success: ((infoPack: GZLFObject) -> Void))
+}
+
+// MARK: Search for artist info by artist MBID
+extension GZLastFmSearchManager {
+    class func getArtistInfoLF(artistMBID: String, success: ((infoPack: GZLFObject) -> Void))
     {
         var object:GZLFObject = GZLFObject()
         
-        GZAPI_WRAPPER.getLastFmData("artist.getInfo", searchKey: "mbid", searchQuery: searchQuery, perPage: 1, pageNumber: 1, success: { (jsonResponse) -> Void in
+        GZAPI_WRAPPER.getLastfmInfoByArtist(artistMBID, perPage: 1, pageNumber: 1, success: { (jsonResponse) -> Void in
             
             let infoPack:JSON = jsonResponse["artist"]
-
-                let jsonItem:GZLFObject = GZLFObject()
-                jsonItem.name = infoPack["name"].stringValue
-                jsonItem.mbid = infoPack["mbid"].stringValue
-                jsonItem.summary = infoPack["bio"]["summary"].stringValue
-                let jsonImages = infoPack["image"].arrayValue
+            
+            let jsonItem:GZLFObject = GZLFObject()
+            jsonItem.name = infoPack["name"].stringValue
+            jsonItem.mbid = infoPack["mbid"].stringValue
+            jsonItem.summary = infoPack["bio"]["summary"].stringValue
+            let jsonImages = infoPack["image"].arrayValue
             if (jsonImages.count != 0) {
                 let jsonImageXL = jsonImages[3]["#text"].stringValue
                 jsonItem.avatarMedium = NSURL(string: jsonImageXL)

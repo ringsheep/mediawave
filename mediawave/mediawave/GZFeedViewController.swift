@@ -58,11 +58,11 @@ class GZFeedViewController: UITableViewController, UISearchControllerDelegate {
     // general function for performing search on lastfm api
     func searchContentForQuery( query: String )
     {
-        GZPostManager.getTracksLF(query, perPage: perPage*2, pageNumber: 1) { (tracks) -> Void in
+        GZLastFmSearchManager.getTracksLF(query, perPage: perPage*2, pageNumber: 1) { (tracks) -> Void in
             self.searchResultsController?.tracksArray = tracks
-            GZPostManager.getAlbumsLF(query, perPage: self.perPage, pageNumber: 1) { (albums) -> Void in
+            GZLastFmSearchManager.getAlbumsLF(query, perPage: self.perPage, pageNumber: 1) { (albums) -> Void in
                 self.searchResultsController?.albumsArray = albums
-                GZPostManager.getArtistsLF(query, perPage: self.perPage, pageNumber: 1) { (artists) -> Void in
+                GZLastFmSearchManager.getArtistsLF(query, perPage: self.perPage, pageNumber: 1) { (artists) -> Void in
                     self.searchResultsController?.artistsArray = artists
                     self.reloadTableViewAsync()
                 }
@@ -98,7 +98,7 @@ extension GZFeedViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if ( searchController.active && searchController.searchBar.text != "" && searchController.searchBar.isFirstResponder() ) {
         // search for content each time the search field is updated
-        NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "startSearchWithTImer", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "startSearchWithTImer", userInfo: nil, repeats: false)
         }
     }
 }

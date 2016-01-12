@@ -30,6 +30,9 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
         // setting the table view
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        // setting the collection view
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         // cell for tracks and albums
         let nibTrackAdvanced = UINib (nibName: "trackAdvancedCell", bundle: nil)
         self.tableView.registerNib(nibTrackAdvanced, forCellReuseIdentifier: "trackAdvancedCell")
@@ -41,22 +44,23 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
     {
         super.viewDidAppear(true)
         
-        GZPostManager.getArtistInfoLF(artistQuery) { (infoPack) -> Void in
+        GZLastFmSearchManager.getArtistInfoLF(artistQuery) { (infoPack) -> Void in
             self.artistInfo = infoPack
             if ( self.artistInfo.mbid != nil ) {
                 if (self.artistInfo.avatarMedium != nil) {
                     self.bgImage.sd_setImageWithURL(self.artistInfo.avatarMedium)
                 }
-                GZPostManager.getArtistTopTagsLF(self.artistQuery, perPage: 6, pageNumber: 1) { (tags) -> Void in
+                GZLastFmSearchManager.getArtistTopTagsLF(self.artistQuery, perPage: 6, pageNumber: 1) { (tags) -> Void in
                     self.artistTags = tags
-                    GZPostManager.getArtistTopAlbumsLF(self.artistQuery, perPage: 3, pageNumber: 1) { (albums) -> Void in
+                    GZLastFmSearchManager.getArtistTopAlbumsLF(self.artistQuery, perPage: 3, pageNumber: 1) { (albums) -> Void in
                         self.artistAlbums = albums
-                        GZPostManager.getArtistTopTracksLF(self.artistQuery, perPage: 6, pageNumber: 1) { (tracks) -> Void in
+                        GZLastFmSearchManager.getArtistTopTracksLF(self.artistQuery, perPage: 6, pageNumber: 1) { (tracks) -> Void in
                             self.artistTracks = tracks
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.artistName.text = self.artistInfo.name
                                 self.artistBio.text = self.artistInfo.summary
                                 self.title = self.artistInfo.name
+                                self.collectionView.reloadData()
                                 self.tableView.reloadData()
                             })
                         }
@@ -72,32 +76,43 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
         return 2
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (section == 0) {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        if (section == 0)
+        {
             return "Top Albums"
         }
-        else {
+        else
+        {
             return "Top Tracks"
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if (section == 0)
+        {
             return self.artistAlbums.count
         }
-        else {
+        else
+        {
             return self.artistTracks.count
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("trackAdvancedCell", forIndexPath: indexPath) as! GZtrackAdvancedCellTableViewCell
-        if ( artistAlbums.count != 0 && artistTags.count != 0 && artistTracks.count != 0 ) {
-            if ( indexPath.section == 0) {
+        cell.trackArtist.text = ""
+        if ( artistAlbums.count != 0 && artistTags.count != 0 && artistTracks.count != 0 )
+        {
+            if ( indexPath.section == 0)
+            {
                 cell.trackName.text = artistAlbums[indexPath.row].name
                 cell.trackAvatar.sd_setImageWithURL(artistAlbums[indexPath.row].avatarMedium)
             }
-            else {
+            else
+            {
                 cell.trackName.text = artistTracks[indexPath.row].name
                 cell.trackAvatar.sd_setImageWithURL(artistTracks[indexPath.row].avatarMedium)
             }
@@ -107,20 +122,29 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
         return 70.0
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         
     }
     
     // MARK: Collection View functions
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
         return artistTags.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
         return CGSizeMake(70.0, 20.0)
     }
     
@@ -133,7 +157,8 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     }
 
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
         
     }
 

@@ -86,6 +86,28 @@ class GZAPI_WRAPPER: NSObject
         
     }
     
+    // data - объект класса NSData (байты из интернета).
+    // responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.).
+    // error - объект ошибки класса NSError (содержит код ошибки).
+    
+    class func genericCompletionHandler ( data : NSData? , response : NSURLResponse?, ErrorType : NSError? , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+    {
+        if ( data != nil) // Если данные не пустые
+        {
+            let jsonResponse = JSON ( data: data!, options: NSJSONReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
+            //print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
+            success ( jsonResponse: jsonResponse) // Возвращаем результаты в success block
+        }
+        else
+        {
+            failure()
+        }
+    }
+}
+
+// MARK: YOUTUBE
+// MARK: Search youtube media by query
+extension GZAPI_WRAPPER {
     class func getAllYoutubeMediaByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
@@ -112,7 +134,11 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
+}
+
+// MARK: SOUNDCLOUD
+// MARK: Search soundcloud media by query
+extension GZAPI_WRAPPER {
     class func getAllSoundcloudTracksByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
@@ -137,7 +163,11 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
+}
+
+// MARK: LASTFM
+// MARK: Search for all artists by query
+extension GZAPI_WRAPPER {
     class func getAllLastfmArtistsByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
@@ -163,7 +193,10 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
+}
+
+// MARK: Search for all albums by query
+extension GZAPI_WRAPPER {
     class func getAllLastfmAlbumsByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         print("initial query is \(searchQuery)")
@@ -190,7 +223,10 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
+}
+
+// MARK: Search for all tracks by query
+extension GZAPI_WRAPPER {
     class func getAllLastfmTracksByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
@@ -216,18 +252,21 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
-    class func getLastFmData ( method: String , searchKey: String , searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+}
+
+// MARK: Search for top albums by artist MBID
+extension GZAPI_WRAPPER {
+    class func getTopLastfmAlbumsByArtist ( artistMBID : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
-        print("query is \(escapedSearchQuery)")
-        parameteresDictionary.setObject("\(method)", forKey : "method")
+        let escapedartistMBID = artistMBID.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        print("mbid is \(escapedartistMBID)")
+        parameteresDictionary.setObject("artist.getTopAlbums", forKey : "method")
         parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
         parameteresDictionary.setObject("json", forKey: "format")
         parameteresDictionary.setObject("\(perPage)", forKey : "limit")
         parameteresDictionary.setObject("\(pageNumber)", forKey : "page")
-        parameteresDictionary.setObject("\(escapedSearchQuery)", forKey: "\(searchKey)")
+        parameteresDictionary.setObject("\(escapedartistMBID)", forKey: "mbid")
         
         let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "lastfm", endpoint: "")
         //request - получили объект классса NSURLRequest
@@ -242,23 +281,91 @@ class GZAPI_WRAPPER: NSObject
         task.resume() // начало запроса в интернет ( отправка запроса в интернет )
         
     }
-    
-    // data - объект класса NSData (байты из интернета).
-    // responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.).
-    // error - объект ошибки класса NSError (содержит код ошибки).
-    
-    class func genericCompletionHandler ( data : NSData? , response : NSURLResponse?, ErrorType : NSError? , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+}
+
+// MARK: Search for top tracks by artist MBID
+extension GZAPI_WRAPPER {
+    class func getTopLastfmTracksByArtist ( artistMBID : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
     {
-        if ( data != nil) // Если данные не пустые
-        {
-            let jsonResponse = JSON ( data: data!, options: NSJSONReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
-            //print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
-            success ( jsonResponse: jsonResponse) // Возвращаем результаты в success block
-        }
-        else
-        {
-            failure()
-        }
+        let parameteresDictionary = NSMutableDictionary ()
+        let escapedartistMBID = artistMBID.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        print("mbid is \(escapedartistMBID)")
+        parameteresDictionary.setObject("artist.getTopTracks", forKey : "method")
+        parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
+        parameteresDictionary.setObject("json", forKey: "format")
+        parameteresDictionary.setObject("\(perPage)", forKey : "limit")
+        parameteresDictionary.setObject("\(pageNumber)", forKey : "page")
+        parameteresDictionary.setObject("\(escapedartistMBID)", forKey: "mbid")
+        
+        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "lastfm", endpoint: "")
+        //request - получили объект классса NSURLRequest
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
+            
+            // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
+            genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)
+            
+        } //task  - объект типа NSURLSessionDataTask
+        
+        task.resume() // начало запроса в интернет ( отправка запроса в интернет )
+        
     }
 }
 
+// MARK: Search for top tags by artist MBID
+extension GZAPI_WRAPPER {
+    class func getTopLastfmTagsByArtist ( artistMBID : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+    {
+        let parameteresDictionary = NSMutableDictionary ()
+        let escapedartistMBID = artistMBID.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        print("mbid is \(escapedartistMBID)")
+        parameteresDictionary.setObject("artist.getTopTags", forKey : "method")
+        parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
+        parameteresDictionary.setObject("json", forKey: "format")
+        parameteresDictionary.setObject("\(perPage)", forKey : "limit")
+        parameteresDictionary.setObject("\(pageNumber)", forKey : "page")
+        parameteresDictionary.setObject("\(escapedartistMBID)", forKey: "mbid")
+        
+        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "lastfm", endpoint: "")
+        //request - получили объект классса NSURLRequest
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
+            
+            // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
+            genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)
+            
+        } //task  - объект типа NSURLSessionDataTask
+        
+        task.resume() // начало запроса в интернет ( отправка запроса в интернет )
+        
+    }
+}
+
+// MARK: Search for info by artist MBID
+extension GZAPI_WRAPPER {
+    class func getLastfmInfoByArtist ( artistMBID : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+    {
+        let parameteresDictionary = NSMutableDictionary ()
+        let escapedartistMBID = artistMBID.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        print("mbid is \(escapedartistMBID)")
+        parameteresDictionary.setObject("artist.getInfo", forKey : "method")
+        parameteresDictionary.setObject(kApiKeyLF, forKey: "api_key")
+        parameteresDictionary.setObject("json", forKey: "format")
+        parameteresDictionary.setObject("\(perPage)", forKey : "limit")
+        parameteresDictionary.setObject("\(pageNumber)", forKey : "page")
+        parameteresDictionary.setObject("\(escapedartistMBID)", forKey: "mbid")
+        
+        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "lastfm", endpoint: "")
+        //request - получили объект классса NSURLRequest
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
+            
+            // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
+            genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)
+            
+        } //task  - объект типа NSURLSessionDataTask
+        
+        task.resume() // начало запроса в интернет ( отправка запроса в интернет )
+        
+    }
+}
