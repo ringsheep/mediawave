@@ -20,7 +20,7 @@ class GZSearchResultsController: UITableViewController {
     
     var selectedRow:Int?
     // delegate object for previous controller
-    var FeedVCDelegate:GZFeedViewController = GZFeedViewController()
+    var FeedVCDelegate:GZSearchViewController = GZSearchViewController()
     var searchIsEnded:Bool = false
     
     override func viewDidLoad() {
@@ -118,6 +118,9 @@ class GZSearchResultsController: UITableViewController {
             searchArray!.appendContentsOf(tracksArray)
             let LFObject:GZLFObject = searchArray![indexPath.row]
             cell.textLabel?.text = LFObject.name
+            // set transparent cell selection style
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
             return cell
         }
     }
@@ -133,16 +136,18 @@ class GZSearchResultsController: UITableViewController {
             if (indexPath.section == 0 )
             {
                 // FeedVCDelegate.searchController?.searchBar.text = artistsArray[indexPath.row].name
-                selectedItemName = artistsArray[indexPath.row].mbid
+                selectedItemName = artistsArray[indexPath.row].id
                 FeedVCDelegate.performSegueWithIdentifier("toArtistFromSearchResults", sender: self)
             }
             else if (indexPath.section == 1 )
             {
-                selectedItemName = albumsArray[indexPath.row].mbid
+                selectedItemName = albumsArray[indexPath.row].id
+                FeedVCDelegate.performSegueWithIdentifier("toAlbumFromSearchResults", sender: self)
             }
             else if (indexPath.section == 2)
             {
-                selectedItemName = tracksArray[indexPath.row].mbid
+                selectedItemName = tracksArray[indexPath.row].id
+                FeedVCDelegate.performSegueWithIdentifier("toTrackFromSearchResults", sender: self)
             }
         }
         else
@@ -170,8 +175,8 @@ class GZSearchResultsController: UITableViewController {
             viewController.artistQuery = selectedItemName!
         }
         else if segue.identifier == "toAlbumFromSearchResults" {
-            let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails
-            viewController.artistQuery = selectedItemName!
+            let viewController:GZAlbumUIViewController = segue.destinationViewController as! GZAlbumUIViewController
+            viewController.currentAlbum = albumsArray[selectedRow!]
         }
         else if segue.identifier == "toTrackFromSearchResults" {
             let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails

@@ -1,0 +1,530 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GZPlaylistTableViewCell"
+provides-nominal:
+- "C9mediawave23GZPlaylistTableViewCell"
+provides-member:
+- ["C9mediawave23GZPlaylistTableViewCell", ""]
+provides-dynamic-lookup:
+- "setSelected"
+- "playlistName"
+- "awakeFromNib"
+- "prepareForReuse"
+- "playlistBackground"
+depends-top-level:
+- "UITableViewCell"
+- !private "UIColor"
+- !private "CAGradientLayer"
+- "GZPlaylistTableViewCell"
+- "Bool"
+- !private "!="
+- "UIImageView"
+- "UILabel"
+- "GZLFObject"
+- !private "Array"
+depends-member:
+- !private ["PSs9AnyObject", "CAGradientLayer"]
+- !private ["PSs9AnyObject", "CGColor"]
+- !private ["PSs9AnyObject", "UIColor"]
+- !private ["PSs9AnyObject", "addSublayer"]
+- !private ["PSs9AnyObject", "avatarMedium"]
+- ["PSs9AnyObject", "awakeFromNib"]
+- !private ["PSs9AnyObject", "bounds"]
+- !private ["PSs9AnyObject", "clearColor"]
+- !private ["PSs9AnyObject", "colors"]
+- ["PSs9AnyObject", "configureSelfWithDataModel"]
+- !private ["PSs9AnyObject", "frame"]
+- !private ["PSs9AnyObject", "id"]
+- !private ["PSs9AnyObject", "image"]
+- ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "layer"]
+- !private ["PSs9AnyObject", "name"]
+- ["PSs9AnyObject", "playlistBackground"]
+- ["PSs9AnyObject", "playlistName"]
+- ["PSs9AnyObject", "prepareForReuse"]
+- !private ["PSs9AnyObject", "sd_setImageWithURL"]
+- ["PSs9AnyObject", "setSelected"]
+- !private ["PSs9AnyObject", "text"]
+- ["PSs9AnyObject", ""]
+- !private ["Sa", "Element"]
+- !private ["PSs23ArrayLiteralConvertible", "Element"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["CSo15CAGradientLayer", "colors"]
+- !private ["CSo15CAGradientLayer", "frame"]
+- !private ["CSo15CAGradientLayer", "init"]
+- !private ["CSo7CALayer", "addSublayer"]
+- !private ["CSo7CALayer", "colors"]
+- !private ["CSo7CALayer", "frame"]
+- !private ["CSo7CALayer", "init"]
+- !private ["PSo13CAMediaTiming", "addSublayer"]
+- !private ["PSo13CAMediaTiming", "colors"]
+- !private ["PSo13CAMediaTiming", "frame"]
+- !private ["PSo13CAMediaTiming", "init"]
+- !private ["V12CoreGraphics7CGFloat", "deinit"]
+- !private ["PSs11CVarArgType", "CAGradientLayer"]
+- !private ["PSs11CVarArgType", "CGColor"]
+- !private ["PSs11CVarArgType", "UIColor"]
+- !private ["PSs11CVarArgType", "addSublayer"]
+- ["PSs11CVarArgType", "awakeFromNib"]
+- !private ["PSs11CVarArgType", "bounds"]
+- !private ["PSs11CVarArgType", "clearColor"]
+- !private ["PSs11CVarArgType", "colors"]
+- ["PSs11CVarArgType", "configureSelfWithDataModel"]
+- !private ["PSs11CVarArgType", "frame"]
+- !private ["PSs11CVarArgType", "image"]
+- ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "layer"]
+- ["PSs11CVarArgType", "playlistBackground"]
+- ["PSs11CVarArgType", "playlistName"]
+- ["PSs11CVarArgType", "prepareForReuse"]
+- !private ["PSs11CVarArgType", "sd_setImageWithURL"]
+- ["PSs11CVarArgType", "setSelected"]
+- !private ["PSs11CVarArgType", "text"]
+- ["PSs11CVarArgType", ""]
+- !private ["PSs14CollectionType", "Element"]
+- !private ["PSs28CustomDebugStringConvertible", "Element"]
+- !private ["PSs23CustomStringConvertible", "CAGradientLayer"]
+- !private ["PSs23CustomStringConvertible", "CGColor"]
+- !private ["PSs23CustomStringConvertible", "Element"]
+- !private ["PSs23CustomStringConvertible", "UIColor"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "addSublayer"]
+- ["PSs23CustomStringConvertible", "awakeFromNib"]
+- !private ["PSs23CustomStringConvertible", "bounds"]
+- !private ["PSs23CustomStringConvertible", "clearColor"]
+- !private ["PSs23CustomStringConvertible", "colors"]
+- ["PSs23CustomStringConvertible", "configureSelfWithDataModel"]
+- !private ["PSs23CustomStringConvertible", "frame"]
+- !private ["PSs23CustomStringConvertible", "image"]
+- ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "layer"]
+- ["PSs23CustomStringConvertible", "playlistBackground"]
+- ["PSs23CustomStringConvertible", "playlistName"]
+- ["PSs23CustomStringConvertible", "prepareForReuse"]
+- !private ["PSs23CustomStringConvertible", "sd_setImageWithURL"]
+- ["PSs23CustomStringConvertible", "setSelected"]
+- !private ["PSs23CustomStringConvertible", "text"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["PSs9Equatable", "CAGradientLayer"]
+- !private ["PSs9Equatable", "CGColor"]
+- !private ["PSs9Equatable", "UIColor"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "addSublayer"]
+- ["PSs9Equatable", "awakeFromNib"]
+- !private ["PSs9Equatable", "bounds"]
+- !private ["PSs9Equatable", "clearColor"]
+- !private ["PSs9Equatable", "colors"]
+- ["PSs9Equatable", "configureSelfWithDataModel"]
+- !private ["PSs9Equatable", "frame"]
+- !private ["PSs9Equatable", "image"]
+- ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "layer"]
+- ["PSs9Equatable", "playlistBackground"]
+- ["PSs9Equatable", "playlistName"]
+- ["PSs9Equatable", "prepareForReuse"]
+- !private ["PSs9Equatable", "sd_setImageWithURL"]
+- ["PSs9Equatable", "setSelected"]
+- !private ["PSs9Equatable", "text"]
+- ["PSs9Equatable", ""]
+- !private ["C9mediawave10GZLFObject", "avatarMedium"]
+- !private ["C9mediawave10GZLFObject", "id"]
+- !private ["C9mediawave10GZLFObject", "name"]
+- ["C9mediawave23GZPlaylistTableViewCell", "Bool"]
+- !private ["C9mediawave23GZPlaylistTableViewCell", "CAGradientLayer"]
+- ["C9mediawave23GZPlaylistTableViewCell", "GZLFObject"]
+- !private ["C9mediawave23GZPlaylistTableViewCell", "UIColor"]
+- ["C9mediawave23GZPlaylistTableViewCell", "UIImageView"]
+- ["C9mediawave23GZPlaylistTableViewCell", "UILabel"]
+- ["C9mediawave23GZPlaylistTableViewCell", "awakeFromNib"]
+- !private ["C9mediawave23GZPlaylistTableViewCell", "bounds"]
+- ["C9mediawave23GZPlaylistTableViewCell", "configureSelfWithDataModel"]
+- ["C9mediawave23GZPlaylistTableViewCell", "deinit"]
+- ["C9mediawave23GZPlaylistTableViewCell", "init"]
+- ["C9mediawave23GZPlaylistTableViewCell", "playlistBackground"]
+- ["C9mediawave23GZPlaylistTableViewCell", "playlistName"]
+- ["C9mediawave23GZPlaylistTableViewCell", "prepareForReuse"]
+- ["C9mediawave23GZPlaylistTableViewCell", "setSelected"]
+- !private ["PSs8Hashable", "CAGradientLayer"]
+- !private ["PSs8Hashable", "CGColor"]
+- !private ["PSs8Hashable", "UIColor"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "addSublayer"]
+- ["PSs8Hashable", "awakeFromNib"]
+- !private ["PSs8Hashable", "bounds"]
+- !private ["PSs8Hashable", "clearColor"]
+- !private ["PSs8Hashable", "colors"]
+- ["PSs8Hashable", "configureSelfWithDataModel"]
+- !private ["PSs8Hashable", "frame"]
+- !private ["PSs8Hashable", "image"]
+- ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "layer"]
+- ["PSs8Hashable", "playlistBackground"]
+- ["PSs8Hashable", "playlistName"]
+- ["PSs8Hashable", "prepareForReuse"]
+- !private ["PSs8Hashable", "sd_setImageWithURL"]
+- ["PSs8Hashable", "setSelected"]
+- !private ["PSs8Hashable", "text"]
+- ["PSs8Hashable", ""]
+- !private ["PSs9Indexable", "Element"]
+- !private ["PSs21MutableCollectionType", "Element"]
+- !private ["PSs16MutableIndexable", "Element"]
+- !private ["PSs16MutableSliceable", "Element"]
+- !private ["PSo8NSCoding", "CAGradientLayer"]
+- !private ["PSo8NSCoding", "CGColor"]
+- !private ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "addSublayer"]
+- ["PSo8NSCoding", "awakeFromNib"]
+- !private ["PSo8NSCoding", "bounds"]
+- !private ["PSo8NSCoding", "clearColor"]
+- !private ["PSo8NSCoding", "colors"]
+- ["PSo8NSCoding", "configureSelfWithDataModel"]
+- !private ["PSo8NSCoding", "frame"]
+- !private ["PSo8NSCoding", "image"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "layer"]
+- ["PSo8NSCoding", "playlistBackground"]
+- ["PSo8NSCoding", "playlistName"]
+- ["PSo8NSCoding", "prepareForReuse"]
+- !private ["PSo8NSCoding", "sd_setImageWithURL"]
+- ["PSo8NSCoding", "setSelected"]
+- !private ["PSo8NSCoding", "text"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "CGColor"]
+- !private ["PSo9NSCopying", "clearColor"]
+- !private ["PSo9NSCopying", "init"]
+- ["CSo8NSObject", "Bool"]
+- !private ["CSo8NSObject", "CAGradientLayer"]
+- !private ["CSo8NSObject", "CGColor"]
+- ["CSo8NSObject", "GZLFObject"]
+- !private ["CSo8NSObject", "UIColor"]
+- ["CSo8NSObject", "UIImageView"]
+- ["CSo8NSObject", "UILabel"]
+- !private ["CSo8NSObject", "addSublayer"]
+- ["CSo8NSObject", "awakeFromNib"]
+- !private ["CSo8NSObject", "bounds"]
+- !private ["CSo8NSObject", "clearColor"]
+- !private ["CSo8NSObject", "colors"]
+- ["CSo8NSObject", "configureSelfWithDataModel"]
+- !private ["CSo8NSObject", "frame"]
+- !private ["CSo8NSObject", "image"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "layer"]
+- ["CSo8NSObject", "playlistBackground"]
+- ["CSo8NSObject", "playlistName"]
+- ["CSo8NSObject", "prepareForReuse"]
+- !private ["CSo8NSObject", "sd_setImageWithURL"]
+- ["CSo8NSObject", "setSelected"]
+- !private ["CSo8NSObject", "text"]
+- !private ["PSo16NSObjectProtocol", "CAGradientLayer"]
+- !private ["PSo16NSObjectProtocol", "CGColor"]
+- !private ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "addSublayer"]
+- ["PSo16NSObjectProtocol", "awakeFromNib"]
+- !private ["PSo16NSObjectProtocol", "bounds"]
+- !private ["PSo16NSObjectProtocol", "clearColor"]
+- !private ["PSo16NSObjectProtocol", "colors"]
+- ["PSo16NSObjectProtocol", "configureSelfWithDataModel"]
+- !private ["PSo16NSObjectProtocol", "frame"]
+- !private ["PSo16NSObjectProtocol", "image"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "layer"]
+- ["PSo16NSObjectProtocol", "playlistBackground"]
+- ["PSo16NSObjectProtocol", "playlistName"]
+- ["PSo16NSObjectProtocol", "prepareForReuse"]
+- !private ["PSo16NSObjectProtocol", "sd_setImageWithURL"]
+- ["PSo16NSObjectProtocol", "setSelected"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "CGColor"]
+- !private ["PSo14NSSecureCoding", "clearColor"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["Sq", "deinit"]
+- !private ["PSs30RangeReplaceableCollectionType", "Element"]
+- !private ["PSs12SequenceType", "Element"]
+- !private ["PSo29UIAccessibilityIdentification", "CAGradientLayer"]
+- !private ["PSo29UIAccessibilityIdentification", "UIColor"]
+- ["PSo29UIAccessibilityIdentification", "awakeFromNib"]
+- !private ["PSo29UIAccessibilityIdentification", "bounds"]
+- ["PSo29UIAccessibilityIdentification", "configureSelfWithDataModel"]
+- !private ["PSo29UIAccessibilityIdentification", "image"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "layer"]
+- ["PSo29UIAccessibilityIdentification", "playlistBackground"]
+- ["PSo29UIAccessibilityIdentification", "playlistName"]
+- ["PSo29UIAccessibilityIdentification", "prepareForReuse"]
+- !private ["PSo29UIAccessibilityIdentification", "sd_setImageWithURL"]
+- ["PSo29UIAccessibilityIdentification", "setSelected"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- ["PSo29UIAccessibilityIdentification", ""]
+- !private ["PSo12UIAppearance", "CAGradientLayer"]
+- !private ["PSo12UIAppearance", "UIColor"]
+- ["PSo12UIAppearance", "awakeFromNib"]
+- !private ["PSo12UIAppearance", "bounds"]
+- ["PSo12UIAppearance", "configureSelfWithDataModel"]
+- !private ["PSo12UIAppearance", "image"]
+- ["PSo12UIAppearance", "init"]
+- !private ["PSo12UIAppearance", "layer"]
+- ["PSo12UIAppearance", "playlistBackground"]
+- ["PSo12UIAppearance", "playlistName"]
+- ["PSo12UIAppearance", "prepareForReuse"]
+- !private ["PSo12UIAppearance", "sd_setImageWithURL"]
+- ["PSo12UIAppearance", "setSelected"]
+- !private ["PSo12UIAppearance", "text"]
+- ["PSo12UIAppearance", ""]
+- !private ["PSo21UIAppearanceContainer", "CAGradientLayer"]
+- !private ["PSo21UIAppearanceContainer", "UIColor"]
+- ["PSo21UIAppearanceContainer", "awakeFromNib"]
+- !private ["PSo21UIAppearanceContainer", "bounds"]
+- ["PSo21UIAppearanceContainer", "configureSelfWithDataModel"]
+- !private ["PSo21UIAppearanceContainer", "image"]
+- ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "layer"]
+- ["PSo21UIAppearanceContainer", "playlistBackground"]
+- ["PSo21UIAppearanceContainer", "playlistName"]
+- ["PSo21UIAppearanceContainer", "prepareForReuse"]
+- !private ["PSo21UIAppearanceContainer", "sd_setImageWithURL"]
+- ["PSo21UIAppearanceContainer", "setSelected"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["CSo7UIColor", "CGColor"]
+- !private ["CSo7UIColor", "clearColor"]
+- !private ["CSo7UIColor", "init"]
+- !private ["PSo17UICoordinateSpace", "CAGradientLayer"]
+- !private ["PSo17UICoordinateSpace", "UIColor"]
+- ["PSo17UICoordinateSpace", "awakeFromNib"]
+- !private ["PSo17UICoordinateSpace", "bounds"]
+- ["PSo17UICoordinateSpace", "configureSelfWithDataModel"]
+- !private ["PSo17UICoordinateSpace", "image"]
+- ["PSo17UICoordinateSpace", "init"]
+- !private ["PSo17UICoordinateSpace", "layer"]
+- ["PSo17UICoordinateSpace", "playlistBackground"]
+- ["PSo17UICoordinateSpace", "playlistName"]
+- ["PSo17UICoordinateSpace", "prepareForReuse"]
+- !private ["PSo17UICoordinateSpace", "sd_setImageWithURL"]
+- ["PSo17UICoordinateSpace", "setSelected"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- ["PSo17UICoordinateSpace", ""]
+- !private ["PSo13UIDynamicItem", "CAGradientLayer"]
+- !private ["PSo13UIDynamicItem", "UIColor"]
+- ["PSo13UIDynamicItem", "awakeFromNib"]
+- !private ["PSo13UIDynamicItem", "bounds"]
+- ["PSo13UIDynamicItem", "configureSelfWithDataModel"]
+- !private ["PSo13UIDynamicItem", "image"]
+- ["PSo13UIDynamicItem", "init"]
+- !private ["PSo13UIDynamicItem", "layer"]
+- ["PSo13UIDynamicItem", "playlistBackground"]
+- ["PSo13UIDynamicItem", "playlistName"]
+- ["PSo13UIDynamicItem", "prepareForReuse"]
+- !private ["PSo13UIDynamicItem", "sd_setImageWithURL"]
+- ["PSo13UIDynamicItem", "setSelected"]
+- !private ["PSo13UIDynamicItem", "text"]
+- ["PSo13UIDynamicItem", ""]
+- !private ["PSo18UIFocusEnvironment", "CAGradientLayer"]
+- !private ["PSo18UIFocusEnvironment", "UIColor"]
+- ["PSo18UIFocusEnvironment", "awakeFromNib"]
+- !private ["PSo18UIFocusEnvironment", "bounds"]
+- ["PSo18UIFocusEnvironment", "configureSelfWithDataModel"]
+- !private ["PSo18UIFocusEnvironment", "image"]
+- ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "layer"]
+- ["PSo18UIFocusEnvironment", "playlistBackground"]
+- ["PSo18UIFocusEnvironment", "playlistName"]
+- ["PSo18UIFocusEnvironment", "prepareForReuse"]
+- !private ["PSo18UIFocusEnvironment", "sd_setImageWithURL"]
+- ["PSo18UIFocusEnvironment", "setSelected"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo27UIGestureRecognizerDelegate", "CAGradientLayer"]
+- !private ["PSo27UIGestureRecognizerDelegate", "UIColor"]
+- ["PSo27UIGestureRecognizerDelegate", "awakeFromNib"]
+- !private ["PSo27UIGestureRecognizerDelegate", "bounds"]
+- ["PSo27UIGestureRecognizerDelegate", "configureSelfWithDataModel"]
+- ["PSo27UIGestureRecognizerDelegate", "init"]
+- ["PSo27UIGestureRecognizerDelegate", "playlistBackground"]
+- ["PSo27UIGestureRecognizerDelegate", "playlistName"]
+- ["PSo27UIGestureRecognizerDelegate", "prepareForReuse"]
+- ["PSo27UIGestureRecognizerDelegate", "setSelected"]
+- ["PSo27UIGestureRecognizerDelegate", ""]
+- !private ["CSo11UIImageView", "image"]
+- !private ["CSo11UIImageView", "layer"]
+- !private ["CSo11UIImageView", "sd_setImageWithURL"]
+- !private ["CSo7UILabel", "text"]
+- ["CSo11UIResponder", "Bool"]
+- !private ["CSo11UIResponder", "CAGradientLayer"]
+- ["CSo11UIResponder", "GZLFObject"]
+- !private ["CSo11UIResponder", "UIColor"]
+- ["CSo11UIResponder", "UIImageView"]
+- ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "awakeFromNib"]
+- !private ["CSo11UIResponder", "bounds"]
+- ["CSo11UIResponder", "configureSelfWithDataModel"]
+- !private ["CSo11UIResponder", "image"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "layer"]
+- ["CSo11UIResponder", "playlistBackground"]
+- ["CSo11UIResponder", "playlistName"]
+- ["CSo11UIResponder", "prepareForReuse"]
+- !private ["CSo11UIResponder", "sd_setImageWithURL"]
+- ["CSo11UIResponder", "setSelected"]
+- !private ["CSo11UIResponder", "text"]
+- ["CSo15UITableViewCell", "Bool"]
+- !private ["CSo15UITableViewCell", "CAGradientLayer"]
+- ["CSo15UITableViewCell", "GZLFObject"]
+- !private ["CSo15UITableViewCell", "UIColor"]
+- ["CSo15UITableViewCell", "UIImageView"]
+- ["CSo15UITableViewCell", "UILabel"]
+- ["CSo15UITableViewCell", "awakeFromNib"]
+- !private ["CSo15UITableViewCell", "bounds"]
+- ["CSo15UITableViewCell", "configureSelfWithDataModel"]
+- ["CSo15UITableViewCell", "init"]
+- ["CSo15UITableViewCell", "playlistBackground"]
+- ["CSo15UITableViewCell", "playlistName"]
+- ["CSo15UITableViewCell", "prepareForReuse"]
+- ["CSo15UITableViewCell", "setSelected"]
+- ["CSo15UITableViewCell", ""]
+- !private ["PSo18UITraitEnvironment", "CAGradientLayer"]
+- !private ["PSo18UITraitEnvironment", "UIColor"]
+- ["PSo18UITraitEnvironment", "awakeFromNib"]
+- !private ["PSo18UITraitEnvironment", "bounds"]
+- ["PSo18UITraitEnvironment", "configureSelfWithDataModel"]
+- !private ["PSo18UITraitEnvironment", "image"]
+- ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "layer"]
+- ["PSo18UITraitEnvironment", "playlistBackground"]
+- ["PSo18UITraitEnvironment", "playlistName"]
+- ["PSo18UITraitEnvironment", "prepareForReuse"]
+- !private ["PSo18UITraitEnvironment", "sd_setImageWithURL"]
+- ["PSo18UITraitEnvironment", "setSelected"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo6UIView", "Bool"]
+- !private ["CSo6UIView", "CAGradientLayer"]
+- ["CSo6UIView", "GZLFObject"]
+- !private ["CSo6UIView", "UIColor"]
+- ["CSo6UIView", "UIImageView"]
+- ["CSo6UIView", "UILabel"]
+- ["CSo6UIView", "awakeFromNib"]
+- !private ["CSo6UIView", "bounds"]
+- ["CSo6UIView", "configureSelfWithDataModel"]
+- !private ["CSo6UIView", "image"]
+- ["CSo6UIView", "init"]
+- !private ["CSo6UIView", "layer"]
+- ["CSo6UIView", "playlistBackground"]
+- ["CSo6UIView", "playlistName"]
+- ["CSo6UIView", "prepareForReuse"]
+- !private ["CSo6UIView", "sd_setImageWithURL"]
+- ["CSo6UIView", "setSelected"]
+- !private ["CSo6UIView", "text"]
+- !private ["PSs10_ArrayType", "Element"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs24_ColorLiteralConvertible", "CGColor"]
+- !private ["PSs24_ColorLiteralConvertible", "clearColor"]
+- !private ["PSs24_ColorLiteralConvertible", "init"]
+- !private ["PSs24_DestructorSafeContainer", "Element"]
+- !private ["PSs21_ObjectiveCBridgeable", "Element"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["VSs26_OptionalNilComparisonType", "deinit"]
+- !private ["PSs12_Reflectable", "CAGradientLayer"]
+- !private ["PSs12_Reflectable", "Element"]
+- !private ["PSs12_Reflectable", "UIColor"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+- ["PSs12_Reflectable", "awakeFromNib"]
+- !private ["PSs12_Reflectable", "bounds"]
+- ["PSs12_Reflectable", "configureSelfWithDataModel"]
+- !private ["PSs12_Reflectable", "image"]
+- ["PSs12_Reflectable", "init"]
+- !private ["PSs12_Reflectable", "layer"]
+- ["PSs12_Reflectable", "playlistBackground"]
+- ["PSs12_Reflectable", "playlistName"]
+- ["PSs12_Reflectable", "prepareForReuse"]
+- !private ["PSs12_Reflectable", "sd_setImageWithURL"]
+- ["PSs12_Reflectable", "setSelected"]
+- !private ["PSs12_Reflectable", "text"]
+- ["PSs12_Reflectable", ""]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sa"
+- !private "PSs23ArrayLiteralConvertible"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- !private "CSo15CAGradientLayer"
+- !private "CSo7CALayer"
+- !private "PSo13CAMediaTiming"
+- !private "V12CoreGraphics7CGFloat"
+- "PSs11CVarArgType"
+- !private "PSs14CollectionType"
+- !private "PSs28CustomDebugStringConvertible"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- !private "C9mediawave10GZLFObject"
+- "C9mediawave23GZPlaylistTableViewCell"
+- "PSs8Hashable"
+- !private "PSs9Indexable"
+- !private "PSs21MutableCollectionType"
+- !private "PSs16MutableIndexable"
+- !private "PSs16MutableSliceable"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "Sq"
+- !private "PSs30RangeReplaceableCollectionType"
+- !private "PSs12SequenceType"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "CSo7UIColor"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "PSo27UIGestureRecognizerDelegate"
+- !private "CSo11UIImageView"
+- !private "CSo7UILabel"
+- "CSo11UIResponder"
+- "CSo15UITableViewCell"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- !private "PSs10_ArrayType"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs24_ColorLiteralConvertible"
+- !private "PSs24_DestructorSafeContainer"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "VSs26_OptionalNilComparisonType"
+- "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/mediawave-Bridging-Header.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIView+WebCacheOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+HighlightedWebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+MultiFormat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+GIF.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIButton+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImagePrefetcher.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageManager.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloaderOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloader.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDecoder.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageCompat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDImageCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/NSData+ImageContentType.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImage-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Modules/module.modulemap"
+- "/Users/georgezinyakov/Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"
+interface-hash: "522f39888240df98b0f858389b889493"

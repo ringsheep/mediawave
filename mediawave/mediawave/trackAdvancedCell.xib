@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -17,100 +16,64 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnJ-LZ-KUR">
-                        <rect key="frame" x="6" y="12" width="45" height="45"/>
+                        <rect key="frame" x="18" y="12" width="45" height="45"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="65" id="H7e-rp-Qw6"/>
                             <constraint firstAttribute="height" constant="45" id="HvW-pj-liS"/>
-                            <constraint firstAttribute="width" secondItem="vnJ-LZ-KUR" secondAttribute="height" multiplier="1:1" id="WPs-m5-hm5"/>
                             <constraint firstAttribute="width" constant="45" id="jaH-g3-hQb"/>
-                            <constraint firstAttribute="height" constant="65" id="z5K-Bh-BTO"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="H7e-rp-Qw6"/>
-                                <exclude reference="WPs-m5-hm5"/>
-                                <exclude reference="z5K-Bh-BTO"/>
-                            </mask>
-                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Untitled" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly6-TR-Nys">
-                        <rect key="frame" x="59" y="12" width="253" height="21"/>
+                        <rect key="frame" x="73" y="12" width="229" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="by Unknown artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwU-Yk-lFR">
-                        <rect key="frame" x="59" y="37" width="253" height="17"/>
+                        <rect key="frame" x="73" y="36" width="229" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="8gA-vC-OaI"/>
                             <constraint firstAttribute="height" constant="17" id="mDb-qS-Ftd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="8gA-vC-OaI"/>
-                            </mask>
-                        </variation>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="ly6-TR-Nys" firstAttribute="leading" secondItem="vnJ-LZ-KUR" secondAttribute="trailing" constant="8" id="2Ha-ah-Wue"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="vnJ-LZ-KUR" secondAttribute="leading" constant="2" id="3V1-ul-ZCh"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="4" id="5gj-Rb-BZJ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mwU-Yk-lFR" secondAttribute="bottom" constant="2" id="9sq-1U-W6e"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="2" id="B1q-mj-Acr"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vnJ-LZ-KUR" secondAttribute="bottom" constant="2.5" id="DTn-pv-ucS"/>
+                    <constraint firstItem="ly6-TR-Nys" firstAttribute="leading" secondItem="vnJ-LZ-KUR" secondAttribute="trailing" constant="10" id="2Ha-ah-Wue"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="vnJ-LZ-KUR" secondAttribute="leading" constant="20" id="3V1-ul-ZCh"/>
                     <constraint firstItem="mwU-Yk-lFR" firstAttribute="top" secondItem="ly6-TR-Nys" secondAttribute="bottom" constant="4" id="Dst-4J-NRx"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="mwU-Yk-lFR" secondAttribute="trailing" constant="0.5" id="Grt-sz-APM"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="mwU-Yk-lFR" secondAttribute="trailing" id="KAb-04-uUN"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ly6-TR-Nys" secondAttribute="bottom" constant="49" id="KLb-f8-Mhs"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="2.5" id="LaW-h7-ldQ"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="centerY" secondItem="pdO-MS-CxA" secondAttribute="centerY" id="PcQ-4w-a8m"/>
-                    <constraint firstAttribute="topMargin" secondItem="ly6-TR-Nys" secondAttribute="top" constant="2" id="QxX-4c-Lne"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="2.5" id="S01-at-mPA"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="2" id="Tlg-SN-syY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mwU-Yk-lFR" secondAttribute="trailing" id="Grt-sz-APM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mwU-Yk-lFR" secondAttribute="trailing" constant="10" id="HvZ-O9-gUw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ly6-TR-Nys" secondAttribute="trailing" constant="10" id="QqL-CW-arL"/>
                     <constraint firstItem="ly6-TR-Nys" firstAttribute="top" secondItem="vnJ-LZ-KUR" secondAttribute="top" id="VLx-Qd-AJg"/>
-                    <constraint firstItem="mwU-Yk-lFR" firstAttribute="top" secondItem="ly6-TR-Nys" secondAttribute="bottom" constant="2" id="VrB-MG-Vbb"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mwU-Yk-lFR" secondAttribute="bottom" constant="8.5" id="X4l-rx-tJh"/>
                     <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="4" id="Xvi-co-DUg"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ly6-TR-Nys" secondAttribute="trailing" id="YqH-WQ-mgy"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="centerY" secondItem="pdO-MS-CxA" secondAttribute="centerY" id="hE0-dm-55y"/>
-                    <constraint firstItem="mwU-Yk-lFR" firstAttribute="top" secondItem="ly6-TR-Nys" secondAttribute="bottom" constant="1" id="iF1-t5-w2i"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vnJ-LZ-KUR" secondAttribute="bottom" constant="2" id="jEX-w5-wAw"/>
-                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="centerY" secondItem="pdO-MS-CxA" secondAttribute="centerY" id="kx5-rH-dH2"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vnJ-LZ-KUR" secondAttribute="bottom" constant="2" id="pd9-TJ-ZHY"/>
-                    <constraint firstItem="mwU-Yk-lFR" firstAttribute="leading" secondItem="vnJ-LZ-KUR" secondAttribute="trailing" constant="8" id="wPi-wj-Vz9"/>
-                    <constraint firstItem="mwU-Yk-lFR" firstAttribute="leading" secondItem="vnJ-LZ-KUR" secondAttribute="trailing" constant="8" id="zyt-cE-GuP"/>
+                    <constraint firstItem="vnJ-LZ-KUR" firstAttribute="leading" secondItem="pdO-MS-CxA" secondAttribute="leadingMargin" constant="10" id="aM7-4y-5GV"/>
+                    <constraint firstItem="mwU-Yk-lFR" firstAttribute="leading" secondItem="vnJ-LZ-KUR" secondAttribute="trailing" constant="10" id="wPi-wj-Vz9"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="5gj-Rb-BZJ"/>
-                        <exclude reference="B1q-mj-Acr"/>
-                        <exclude reference="DTn-pv-ucS"/>
-                        <exclude reference="LaW-h7-ldQ"/>
-                        <exclude reference="PcQ-4w-a8m"/>
-                        <exclude reference="S01-at-mPA"/>
-                        <exclude reference="Tlg-SN-syY"/>
-                        <exclude reference="hE0-dm-55y"/>
-                        <exclude reference="jEX-w5-wAw"/>
-                        <exclude reference="kx5-rH-dH2"/>
-                        <exclude reference="pd9-TJ-ZHY"/>
-                        <exclude reference="KLb-f8-Mhs"/>
-                        <exclude reference="QxX-4c-Lne"/>
-                        <exclude reference="9sq-1U-W6e"/>
-                        <exclude reference="KAb-04-uUN"/>
-                        <exclude reference="VrB-MG-Vbb"/>
-                        <exclude reference="X4l-rx-tJh"/>
-                        <exclude reference="iF1-t5-w2i"/>
-                        <exclude reference="zyt-cE-GuP"/>
+                        <exclude reference="3V1-ul-ZCh"/>
+                        <exclude reference="YqH-WQ-mgy"/>
+                        <exclude reference="Grt-sz-APM"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="vnJ-LZ-KUR" firstAttribute="leading" secondItem="9yr-PR-tDh" secondAttribute="leading" constant="10" id="LCg-yI-rTE"/>
+                <constraint firstAttribute="trailing" secondItem="ly6-TR-Nys" secondAttribute="trailing" constant="8" id="TRs-Ba-2Yy"/>
+                <constraint firstAttribute="trailing" secondItem="mwU-Yk-lFR" secondAttribute="trailing" constant="8" id="UNp-AC-UJq"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="LCg-yI-rTE"/>
+                    <exclude reference="TRs-Ba-2Yy"/>
+                    <exclude reference="UNp-AC-UJq"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="trackArtist" destination="mwU-Yk-lFR" id="v72-nl-PSZ"/>
                 <outlet property="trackAvatar" destination="vnJ-LZ-KUR" id="whB-ab-ZtH"/>

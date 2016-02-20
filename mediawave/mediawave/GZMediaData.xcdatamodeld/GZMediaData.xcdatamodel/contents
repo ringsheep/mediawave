@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="GZAlbum" representedClassName=".GZAlbum" syncable="YES">
+        <attribute name="imageMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZArtist" inverseName="topAlbums" inverseEntity="GZArtist" syncable="YES"/>
+        <relationship name="tracks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZTrack" inverseName="album" inverseEntity="GZTrack" syncable="YES"/>
+    </entity>
+    <entity name="GZArtist" representedClassName=".GZArtist" syncable="YES">
+        <attribute name="imageMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="topAlbums" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZAlbum" inverseName="artist" inverseEntity="GZAlbum" syncable="YES"/>
+        <relationship name="topTracks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZTrack" inverseName="artist" inverseEntity="GZTrack" syncable="YES"/>
+    </entity>
+    <entity name="GZPlaylist" representedClassName=".GZPlaylist" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playlistID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tracks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZTrack" inverseName="playlist" inverseEntity="GZTrack" syncable="YES"/>
+    </entity>
+    <entity name="GZTrack" representedClassName=".GZTrack" syncable="YES">
+        <attribute name="imageMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="youtubeID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZAlbum" inverseName="tracks" inverseEntity="GZAlbum" syncable="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZArtist" inverseName="topTracks" inverseEntity="GZArtist" syncable="YES"/>
+        <relationship name="playlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZPlaylist" inverseName="tracks" inverseEntity="GZPlaylist" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GZAlbum" positionX="-387" positionY="179" width="128" height="120"/>
+        <element name="GZArtist" positionX="-279" positionY="-148" width="128" height="135"/>
+        <element name="GZPlaylist" positionX="-468" positionY="27" width="128" height="135"/>
+        <element name="GZTrack" positionX="-110" positionY="53" width="128" height="165"/>
+    </elements>
+</model>

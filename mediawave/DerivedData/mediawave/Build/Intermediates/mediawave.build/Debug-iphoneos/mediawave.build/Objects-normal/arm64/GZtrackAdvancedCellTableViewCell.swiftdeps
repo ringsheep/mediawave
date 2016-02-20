@@ -1,0 +1,372 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GZtrackAdvancedCellTableViewCell"
+provides-nominal:
+- "C9mediawave32GZtrackAdvancedCellTableViewCell"
+provides-member:
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", ""]
+provides-dynamic-lookup:
+- "prepareForReuse"
+- "awakeFromNib"
+- "setSelected"
+- "trackArtist"
+- "trackAvatar"
+- "trackName"
+depends-top-level:
+- "GZtrackAdvancedCellTableViewCell"
+- !private "+"
+- "UITableViewCell"
+- "Bool"
+- "UIImageView"
+- !private "!="
+- "UILabel"
+- !private "StringLiteralType"
+- "GZLFObject"
+depends-member:
+- !private ["PSs9AnyObject", "artist"]
+- !private ["PSs9AnyObject", "avatarMedium"]
+- ["PSs9AnyObject", "awakeFromNib"]
+- ["PSs9AnyObject", "configureSelfWithDataModel"]
+- !private ["PSs9AnyObject", "id"]
+- !private ["PSs9AnyObject", "image"]
+- ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "name"]
+- ["PSs9AnyObject", "prepareForReuse"]
+- !private ["PSs9AnyObject", "sd_setImageWithURL"]
+- ["PSs9AnyObject", "setSelected"]
+- !private ["PSs9AnyObject", "text"]
+- ["PSs9AnyObject", "trackArtist"]
+- ["PSs9AnyObject", "trackAvatar"]
+- ["PSs9AnyObject", "trackName"]
+- ["PSs9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- ["PSs11CVarArgType", "awakeFromNib"]
+- ["PSs11CVarArgType", "configureSelfWithDataModel"]
+- !private ["PSs11CVarArgType", "image"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "prepareForReuse"]
+- !private ["PSs11CVarArgType", "sd_setImageWithURL"]
+- ["PSs11CVarArgType", "setSelected"]
+- !private ["PSs11CVarArgType", "text"]
+- ["PSs11CVarArgType", "trackArtist"]
+- ["PSs11CVarArgType", "trackAvatar"]
+- ["PSs11CVarArgType", "trackName"]
+- ["PSs11CVarArgType", ""]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- ["PSs23CustomStringConvertible", "awakeFromNib"]
+- ["PSs23CustomStringConvertible", "configureSelfWithDataModel"]
+- !private ["PSs23CustomStringConvertible", "image"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "prepareForReuse"]
+- !private ["PSs23CustomStringConvertible", "sd_setImageWithURL"]
+- ["PSs23CustomStringConvertible", "setSelected"]
+- !private ["PSs23CustomStringConvertible", "text"]
+- ["PSs23CustomStringConvertible", "trackArtist"]
+- ["PSs23CustomStringConvertible", "trackAvatar"]
+- ["PSs23CustomStringConvertible", "trackName"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- ["PSs9Equatable", "awakeFromNib"]
+- ["PSs9Equatable", "configureSelfWithDataModel"]
+- !private ["PSs9Equatable", "image"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "prepareForReuse"]
+- !private ["PSs9Equatable", "sd_setImageWithURL"]
+- ["PSs9Equatable", "setSelected"]
+- !private ["PSs9Equatable", "text"]
+- ["PSs9Equatable", "trackArtist"]
+- ["PSs9Equatable", "trackAvatar"]
+- ["PSs9Equatable", "trackName"]
+- ["PSs9Equatable", ""]
+- !private ["C9mediawave10GZLFObject", "artist"]
+- !private ["C9mediawave10GZLFObject", "avatarMedium"]
+- !private ["C9mediawave10GZLFObject", "id"]
+- !private ["C9mediawave10GZLFObject", "name"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "Bool"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "GZLFObject"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "UIImageView"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "UILabel"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "awakeFromNib"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "configureSelfWithDataModel"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "deinit"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "init"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "prepareForReuse"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "setSelected"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "trackArtist"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "trackAvatar"]
+- ["C9mediawave32GZtrackAdvancedCellTableViewCell", "trackName"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- ["PSs8Hashable", "awakeFromNib"]
+- ["PSs8Hashable", "configureSelfWithDataModel"]
+- !private ["PSs8Hashable", "image"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "prepareForReuse"]
+- !private ["PSs8Hashable", "sd_setImageWithURL"]
+- ["PSs8Hashable", "setSelected"]
+- !private ["PSs8Hashable", "text"]
+- ["PSs8Hashable", "trackArtist"]
+- ["PSs8Hashable", "trackAvatar"]
+- ["PSs8Hashable", "trackName"]
+- ["PSs8Hashable", ""]
+- ["PSo8NSCoding", "awakeFromNib"]
+- ["PSo8NSCoding", "configureSelfWithDataModel"]
+- !private ["PSo8NSCoding", "image"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "prepareForReuse"]
+- !private ["PSo8NSCoding", "sd_setImageWithURL"]
+- ["PSo8NSCoding", "setSelected"]
+- !private ["PSo8NSCoding", "text"]
+- ["PSo8NSCoding", "trackArtist"]
+- ["PSo8NSCoding", "trackAvatar"]
+- ["PSo8NSCoding", "trackName"]
+- ["PSo8NSCoding", ""]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "GZLFObject"]
+- ["CSo8NSObject", "UIImageView"]
+- ["CSo8NSObject", "UILabel"]
+- ["CSo8NSObject", "awakeFromNib"]
+- ["CSo8NSObject", "configureSelfWithDataModel"]
+- !private ["CSo8NSObject", "image"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "prepareForReuse"]
+- !private ["CSo8NSObject", "sd_setImageWithURL"]
+- ["CSo8NSObject", "setSelected"]
+- !private ["CSo8NSObject", "text"]
+- ["CSo8NSObject", "trackArtist"]
+- ["CSo8NSObject", "trackAvatar"]
+- ["CSo8NSObject", "trackName"]
+- ["PSo16NSObjectProtocol", "awakeFromNib"]
+- ["PSo16NSObjectProtocol", "configureSelfWithDataModel"]
+- !private ["PSo16NSObjectProtocol", "image"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "prepareForReuse"]
+- !private ["PSo16NSObjectProtocol", "sd_setImageWithURL"]
+- ["PSo16NSObjectProtocol", "setSelected"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- ["PSo16NSObjectProtocol", "trackArtist"]
+- ["PSo16NSObjectProtocol", "trackAvatar"]
+- ["PSo16NSObjectProtocol", "trackName"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["Sq", "deinit"]
+- ["PSo29UIAccessibilityIdentification", "awakeFromNib"]
+- ["PSo29UIAccessibilityIdentification", "configureSelfWithDataModel"]
+- !private ["PSo29UIAccessibilityIdentification", "image"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- ["PSo29UIAccessibilityIdentification", "prepareForReuse"]
+- !private ["PSo29UIAccessibilityIdentification", "sd_setImageWithURL"]
+- ["PSo29UIAccessibilityIdentification", "setSelected"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- ["PSo29UIAccessibilityIdentification", "trackArtist"]
+- ["PSo29UIAccessibilityIdentification", "trackAvatar"]
+- ["PSo29UIAccessibilityIdentification", "trackName"]
+- ["PSo29UIAccessibilityIdentification", ""]
+- ["PSo12UIAppearance", "awakeFromNib"]
+- ["PSo12UIAppearance", "configureSelfWithDataModel"]
+- !private ["PSo12UIAppearance", "image"]
+- ["PSo12UIAppearance", "init"]
+- ["PSo12UIAppearance", "prepareForReuse"]
+- !private ["PSo12UIAppearance", "sd_setImageWithURL"]
+- ["PSo12UIAppearance", "setSelected"]
+- !private ["PSo12UIAppearance", "text"]
+- ["PSo12UIAppearance", "trackArtist"]
+- ["PSo12UIAppearance", "trackAvatar"]
+- ["PSo12UIAppearance", "trackName"]
+- ["PSo12UIAppearance", ""]
+- ["PSo21UIAppearanceContainer", "awakeFromNib"]
+- ["PSo21UIAppearanceContainer", "configureSelfWithDataModel"]
+- !private ["PSo21UIAppearanceContainer", "image"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "prepareForReuse"]
+- !private ["PSo21UIAppearanceContainer", "sd_setImageWithURL"]
+- ["PSo21UIAppearanceContainer", "setSelected"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- ["PSo21UIAppearanceContainer", "trackArtist"]
+- ["PSo21UIAppearanceContainer", "trackAvatar"]
+- ["PSo21UIAppearanceContainer", "trackName"]
+- ["PSo21UIAppearanceContainer", ""]
+- ["PSo17UICoordinateSpace", "awakeFromNib"]
+- ["PSo17UICoordinateSpace", "configureSelfWithDataModel"]
+- !private ["PSo17UICoordinateSpace", "image"]
+- ["PSo17UICoordinateSpace", "init"]
+- ["PSo17UICoordinateSpace", "prepareForReuse"]
+- !private ["PSo17UICoordinateSpace", "sd_setImageWithURL"]
+- ["PSo17UICoordinateSpace", "setSelected"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- ["PSo17UICoordinateSpace", "trackArtist"]
+- ["PSo17UICoordinateSpace", "trackAvatar"]
+- ["PSo17UICoordinateSpace", "trackName"]
+- ["PSo17UICoordinateSpace", ""]
+- ["PSo13UIDynamicItem", "awakeFromNib"]
+- ["PSo13UIDynamicItem", "configureSelfWithDataModel"]
+- !private ["PSo13UIDynamicItem", "image"]
+- ["PSo13UIDynamicItem", "init"]
+- ["PSo13UIDynamicItem", "prepareForReuse"]
+- !private ["PSo13UIDynamicItem", "sd_setImageWithURL"]
+- ["PSo13UIDynamicItem", "setSelected"]
+- !private ["PSo13UIDynamicItem", "text"]
+- ["PSo13UIDynamicItem", "trackArtist"]
+- ["PSo13UIDynamicItem", "trackAvatar"]
+- ["PSo13UIDynamicItem", "trackName"]
+- ["PSo13UIDynamicItem", ""]
+- ["PSo18UIFocusEnvironment", "awakeFromNib"]
+- ["PSo18UIFocusEnvironment", "configureSelfWithDataModel"]
+- !private ["PSo18UIFocusEnvironment", "image"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "prepareForReuse"]
+- !private ["PSo18UIFocusEnvironment", "sd_setImageWithURL"]
+- ["PSo18UIFocusEnvironment", "setSelected"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- ["PSo18UIFocusEnvironment", "trackArtist"]
+- ["PSo18UIFocusEnvironment", "trackAvatar"]
+- ["PSo18UIFocusEnvironment", "trackName"]
+- ["PSo18UIFocusEnvironment", ""]
+- ["PSo27UIGestureRecognizerDelegate", "awakeFromNib"]
+- ["PSo27UIGestureRecognizerDelegate", "configureSelfWithDataModel"]
+- ["PSo27UIGestureRecognizerDelegate", "init"]
+- ["PSo27UIGestureRecognizerDelegate", "prepareForReuse"]
+- ["PSo27UIGestureRecognizerDelegate", "setSelected"]
+- ["PSo27UIGestureRecognizerDelegate", "trackArtist"]
+- ["PSo27UIGestureRecognizerDelegate", "trackAvatar"]
+- ["PSo27UIGestureRecognizerDelegate", "trackName"]
+- ["PSo27UIGestureRecognizerDelegate", ""]
+- !private ["CSo11UIImageView", "image"]
+- !private ["CSo11UIImageView", "sd_setImageWithURL"]
+- !private ["CSo7UILabel", "text"]
+- ["CSo11UIResponder", "Bool"]
+- ["CSo11UIResponder", "GZLFObject"]
+- ["CSo11UIResponder", "UIImageView"]
+- ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "awakeFromNib"]
+- ["CSo11UIResponder", "configureSelfWithDataModel"]
+- !private ["CSo11UIResponder", "image"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "prepareForReuse"]
+- !private ["CSo11UIResponder", "sd_setImageWithURL"]
+- ["CSo11UIResponder", "setSelected"]
+- !private ["CSo11UIResponder", "text"]
+- ["CSo11UIResponder", "trackArtist"]
+- ["CSo11UIResponder", "trackAvatar"]
+- ["CSo11UIResponder", "trackName"]
+- ["CSo15UITableViewCell", "Bool"]
+- ["CSo15UITableViewCell", "GZLFObject"]
+- ["CSo15UITableViewCell", "UIImageView"]
+- ["CSo15UITableViewCell", "UILabel"]
+- ["CSo15UITableViewCell", "awakeFromNib"]
+- ["CSo15UITableViewCell", "configureSelfWithDataModel"]
+- ["CSo15UITableViewCell", "init"]
+- ["CSo15UITableViewCell", "prepareForReuse"]
+- ["CSo15UITableViewCell", "setSelected"]
+- ["CSo15UITableViewCell", "trackArtist"]
+- ["CSo15UITableViewCell", "trackAvatar"]
+- ["CSo15UITableViewCell", "trackName"]
+- ["CSo15UITableViewCell", ""]
+- ["PSo18UITraitEnvironment", "awakeFromNib"]
+- ["PSo18UITraitEnvironment", "configureSelfWithDataModel"]
+- !private ["PSo18UITraitEnvironment", "image"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "prepareForReuse"]
+- !private ["PSo18UITraitEnvironment", "sd_setImageWithURL"]
+- ["PSo18UITraitEnvironment", "setSelected"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- ["PSo18UITraitEnvironment", "trackArtist"]
+- ["PSo18UITraitEnvironment", "trackAvatar"]
+- ["PSo18UITraitEnvironment", "trackName"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo6UIView", "Bool"]
+- ["CSo6UIView", "GZLFObject"]
+- ["CSo6UIView", "UIImageView"]
+- ["CSo6UIView", "UILabel"]
+- ["CSo6UIView", "awakeFromNib"]
+- ["CSo6UIView", "configureSelfWithDataModel"]
+- !private ["CSo6UIView", "image"]
+- ["CSo6UIView", "init"]
+- ["CSo6UIView", "prepareForReuse"]
+- !private ["CSo6UIView", "sd_setImageWithURL"]
+- ["CSo6UIView", "setSelected"]
+- !private ["CSo6UIView", "text"]
+- ["CSo6UIView", "trackArtist"]
+- ["CSo6UIView", "trackAvatar"]
+- ["CSo6UIView", "trackName"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["VSs26_OptionalNilComparisonType", "deinit"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+- ["PSs12_Reflectable", "awakeFromNib"]
+- ["PSs12_Reflectable", "configureSelfWithDataModel"]
+- !private ["PSs12_Reflectable", "image"]
+- ["PSs12_Reflectable", "init"]
+- ["PSs12_Reflectable", "prepareForReuse"]
+- !private ["PSs12_Reflectable", "sd_setImageWithURL"]
+- ["PSs12_Reflectable", "setSelected"]
+- !private ["PSs12_Reflectable", "text"]
+- ["PSs12_Reflectable", "trackArtist"]
+- ["PSs12_Reflectable", "trackAvatar"]
+- ["PSs12_Reflectable", "trackName"]
+- ["PSs12_Reflectable", ""]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- "PSs11CVarArgType"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- !private "C9mediawave10GZLFObject"
+- "C9mediawave32GZtrackAdvancedCellTableViewCell"
+- "PSs8Hashable"
+- "PSo8NSCoding"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "Sq"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "PSo27UIGestureRecognizerDelegate"
+- !private "CSo11UIImageView"
+- !private "CSo7UILabel"
+- "CSo11UIResponder"
+- "CSo15UITableViewCell"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "VSs26_OptionalNilComparisonType"
+- "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/mediawave-Bridging-Header.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIView+WebCacheOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+HighlightedWebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+MultiFormat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+GIF.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIButton+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImagePrefetcher.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageManager.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloaderOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloader.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDecoder.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageCompat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDImageCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/NSData+ImageContentType.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImage-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Modules/module.modulemap"
+- "/Users/georgezinyakov/Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"
+interface-hash: "7206362e06b5b3ca4e44fba8cb735088"

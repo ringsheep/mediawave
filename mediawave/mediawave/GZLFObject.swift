@@ -9,10 +9,11 @@
 import UIKit
 
 class GZLFObject {
-    var mbid:String?
+    var id:String?
     var name:String?
     var artist:String?
     var avatarMedium:NSURL?
-    var artistMbid:String?
+    var parentID:String?
     var summary:String?
+    var sourceID:String?
 }

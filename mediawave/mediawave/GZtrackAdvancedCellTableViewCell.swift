@@ -12,7 +12,7 @@ class GZtrackAdvancedCellTableViewCell: UITableViewCell {
     @IBOutlet weak var trackAvatar: UIImageView!
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var trackArtist: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +26,7 @@ class GZtrackAdvancedCellTableViewCell: UITableViewCell {
     
     func configureSelfWithDataModel(LFObject:GZLFObject)
     {
-        if(LFObject.mbid != nil){
+        if(LFObject.id != nil){
             trackName.text = LFObject.name
             if ( LFObject.artist != nil ) {
                 trackArtist.text = "by " + LFObject.artist!
