@@ -1,0 +1,380 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GZSettingsViewController"
+provides-nominal:
+- "C9mediawave24GZSettingsViewController"
+provides-member:
+- ["C9mediawave24GZSettingsViewController", ""]
+provides-dynamic-lookup:
+- "tableView"
+- "prepareForSegue"
+- "viewDidLoad"
+- "didReceiveMemoryWarning"
+- "numberOfSectionsInTableView"
+depends-top-level:
+- !private "GZLFTag"
+- !private "Array"
+- "UITableView"
+- "UIStoryboardSegue"
+- !private "StringLiteralType"
+- !private "=="
+- "GZSettingsViewController"
+- "Int"
+- "AnyObject"
+- !private "GZTagsSelectViewController"
+- "UITableViewController"
+depends-member:
+- !private ["PSs9AnyObject", "Array"]
+- !private ["PSs9AnyObject", "destinationViewController"]
+- ["PSs9AnyObject", "didReceiveMemoryWarning"]
+- !private ["PSs9AnyObject", "identifier"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "numberOfSectionsInTableView"]
+- !private ["PSs9AnyObject", "performSegueWithIdentifier"]
+- ["PSs9AnyObject", "prepareForSegue"]
+- !private ["PSs9AnyObject", "selectedTagsArray"]
+- ["PSs9AnyObject", "tableView"]
+- ["PSs9AnyObject", "viewDidLoad"]
+- ["PSs9AnyObject", ""]
+- !private ["Sa", "init"]
+- !private ["PSs23ArrayLiteralConvertible", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["PSs11CVarArgType", "Array"]
+- !private ["PSs11CVarArgType", "destinationViewController"]
+- ["PSs11CVarArgType", "didReceiveMemoryWarning"]
+- !private ["PSs11CVarArgType", "identifier"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "numberOfSectionsInTableView"]
+- !private ["PSs11CVarArgType", "performSegueWithIdentifier"]
+- ["PSs11CVarArgType", "prepareForSegue"]
+- !private ["PSs11CVarArgType", "selectedTagsArray"]
+- ["PSs11CVarArgType", "tableView"]
+- ["PSs11CVarArgType", "viewDidLoad"]
+- ["PSs11CVarArgType", ""]
+- !private ["PSs14CollectionType", "init"]
+- !private ["PSs28CustomDebugStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "Array"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "destinationViewController"]
+- ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
+- !private ["PSs23CustomStringConvertible", "identifier"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "numberOfSectionsInTableView"]
+- !private ["PSs23CustomStringConvertible", "performSegueWithIdentifier"]
+- ["PSs23CustomStringConvertible", "prepareForSegue"]
+- !private ["PSs23CustomStringConvertible", "selectedTagsArray"]
+- ["PSs23CustomStringConvertible", "tableView"]
+- ["PSs23CustomStringConvertible", "viewDidLoad"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["PSs9Equatable", "Array"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "destinationViewController"]
+- ["PSs9Equatable", "didReceiveMemoryWarning"]
+- !private ["PSs9Equatable", "identifier"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "numberOfSectionsInTableView"]
+- !private ["PSs9Equatable", "performSegueWithIdentifier"]
+- ["PSs9Equatable", "prepareForSegue"]
+- !private ["PSs9Equatable", "selectedTagsArray"]
+- ["PSs9Equatable", "tableView"]
+- ["PSs9Equatable", "viewDidLoad"]
+- ["PSs9Equatable", ""]
+- ["C9mediawave24GZSettingsViewController", "AnyObject"]
+- !private ["C9mediawave24GZSettingsViewController", "Array"]
+- !private ["C9mediawave24GZSettingsViewController", "GZLFTag"]
+- !private ["C9mediawave24GZSettingsViewController", "GZTagsSelectViewController"]
+- ["C9mediawave24GZSettingsViewController", "Int"]
+- ["C9mediawave24GZSettingsViewController", "UIStoryboardSegue"]
+- ["C9mediawave24GZSettingsViewController", "UITableView"]
+- ["C9mediawave24GZSettingsViewController", "deinit"]
+- ["C9mediawave24GZSettingsViewController", "didReceiveMemoryWarning"]
+- ["C9mediawave24GZSettingsViewController", "init"]
+- ["C9mediawave24GZSettingsViewController", "numberOfSectionsInTableView"]
+- !private ["C9mediawave24GZSettingsViewController", "performSegueWithIdentifier"]
+- ["C9mediawave24GZSettingsViewController", "prepareForSegue"]
+- ["C9mediawave24GZSettingsViewController", "tableView"]
+- ["C9mediawave24GZSettingsViewController", "viewDidLoad"]
+- !private ["C9mediawave26GZTagsSelectViewController", "selectedTagsArray"]
+- !private ["PSs8Hashable", "Array"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "destinationViewController"]
+- ["PSs8Hashable", "didReceiveMemoryWarning"]
+- !private ["PSs8Hashable", "identifier"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "numberOfSectionsInTableView"]
+- !private ["PSs8Hashable", "performSegueWithIdentifier"]
+- ["PSs8Hashable", "prepareForSegue"]
+- !private ["PSs8Hashable", "selectedTagsArray"]
+- ["PSs8Hashable", "tableView"]
+- ["PSs8Hashable", "viewDidLoad"]
+- ["PSs8Hashable", ""]
+- !private ["PSs9Indexable", "init"]
+- !private ["PSs21MutableCollectionType", "init"]
+- !private ["PSs16MutableIndexable", "init"]
+- !private ["PSs16MutableSliceable", "init"]
+- !private ["PSo8NSCoding", "Array"]
+- ["PSo8NSCoding", "didReceiveMemoryWarning"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "numberOfSectionsInTableView"]
+- !private ["PSo8NSCoding", "performSegueWithIdentifier"]
+- ["PSo8NSCoding", "prepareForSegue"]
+- !private ["PSo8NSCoding", "selectedTagsArray"]
+- ["PSo8NSCoding", "tableView"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo26NSExtensionRequestHandling", "Array"]
+- ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "numberOfSectionsInTableView"]
+- !private ["PSo26NSExtensionRequestHandling", "performSegueWithIdentifier"]
+- ["PSo26NSExtensionRequestHandling", "prepareForSegue"]
+- !private ["PSo26NSExtensionRequestHandling", "selectedTagsArray"]
+- ["PSo26NSExtensionRequestHandling", "tableView"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "Array"]
+- !private ["CSo8NSObject", "GZLFTag"]
+- !private ["CSo8NSObject", "GZTagsSelectViewController"]
+- ["CSo8NSObject", "Int"]
+- ["CSo8NSObject", "UIStoryboardSegue"]
+- ["CSo8NSObject", "UITableView"]
+- !private ["CSo8NSObject", "destinationViewController"]
+- ["CSo8NSObject", "didReceiveMemoryWarning"]
+- !private ["CSo8NSObject", "identifier"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "numberOfSectionsInTableView"]
+- !private ["CSo8NSObject", "performSegueWithIdentifier"]
+- ["CSo8NSObject", "prepareForSegue"]
+- !private ["CSo8NSObject", "selectedTagsArray"]
+- ["CSo8NSObject", "tableView"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "Array"]
+- !private ["PSo16NSObjectProtocol", "destinationViewController"]
+- ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
+- !private ["PSo16NSObjectProtocol", "identifier"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "numberOfSectionsInTableView"]
+- !private ["PSo16NSObjectProtocol", "performSegueWithIdentifier"]
+- ["PSo16NSObjectProtocol", "prepareForSegue"]
+- !private ["PSo16NSObjectProtocol", "selectedTagsArray"]
+- ["PSo16NSObjectProtocol", "tableView"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["Sq", "deinit"]
+- !private ["PSs30RangeReplaceableCollectionType", "init"]
+- !private ["PSs12SequenceType", "init"]
+- !private ["PSo21UIAppearanceContainer", "Array"]
+- ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "numberOfSectionsInTableView"]
+- !private ["PSo21UIAppearanceContainer", "performSegueWithIdentifier"]
+- ["PSo21UIAppearanceContainer", "prepareForSegue"]
+- !private ["PSo21UIAppearanceContainer", "selectedTagsArray"]
+- ["PSo21UIAppearanceContainer", "tableView"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo26UICollectionViewDataSource", "selectedTagsArray"]
+- !private ["PSo24UICollectionViewDelegate", "selectedTagsArray"]
+- !private ["PSo18UIContentContainer", "Array"]
+- ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "numberOfSectionsInTableView"]
+- !private ["PSo18UIContentContainer", "performSegueWithIdentifier"]
+- ["PSo18UIContentContainer", "prepareForSegue"]
+- !private ["PSo18UIContentContainer", "selectedTagsArray"]
+- ["PSo18UIContentContainer", "tableView"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo18UIFocusEnvironment", "Array"]
+- ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UIFocusEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UIFocusEnvironment", "prepareForSegue"]
+- !private ["PSo18UIFocusEnvironment", "selectedTagsArray"]
+- ["PSo18UIFocusEnvironment", "tableView"]
+- ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- ["CSo11UIResponder", "AnyObject"]
+- !private ["CSo11UIResponder", "Array"]
+- !private ["CSo11UIResponder", "GZLFTag"]
+- !private ["CSo11UIResponder", "GZTagsSelectViewController"]
+- ["CSo11UIResponder", "Int"]
+- ["CSo11UIResponder", "UIStoryboardSegue"]
+- ["CSo11UIResponder", "UITableView"]
+- ["CSo11UIResponder", "didReceiveMemoryWarning"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "numberOfSectionsInTableView"]
+- !private ["CSo11UIResponder", "performSegueWithIdentifier"]
+- ["CSo11UIResponder", "prepareForSegue"]
+- !private ["CSo11UIResponder", "selectedTagsArray"]
+- ["CSo11UIResponder", "tableView"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo20UIScrollViewDelegate", "Array"]
+- ["PSo20UIScrollViewDelegate", "didReceiveMemoryWarning"]
+- ["PSo20UIScrollViewDelegate", "init"]
+- ["PSo20UIScrollViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo20UIScrollViewDelegate", "performSegueWithIdentifier"]
+- ["PSo20UIScrollViewDelegate", "prepareForSegue"]
+- !private ["PSo20UIScrollViewDelegate", "selectedTagsArray"]
+- ["PSo20UIScrollViewDelegate", "tableView"]
+- ["PSo20UIScrollViewDelegate", "viewDidLoad"]
+- ["PSo20UIScrollViewDelegate", ""]
+- !private ["PSo16UIStateRestoring", "Array"]
+- ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "numberOfSectionsInTableView"]
+- !private ["PSo16UIStateRestoring", "performSegueWithIdentifier"]
+- ["PSo16UIStateRestoring", "prepareForSegue"]
+- !private ["PSo16UIStateRestoring", "selectedTagsArray"]
+- ["PSo16UIStateRestoring", "tableView"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["CSo17UIStoryboardSegue", "destinationViewController"]
+- !private ["CSo17UIStoryboardSegue", "identifier"]
+- ["CSo21UITableViewController", "AnyObject"]
+- !private ["CSo21UITableViewController", "Array"]
+- !private ["CSo21UITableViewController", "GZLFTag"]
+- !private ["CSo21UITableViewController", "GZTagsSelectViewController"]
+- ["CSo21UITableViewController", "Int"]
+- ["CSo21UITableViewController", "UIStoryboardSegue"]
+- ["CSo21UITableViewController", "UITableView"]
+- ["CSo21UITableViewController", "didReceiveMemoryWarning"]
+- ["CSo21UITableViewController", "init"]
+- ["CSo21UITableViewController", "numberOfSectionsInTableView"]
+- !private ["CSo21UITableViewController", "performSegueWithIdentifier"]
+- ["CSo21UITableViewController", "prepareForSegue"]
+- ["CSo21UITableViewController", "tableView"]
+- ["CSo21UITableViewController", "viewDidLoad"]
+- ["CSo21UITableViewController", ""]
+- !private ["PSo21UITableViewDataSource", "Array"]
+- ["PSo21UITableViewDataSource", "didReceiveMemoryWarning"]
+- ["PSo21UITableViewDataSource", "init"]
+- ["PSo21UITableViewDataSource", "numberOfSectionsInTableView"]
+- !private ["PSo21UITableViewDataSource", "performSegueWithIdentifier"]
+- ["PSo21UITableViewDataSource", "prepareForSegue"]
+- ["PSo21UITableViewDataSource", "tableView"]
+- ["PSo21UITableViewDataSource", "viewDidLoad"]
+- ["PSo21UITableViewDataSource", ""]
+- !private ["PSo19UITableViewDelegate", "Array"]
+- ["PSo19UITableViewDelegate", "didReceiveMemoryWarning"]
+- ["PSo19UITableViewDelegate", "init"]
+- ["PSo19UITableViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo19UITableViewDelegate", "performSegueWithIdentifier"]
+- ["PSo19UITableViewDelegate", "prepareForSegue"]
+- ["PSo19UITableViewDelegate", "tableView"]
+- ["PSo19UITableViewDelegate", "viewDidLoad"]
+- ["PSo19UITableViewDelegate", ""]
+- !private ["PSo18UITraitEnvironment", "Array"]
+- ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UITraitEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UITraitEnvironment", "prepareForSegue"]
+- !private ["PSo18UITraitEnvironment", "selectedTagsArray"]
+- ["PSo18UITraitEnvironment", "tableView"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo16UIViewController", "AnyObject"]
+- !private ["CSo16UIViewController", "Array"]
+- !private ["CSo16UIViewController", "GZLFTag"]
+- !private ["CSo16UIViewController", "GZTagsSelectViewController"]
+- ["CSo16UIViewController", "Int"]
+- ["CSo16UIViewController", "UIStoryboardSegue"]
+- ["CSo16UIViewController", "UITableView"]
+- !private ["CSo16UIViewController", "deinit"]
+- ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "numberOfSectionsInTableView"]
+- !private ["CSo16UIViewController", "performSegueWithIdentifier"]
+- ["CSo16UIViewController", "prepareForSegue"]
+- !private ["CSo16UIViewController", "selectedTagsArray"]
+- ["CSo16UIViewController", "tableView"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- !private ["PSs10_ArrayType", "init"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs24_DestructorSafeContainer", "init"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["PSs21_ObjectiveCBridgeable", "init"]
+- !private ["VSs26_OptionalNilComparisonType", "deinit"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["PSs12_Reflectable", "init"]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sa"
+- !private "PSs23ArrayLiteralConvertible"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- "PSs11CVarArgType"
+- !private "PSs14CollectionType"
+- !private "PSs28CustomDebugStringConvertible"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- "C9mediawave24GZSettingsViewController"
+- !private "C9mediawave26GZTagsSelectViewController"
+- "PSs8Hashable"
+- !private "PSs9Indexable"
+- !private "PSs21MutableCollectionType"
+- !private "PSs16MutableIndexable"
+- !private "PSs16MutableSliceable"
+- "PSo8NSCoding"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "Sq"
+- !private "PSs30RangeReplaceableCollectionType"
+- !private "PSs12SequenceType"
+- "PSo21UIAppearanceContainer"
+- !private "PSo26UICollectionViewDataSource"
+- !private "PSo24UICollectionViewDelegate"
+- "PSo18UIContentContainer"
+- "PSo18UIFocusEnvironment"
+- "CSo11UIResponder"
+- "PSo20UIScrollViewDelegate"
+- "PSo16UIStateRestoring"
+- !private "CSo17UIStoryboardSegue"
+- "CSo21UITableViewController"
+- "PSo21UITableViewDataSource"
+- "PSo19UITableViewDelegate"
+- "PSo18UITraitEnvironment"
+- "CSo16UIViewController"
+- !private "PSs10_ArrayType"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs24_DestructorSafeContainer"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "VSs26_OptionalNilComparisonType"
+- !private "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/mediawave-Bridging-Header.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIView+WebCacheOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+HighlightedWebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+MultiFormat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+GIF.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIButton+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImagePrefetcher.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageManager.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloaderOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloader.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDecoder.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageCompat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDImageCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/NSData+ImageContentType.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImage-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/georgezinyakov/Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"
+interface-hash: "d910b330d302b5ba38cd838bbe81d534"

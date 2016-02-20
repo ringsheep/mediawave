@@ -1,0 +1,23 @@
+version: "Apple Swift version 2.1.1 (swiftlang-700.1.101.15 clang-700.1.81)"
+options: "ffb95c2598a288ba9e043275e83e4100"
+build_time: [506775699, 423426000]
+inputs:
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZAPI_Wrapper.swift": !dirty [506624230, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZLastFmSearchManager.swift": !dirty [506526802, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZTracklistViewController.swift": !dirty [506631767, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/AppDelegate.swift": !dirty [506190246, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZTagsSelectViewController.swift": !dirty [506532337, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZTagCollectionViewCell.swift": !dirty [506258121, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZAlbumUIViewController.swift": !dirty [506530765, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZTrackSimpleTableViewCell.swift": !dirty [506631849, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZLFObject.swift": !dirty [506460932, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZFeedViewController.swift": !dirty [506632406, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZSettingsViewController.swift": !dirty [506532337, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZYoutubeSearchManager.swift": !dirty [506466659, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZSearchResultsController.swift": !dirty [506528586, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZArtistDetails.swift": !dirty [506530765, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZtrackAdvancedCellTableViewCell.swift": !dirty [506458402, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZLFTag.swift": !dirty [506176152, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/SwiftyJSON.swift": !dirty [504108197, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZPlaylistTableViewCell.swift": !dirty [506632694, 0]
+  "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZTrackViewController.swift": !dirty [506624692, 0]
