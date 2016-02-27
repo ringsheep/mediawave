@@ -15,6 +15,9 @@ class GZTrackSimpleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // set transparent cell selection style
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,12 +26,13 @@ class GZTrackSimpleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureSelfWithDataModel(LFObject:GZLFObject)
+    func configureSelfWithDataModel(track:GZTrack)
     {
-        if(LFObject.id != nil){
-            trackName.text = LFObject.name
-            trackAvatar.sd_setImageWithURL(LFObject.avatarMedium)
+        guard (track.title != "") else {
+            return
         }
+        trackName.text = track.title
+        trackAvatar.sd_setImageWithURL(NSURL(string: track.imageMedium))
     }
     
     override func prepareForReuse() {

@@ -24,6 +24,7 @@
         <relationship name="tracks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GZTrack" inverseName="playlist" inverseEntity="GZTrack" syncable="YES"/>
     </entity>
     <entity name="GZTrack" representedClassName=".GZTrack" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="imageMedium" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mbID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sourceID" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +38,6 @@
         <element name="GZAlbum" positionX="-387" positionY="179" width="128" height="120"/>
         <element name="GZArtist" positionX="-279" positionY="-148" width="128" height="135"/>
         <element name="GZPlaylist" positionX="-468" positionY="27" width="128" height="135"/>
-        <element name="GZTrack" positionX="-110" positionY="53" width="128" height="165"/>
+        <element name="GZTrack" positionX="-110" positionY="53" width="128" height="180"/>
     </elements>
 </model>

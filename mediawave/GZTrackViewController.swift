@@ -21,9 +21,10 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
     @IBOutlet weak var playButtonOutlet: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     @IBAction func previousButton(sender: AnyObject) {
-        if (self.currentIndex > 0) {
-            self.currentIndex -= 1
-            self.loadTracks(self.currentTracks, index: self.currentIndex)
+        if (self.currentIndexPath?.row > 0) {
+            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row - 1))!
+            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
+            self.loadTrack(self.currentSourceID!, indexPath: self.currentIndexPath!, tracksCount: self.tracksCount!)
         }
     }
     @IBAction func playButton(sender: AnyObject) {
@@ -36,9 +37,10 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
         }
     }
     @IBAction func nextButton(sender: AnyObject) {
-        if (self.currentIndex < (self.currentTracks.count - 1)) {
-            self.currentIndex += 1
-            self.loadTracks(self.currentTracks, index: self.currentIndex)
+        if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
+            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
+            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
+            self.loadTrack(self.currentSourceID!, indexPath: self.currentIndexPath!, tracksCount: self.tracksCount!)
         }
     }
     @IBAction func shuffleButtonPressed(sender: AnyObject) {
@@ -47,9 +49,19 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
     @IBAction func repeatButtonPressed(sender: AnyObject) {
         self.repeatButton.selected = !(self.repeatButton.selected)
     }
+    @IBAction func shareButtonPressed(sender: AnyObject) {
+        let message:String = "Найдено в mediawave:"
+        let messageURL:NSURL = NSURL(string: "http://www.youtube.com/watch?v=" + currentSourceID!)!
+        
+        let activityViewController = UIActivityViewController(activityItems: [message, messageURL], applicationActivities: nil)
+        self.navigationController?.presentViewController(activityViewController, animated: true) {
+            
+        }
+    }
 
-    var currentTracks:Array<GZLFObject> = Array<GZLFObject>()
-    var currentIndex:Int = 0
+    var currentSourceID:String?
+    var currentIndexPath:NSIndexPath?
+    var tracksCount:Int?
     var sendedID:String?
     let mediawaveColor = UIColor(red: 255/255, green: 96/255, blue: 152/255, alpha: 1)
     let volumeView:MPVolumeView = MPVolumeView()
@@ -125,9 +137,10 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
                 self.youtubePlayer.stopVideo()
                 self.youtubePlayer.playVideo()
             }
-            if (self.currentIndex < (self.currentTracks.count - 1)) {
-                self.currentIndex += 1
-                self.loadTracks(self.currentTracks, index: self.currentIndex)
+            if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
+                let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
+                self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
+                self.loadTrack( self.currentSourceID!, indexPath: self.currentIndexPath! , tracksCount: self.tracksCount! )
             }
         }
         else if ( state == YTPlayerState.Playing ) {
@@ -146,12 +159,11 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
 }
 
 extension GZTrackViewController {
-    func loadTracks( tracks: Array<GZLFObject>, index: Int ) {
+    func loadTrack( sourceID: String, indexPath: NSIndexPath, tracksCount: Int ) {
         
-        self.currentTracks = tracks
-        self.currentIndex = index
-        self.timeSlider.value = 0
-        self.firstTimeLabel.text = "00:00"
+        self.currentSourceID = sourceID
+        self.currentIndexPath = indexPath
+        self.tracksCount = tracksCount
         
         // player javascript variables
         let playerVars:NSDictionary = [
@@ -165,19 +177,26 @@ extension GZTrackViewController {
         ]
         
         // load tracks and update view
-        if ( self.currentTracks[self.currentIndex].sourceID != nil ) {
-            self.youtubePlayer.loadWithVideoId(tracks[currentIndex].sourceID, playerVars: playerVars as [NSObject : AnyObject])
+        if ( sourceID != "" ) {
+            self.youtubePlayer.loadWithVideoId(sourceID, playerVars: playerVars as [NSObject : AnyObject])
+            let duration = self.youtubePlayer.duration()
+            let durationMinutes = Int(duration/60)
+            let durationSeconds = Int(duration%60)
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.trackName.text = self.currentTracks[self.currentIndex].name
-                self.trackArtist.text = self.currentTracks[self.currentIndex].artist
-                self.secondTimeLabel.text = "99:99"
+//                self.trackName.text = self.currentTracks[self.currentIndex].name
+//                self.trackArtist.text = self.currentTracks[self.currentIndex].artist
+                self.timeSlider.value = 0
+                self.firstTimeLabel.text = "00:00"
+                self.secondTimeLabel.text = "\(durationMinutes.format("02")):\(durationSeconds.format("02"))"
             })
-            print("track \(self.currentTracks[self.currentIndex].sourceID) loaded")
+            print("track \(sourceID) loaded")
         }
-        else if (self.currentIndex < (self.currentTracks.count - 1)) {
+        else if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
             print("failed to load track")
-            self.currentIndex += 1
-            self.loadTracks(self.currentTracks, index: self.currentIndex)
+            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
+            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
+            self.loadTrack( sourceID, indexPath: self.currentIndexPath! , tracksCount: self.tracksCount! )
         }
     }
 }

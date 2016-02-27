@@ -441,6 +441,9 @@
                     <navigationItem key="navigationItem" title="Проигрыватель" id="GKI-83-hoJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="Ytp-Kh-HGt">
                             <color key="tintColor" red="1" green="0.37647058820000001" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="ADg-Th-yXf" id="oEB-Ex-Iqa"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

@@ -16,7 +16,7 @@ class GZArtistFabric
     {
         // request
         let fetchRequest = NSFetchRequest(entityName: "GZPlaylist")
-        fetchRequest.predicate = NSPredicate(format: "playlistID=%d", artist.mbID)
+        fetchRequest.predicate = NSPredicate(format: "playlistID=%@", artist.mbID)
         
         // context
         let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -32,7 +32,7 @@ class GZArtistFabric
             existingArtist.name = artist.name
             existingArtist.imageMedium = artist.imageMedium
             existingArtist.summary = artist.summary
-            
+            try? uiContext.save()
             return existingArtist
         }
         else
@@ -44,7 +44,7 @@ class GZArtistFabric
             newArtist.name = artist.name
             newArtist.imageMedium = artist.imageMedium
             newArtist.summary = artist.summary
-            
+            try? uiContext.save()
             return newArtist
         }
         

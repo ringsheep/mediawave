@@ -73,7 +73,7 @@ class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableV
             if (viewController.isKindOfClass(GZTrackViewController)) {
                 let trackController = viewController as! GZTrackViewController
                 self.tabBarController?.selectedViewController = trackController
-                trackController.loadTracks(currentAlbumTracks, index: selectedRow!)
+                trackController.loadTrack(currentAlbumTracks[selectedRow!].sourceID!, indexPath: indexPath, tracksCount: self.albumTracks.numberOfRowsInSection(1) )
             }
         }
     }
@@ -81,7 +81,7 @@ class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GZtrackSimpleCell", forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
         currentAlbumTracks[indexPath.row].avatarMedium = currentAlbum.avatarMedium
-        cell.configureSelfWithDataModel(currentAlbumTracks[indexPath.row])
+        //cell.configureSelfWithDataModel(currentAlbumTracks[indexPath.row])
         self.albumTracksHeight.constant = self.albumTracks.contentSize.height
         // set transparent cell selection style
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -97,7 +97,7 @@ class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableV
         // Pass the selected object to the new view controller.
         if (segue.identifier == "toTrackFromAlbum") {
             let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTracks(currentAlbumTracks, index: selectedRow!)
+            viewController.loadTrack(currentAlbumTracks[selectedRow!].sourceID!, indexPath: NSIndexPath(), tracksCount: self.albumTracks.numberOfRowsInSection(1) )
         }
     }
 

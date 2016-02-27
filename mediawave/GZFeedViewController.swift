@@ -11,7 +11,6 @@ import CoreData
 
 class GZFeedViewController: UITableViewController, FetchedResultsControllerHandler {
     
-    var playlistsArray:Array<GZPlaylist> = Array<GZPlaylist>()
     var selectedTags:Array<GZLFTag> = Array<GZLFTag>()
     var selectedPath:NSIndexPath?
     @IBAction func settingsButtonPressed(sender: AnyObject) {
@@ -67,21 +66,21 @@ class GZFeedViewController: UITableViewController, FetchedResultsControllerHandl
     
     // MARK: View Did Appear
     override func viewDidAppear(animated: Bool) {
+        
         // if we have some selected tags, we perform a request for playlists
         if (selectedTags.count != 0) {
+            
             GZPlaylistManager.getYTPlaylists(selectedTags, perPage: 9, pageNumber: 0)
             try? self.fetchResultsController.performFetch()
             
             // intialising the FRC wrapper
-            fetchResultsControllerWrapper = FetchedResultsControllerDelegate()
+            self.fetchResultsControllerWrapper = FetchedResultsControllerDelegate()
             // setting it's FRC as our frc and it's handler as our controller
-            fetchResultsControllerWrapper?.fetchedResultsController = fetchResultsController
-            fetchResultsControllerWrapper?.handler = self
-            
-            // save
-            let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-            try? uiContext.save()
+            self.fetchResultsControllerWrapper?.fetchedResultsController = self.fetchResultsController
+            self.fetchResultsControllerWrapper?.handler = self
         }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,10 +109,6 @@ class GZFeedViewController: UITableViewController, FetchedResultsControllerHandl
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GZPlaylistTableViewCell", forIndexPath: indexPath) as! GZPlaylistTableViewCell
         configure(tableViewCell: cell, indexPath: indexPath)
-        
-        // set transparent cell selection style
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
         return cell
     }
     
@@ -136,7 +131,7 @@ class GZFeedViewController: UITableViewController, FetchedResultsControllerHandl
         if (segue.identifier == "toPlaylistFromFeed") {
             let viewController:GZTracklistViewController = segue.destinationViewController as! GZTracklistViewController
             let sendedModel = self.fetchResultsController.objectAtIndexPath(selectedPath!) as! GZPlaylist
-            let sendedID = sendedModel.id
+            let sendedID = sendedModel.playlistID
             print("\(sendedID)")
             viewController.sendedID = sendedID
         }

@@ -16,6 +16,9 @@ class GZtrackAdvancedCellTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // set transparent cell selection style
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -16,7 +16,7 @@ class GZAlbumFabric
     {
         // request
         let fetchRequest = NSFetchRequest(entityName: "GZAlbum")
-        fetchRequest.predicate = NSPredicate(format: "mbID=%d", album.mbID)
+        fetchRequest.predicate = NSPredicate(format: "mbID=%@", album.mbID)
         
         // context
         let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -31,7 +31,7 @@ class GZAlbumFabric
             let existingAlbum = (fetchResults![0])
             existingAlbum.title = album.title
             existingAlbum.imageMedium = album.imageMedium
-            
+            try? uiContext.save()
             return existingAlbum
         }
         else
@@ -42,7 +42,7 @@ class GZAlbumFabric
             newAlbum.mbID = album.mbID
             newAlbum.title = album.title
             newAlbum.imageMedium = album.imageMedium
-            
+            try? uiContext.save()
             return newAlbum
         }
         

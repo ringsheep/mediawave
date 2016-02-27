@@ -137,7 +137,7 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
                 if (viewController.isKindOfClass(GZTrackViewController)) {
                     let trackController = viewController as! GZTrackViewController
                     self.tabBarController?.selectedViewController = trackController
-                    trackController.loadTracks(artistTracks, index: selectedRow!)
+                    trackController.loadTrack(artistTracks[selectedRow!].sourceID!, indexPath: indexPath, tracksCount: self.tableView.numberOfRowsInSection(1) )
                 }
             }
         }
@@ -153,7 +153,7 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         else if (segue.identifier == "toTrackFromArtist") {
             let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTracks(artistTracks, index: selectedRow!)
+            viewController.loadTrack(artistTracks[selectedRow!].sourceID!, indexPath: NSIndexPath(), tracksCount: self.tableView.numberOfRowsInSection(1) )
         }
         
     }

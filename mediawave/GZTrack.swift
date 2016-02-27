@@ -9,6 +9,7 @@
 import CoreData
 
 class GZTrack : NSManagedObject {
+    @NSManaged var id : Int64
     @NSManaged var mbID : String
     @NSManaged var sourceID : String
     @NSManaged var youtubeID : String

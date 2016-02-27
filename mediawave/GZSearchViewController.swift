@@ -86,7 +86,7 @@ class GZSearchViewController: UITableViewController, UISearchControllerDelegate 
         }
         else if segue.identifier == "toTrackFromSearchResults" {
             let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTracks((searchResultsController?.tracksArray)!, index: (searchResultsController?.selectedRow!)!)
+            viewController.loadTrack((searchResultsController?.tracksArray[selectedRow!].sourceID!)!, indexPath: NSIndexPath(), tracksCount: (searchResultsController?.tableView.numberOfRowsInSection(1))! )
         }
     }
 

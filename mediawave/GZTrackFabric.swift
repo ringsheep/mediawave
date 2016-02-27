@@ -12,40 +12,67 @@ import UIKit
 
 class GZTrackFabric
 {
-    class func createOrUpdateTrack ( withTrack track : GZTrack ) -> GZTrack
+    class func createOrUpdateTrack ( withID id : Int64, imageMedium : String, mbID : String, sourceID: String, title: String, youtubeID : String, andLoadInContext context : NSManagedObjectContext ) -> GZTrack
     {
         // request
         let fetchRequest = NSFetchRequest(entityName: "GZTrack")
-        fetchRequest.predicate = NSPredicate(format: "youtubeID=%d", track.youtubeID)
-        
-        // context
-        let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        if ( mbID != "" ) {
+            fetchRequest.predicate = NSPredicate(format: "mbID=%@", mbID)
+        }
+        else if ( youtubeID != "" ) {
+            fetchRequest.predicate = NSPredicate(format: "youtubeID=%@", youtubeID)
+        }
         
         // launching request in context
-        let fetchResults = ( try? uiContext.executeFetchRequest(fetchRequest) ) as? [GZTrack]
+        let fetchResults = ( try? context.executeFetchRequest(fetchRequest) ) as? [GZTrack]
         
         // refresh if smth is found
         if ( fetchResults?.count == 1 )
         {
             print("update")
             let existingTrack = (fetchResults![0])
-            existingTrack.title = track.title
-            existingTrack.imageMedium = track.imageMedium
-            
+            existingTrack.title = title
+            existingTrack.imageMedium = imageMedium
+            existingTrack.id = id
+            existingTrack.mbID = mbID
+            existingTrack.sourceID = sourceID
+            existingTrack.youtubeID = youtubeID
             return existingTrack
         }
         else
         {
             // else - create
             print("create")
-            let newTrack = NSEntityDescription.insertNewObjectForEntityForName("GZTrack", inManagedObjectContext: uiContext) as! GZTrack
-            newTrack.youtubeID = track.youtubeID
-            newTrack.title = track.title
-            newTrack.imageMedium = track.imageMedium
-            
+            let newTrack = NSEntityDescription.insertNewObjectForEntityForName("GZTrack", inManagedObjectContext: context) as! GZTrack
+            newTrack.youtubeID = youtubeID
+            newTrack.title = title
+            newTrack.imageMedium = imageMedium
+            newTrack.id = id
+            newTrack.mbID = mbID
+            newTrack.sourceID = sourceID
             return newTrack
         }
         
+    }
+    
+    class func loadExistingTrack ( withSourceID sourceID : String, andLoadInContext context : NSManagedObjectContext ) -> GZTrack?
+    {
+        // request
+        let fetchRequest = NSFetchRequest(entityName: "GZPlaylist")
+        fetchRequest.predicate = NSPredicate(format: "sourceID=%@", sourceID)
+        
+        // launching request in context
+        let fetchResults = ( try? context.executeFetchRequest(fetchRequest) ) as? [GZTrack]
+        
+        // refresh if smth is found
+        if ( fetchResults?.count == 1 )
+        {
+            print("found a track")
+            let existingPlaylist = (fetchResults![0])
+            return existingPlaylist
+        }
+        
+        return nil
     }
 }
 
