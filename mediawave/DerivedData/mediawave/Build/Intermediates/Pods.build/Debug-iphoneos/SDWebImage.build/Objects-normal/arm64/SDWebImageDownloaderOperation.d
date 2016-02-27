@@ -1,0 +1,11 @@
+dependencies: \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageDownloaderOperation.m \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/Target\ Support\ Files/SDWebImage/SDWebImage-prefix.pch \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageDownloaderOperation.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageDownloader.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageCompat.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageOperation.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageDecoder.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/UIImage+MultiFormat.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDWebImageManager.h \
+  /Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/Pods/SDWebImage/SDWebImage/SDImageCache.h

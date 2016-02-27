@@ -1,0 +1,447 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GZTagCollectionViewCell"
+provides-nominal:
+- "C9mediawave23GZTagCollectionViewCell"
+provides-member:
+- ["C9mediawave23GZTagCollectionViewCell", ""]
+provides-dynamic-lookup:
+- "mediawaveColor"
+- "cellSelected"
+- "prepareForReuse"
+- "itemTag"
+- "configureSelfWithDataModel"
+depends-top-level:
+- "/"
+- "BooleanLiteralType"
+- "UIColor"
+- "Bool"
+- "GZTagCollectionViewCell"
+- "UILabel"
+- "GZLFTag"
+- "UICollectionViewCell"
+depends-member:
+- ["PSs9AnyObject", "UIColor"]
+- !private ["PSs9AnyObject", "backgroundColor"]
+- !private ["PSs9AnyObject", "bounds"]
+- ["PSs9AnyObject", "cellSelected"]
+- ["PSs9AnyObject", "configureSelfWithDataModel"]
+- !private ["PSs9AnyObject", "cornerRadius"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "itemTag"]
+- !private ["PSs9AnyObject", "layer"]
+- ["PSs9AnyObject", "mediawaveColor"]
+- !private ["PSs9AnyObject", "name"]
+- ["PSs9AnyObject", "prepareForReuse"]
+- !private ["PSs9AnyObject", "redColor"]
+- !private ["PSs9AnyObject", "selected"]
+- !private ["PSs9AnyObject", "text"]
+- !private ["PSs9AnyObject", "textColor"]
+- !private ["PSs9AnyObject", "whiteColor"]
+- ["PSs9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["CSo7CALayer", "cornerRadius"]
+- !private ["PSo13CAMediaTiming", "cornerRadius"]
+- ["V12CoreGraphics7CGFloat", "deinit"]
+- !private ["VSC6CGRect", "size"]
+- !private ["VSC6CGSize", "height"]
+- ["PSs11CVarArgType", "UIColor"]
+- !private ["PSs11CVarArgType", "backgroundColor"]
+- !private ["PSs11CVarArgType", "bounds"]
+- ["PSs11CVarArgType", "cellSelected"]
+- ["PSs11CVarArgType", "configureSelfWithDataModel"]
+- !private ["PSs11CVarArgType", "cornerRadius"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "itemTag"]
+- !private ["PSs11CVarArgType", "layer"]
+- ["PSs11CVarArgType", "mediawaveColor"]
+- !private ["PSs11CVarArgType", "name"]
+- ["PSs11CVarArgType", "prepareForReuse"]
+- !private ["PSs11CVarArgType", "redColor"]
+- !private ["PSs11CVarArgType", "selected"]
+- !private ["PSs11CVarArgType", "text"]
+- !private ["PSs11CVarArgType", "textColor"]
+- !private ["PSs11CVarArgType", "whiteColor"]
+- ["PSs11CVarArgType", ""]
+- ["PSs23CustomStringConvertible", "UIColor"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "backgroundColor"]
+- !private ["PSs23CustomStringConvertible", "bounds"]
+- ["PSs23CustomStringConvertible", "cellSelected"]
+- ["PSs23CustomStringConvertible", "configureSelfWithDataModel"]
+- !private ["PSs23CustomStringConvertible", "cornerRadius"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "itemTag"]
+- !private ["PSs23CustomStringConvertible", "layer"]
+- ["PSs23CustomStringConvertible", "mediawaveColor"]
+- !private ["PSs23CustomStringConvertible", "name"]
+- ["PSs23CustomStringConvertible", "prepareForReuse"]
+- !private ["PSs23CustomStringConvertible", "redColor"]
+- !private ["PSs23CustomStringConvertible", "selected"]
+- !private ["PSs23CustomStringConvertible", "text"]
+- !private ["PSs23CustomStringConvertible", "textColor"]
+- !private ["PSs23CustomStringConvertible", "whiteColor"]
+- ["PSs23CustomStringConvertible", ""]
+- ["PSs9Equatable", "UIColor"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "backgroundColor"]
+- !private ["PSs9Equatable", "bounds"]
+- ["PSs9Equatable", "cellSelected"]
+- ["PSs9Equatable", "configureSelfWithDataModel"]
+- !private ["PSs9Equatable", "cornerRadius"]
+- !private ["PSs9Equatable", "height"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "itemTag"]
+- !private ["PSs9Equatable", "layer"]
+- ["PSs9Equatable", "mediawaveColor"]
+- !private ["PSs9Equatable", "name"]
+- ["PSs9Equatable", "prepareForReuse"]
+- !private ["PSs9Equatable", "redColor"]
+- !private ["PSs9Equatable", "selected"]
+- !private ["PSs9Equatable", "size"]
+- !private ["PSs9Equatable", "text"]
+- !private ["PSs9Equatable", "textColor"]
+- !private ["PSs9Equatable", "whiteColor"]
+- ["PSs9Equatable", ""]
+- !private ["C9mediawave7GZLFTag", "name"]
+- !private ["C9mediawave7GZLFTag", "selected"]
+- ["C9mediawave23GZTagCollectionViewCell", "Bool"]
+- ["C9mediawave23GZTagCollectionViewCell", "GZLFTag"]
+- ["C9mediawave23GZTagCollectionViewCell", "UIColor"]
+- ["C9mediawave23GZTagCollectionViewCell", "UILabel"]
+- !private ["C9mediawave23GZTagCollectionViewCell", "backgroundColor"]
+- !private ["C9mediawave23GZTagCollectionViewCell", "bounds"]
+- ["C9mediawave23GZTagCollectionViewCell", "cellSelected"]
+- ["C9mediawave23GZTagCollectionViewCell", "configureSelfWithDataModel"]
+- ["C9mediawave23GZTagCollectionViewCell", "deinit"]
+- ["C9mediawave23GZTagCollectionViewCell", "init"]
+- ["C9mediawave23GZTagCollectionViewCell", "itemTag"]
+- !private ["C9mediawave23GZTagCollectionViewCell", "layer"]
+- ["C9mediawave23GZTagCollectionViewCell", "mediawaveColor"]
+- ["C9mediawave23GZTagCollectionViewCell", "prepareForReuse"]
+- ["PSs8Hashable", "UIColor"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "backgroundColor"]
+- !private ["PSs8Hashable", "bounds"]
+- ["PSs8Hashable", "cellSelected"]
+- ["PSs8Hashable", "configureSelfWithDataModel"]
+- !private ["PSs8Hashable", "cornerRadius"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "itemTag"]
+- !private ["PSs8Hashable", "layer"]
+- ["PSs8Hashable", "mediawaveColor"]
+- !private ["PSs8Hashable", "name"]
+- ["PSs8Hashable", "prepareForReuse"]
+- !private ["PSs8Hashable", "redColor"]
+- !private ["PSs8Hashable", "selected"]
+- !private ["PSs8Hashable", "text"]
+- !private ["PSs8Hashable", "textColor"]
+- !private ["PSs8Hashable", "whiteColor"]
+- ["PSs8Hashable", ""]
+- ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "backgroundColor"]
+- !private ["PSo8NSCoding", "bounds"]
+- ["PSo8NSCoding", "cellSelected"]
+- ["PSo8NSCoding", "configureSelfWithDataModel"]
+- !private ["PSo8NSCoding", "cornerRadius"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "itemTag"]
+- !private ["PSo8NSCoding", "layer"]
+- ["PSo8NSCoding", "mediawaveColor"]
+- ["PSo8NSCoding", "prepareForReuse"]
+- !private ["PSo8NSCoding", "redColor"]
+- !private ["PSo8NSCoding", "text"]
+- !private ["PSo8NSCoding", "textColor"]
+- !private ["PSo8NSCoding", "whiteColor"]
+- ["PSo8NSCoding", ""]
+- ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "redColor"]
+- !private ["PSo9NSCopying", "whiteColor"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "GZLFTag"]
+- ["CSo8NSObject", "UIColor"]
+- ["CSo8NSObject", "UILabel"]
+- !private ["CSo8NSObject", "backgroundColor"]
+- !private ["CSo8NSObject", "bounds"]
+- ["CSo8NSObject", "cellSelected"]
+- ["CSo8NSObject", "configureSelfWithDataModel"]
+- !private ["CSo8NSObject", "cornerRadius"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "itemTag"]
+- !private ["CSo8NSObject", "layer"]
+- ["CSo8NSObject", "mediawaveColor"]
+- !private ["CSo8NSObject", "name"]
+- ["CSo8NSObject", "prepareForReuse"]
+- !private ["CSo8NSObject", "redColor"]
+- !private ["CSo8NSObject", "selected"]
+- !private ["CSo8NSObject", "text"]
+- !private ["CSo8NSObject", "textColor"]
+- !private ["CSo8NSObject", "whiteColor"]
+- ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "backgroundColor"]
+- !private ["PSo16NSObjectProtocol", "bounds"]
+- ["PSo16NSObjectProtocol", "cellSelected"]
+- ["PSo16NSObjectProtocol", "configureSelfWithDataModel"]
+- !private ["PSo16NSObjectProtocol", "cornerRadius"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "itemTag"]
+- !private ["PSo16NSObjectProtocol", "layer"]
+- ["PSo16NSObjectProtocol", "mediawaveColor"]
+- !private ["PSo16NSObjectProtocol", "name"]
+- ["PSo16NSObjectProtocol", "prepareForReuse"]
+- !private ["PSo16NSObjectProtocol", "redColor"]
+- !private ["PSo16NSObjectProtocol", "selected"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- !private ["PSo16NSObjectProtocol", "textColor"]
+- !private ["PSo16NSObjectProtocol", "whiteColor"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "redColor"]
+- !private ["PSo14NSSecureCoding", "whiteColor"]
+- ["PSo29UIAccessibilityIdentification", "UIColor"]
+- !private ["PSo29UIAccessibilityIdentification", "backgroundColor"]
+- !private ["PSo29UIAccessibilityIdentification", "bounds"]
+- ["PSo29UIAccessibilityIdentification", "cellSelected"]
+- ["PSo29UIAccessibilityIdentification", "configureSelfWithDataModel"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- ["PSo29UIAccessibilityIdentification", "itemTag"]
+- !private ["PSo29UIAccessibilityIdentification", "layer"]
+- ["PSo29UIAccessibilityIdentification", "mediawaveColor"]
+- ["PSo29UIAccessibilityIdentification", "prepareForReuse"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- !private ["PSo29UIAccessibilityIdentification", "textColor"]
+- ["PSo29UIAccessibilityIdentification", ""]
+- ["PSo12UIAppearance", "UIColor"]
+- !private ["PSo12UIAppearance", "backgroundColor"]
+- !private ["PSo12UIAppearance", "bounds"]
+- ["PSo12UIAppearance", "cellSelected"]
+- ["PSo12UIAppearance", "configureSelfWithDataModel"]
+- ["PSo12UIAppearance", "init"]
+- ["PSo12UIAppearance", "itemTag"]
+- !private ["PSo12UIAppearance", "layer"]
+- ["PSo12UIAppearance", "mediawaveColor"]
+- ["PSo12UIAppearance", "prepareForReuse"]
+- !private ["PSo12UIAppearance", "text"]
+- !private ["PSo12UIAppearance", "textColor"]
+- ["PSo12UIAppearance", ""]
+- ["PSo21UIAppearanceContainer", "UIColor"]
+- !private ["PSo21UIAppearanceContainer", "backgroundColor"]
+- !private ["PSo21UIAppearanceContainer", "bounds"]
+- ["PSo21UIAppearanceContainer", "cellSelected"]
+- ["PSo21UIAppearanceContainer", "configureSelfWithDataModel"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "itemTag"]
+- !private ["PSo21UIAppearanceContainer", "layer"]
+- ["PSo21UIAppearanceContainer", "mediawaveColor"]
+- ["PSo21UIAppearanceContainer", "prepareForReuse"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- !private ["PSo21UIAppearanceContainer", "textColor"]
+- ["PSo21UIAppearanceContainer", ""]
+- ["CSo24UICollectionReusableView", "Bool"]
+- ["CSo24UICollectionReusableView", "GZLFTag"]
+- ["CSo24UICollectionReusableView", "UIColor"]
+- ["CSo24UICollectionReusableView", "UILabel"]
+- !private ["CSo24UICollectionReusableView", "backgroundColor"]
+- !private ["CSo24UICollectionReusableView", "bounds"]
+- ["CSo24UICollectionReusableView", "cellSelected"]
+- ["CSo24UICollectionReusableView", "configureSelfWithDataModel"]
+- ["CSo24UICollectionReusableView", "init"]
+- ["CSo24UICollectionReusableView", "itemTag"]
+- !private ["CSo24UICollectionReusableView", "layer"]
+- ["CSo24UICollectionReusableView", "mediawaveColor"]
+- ["CSo24UICollectionReusableView", "prepareForReuse"]
+- ["CSo20UICollectionViewCell", "Bool"]
+- ["CSo20UICollectionViewCell", "GZLFTag"]
+- ["CSo20UICollectionViewCell", "UIColor"]
+- ["CSo20UICollectionViewCell", "UILabel"]
+- !private ["CSo20UICollectionViewCell", "backgroundColor"]
+- !private ["CSo20UICollectionViewCell", "bounds"]
+- ["CSo20UICollectionViewCell", "cellSelected"]
+- ["CSo20UICollectionViewCell", "configureSelfWithDataModel"]
+- ["CSo20UICollectionViewCell", "init"]
+- ["CSo20UICollectionViewCell", "itemTag"]
+- !private ["CSo20UICollectionViewCell", "layer"]
+- ["CSo20UICollectionViewCell", "mediawaveColor"]
+- ["CSo20UICollectionViewCell", "prepareForReuse"]
+- ["CSo20UICollectionViewCell", ""]
+- ["CSo7UIColor", "init"]
+- !private ["CSo7UIColor", "redColor"]
+- !private ["CSo7UIColor", "whiteColor"]
+- ["PSo17UICoordinateSpace", "UIColor"]
+- !private ["PSo17UICoordinateSpace", "backgroundColor"]
+- !private ["PSo17UICoordinateSpace", "bounds"]
+- ["PSo17UICoordinateSpace", "cellSelected"]
+- ["PSo17UICoordinateSpace", "configureSelfWithDataModel"]
+- ["PSo17UICoordinateSpace", "init"]
+- ["PSo17UICoordinateSpace", "itemTag"]
+- !private ["PSo17UICoordinateSpace", "layer"]
+- ["PSo17UICoordinateSpace", "mediawaveColor"]
+- ["PSo17UICoordinateSpace", "prepareForReuse"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- !private ["PSo17UICoordinateSpace", "textColor"]
+- ["PSo17UICoordinateSpace", ""]
+- ["PSo13UIDynamicItem", "UIColor"]
+- !private ["PSo13UIDynamicItem", "backgroundColor"]
+- !private ["PSo13UIDynamicItem", "bounds"]
+- ["PSo13UIDynamicItem", "cellSelected"]
+- ["PSo13UIDynamicItem", "configureSelfWithDataModel"]
+- ["PSo13UIDynamicItem", "init"]
+- ["PSo13UIDynamicItem", "itemTag"]
+- !private ["PSo13UIDynamicItem", "layer"]
+- ["PSo13UIDynamicItem", "mediawaveColor"]
+- ["PSo13UIDynamicItem", "prepareForReuse"]
+- !private ["PSo13UIDynamicItem", "text"]
+- !private ["PSo13UIDynamicItem", "textColor"]
+- ["PSo13UIDynamicItem", ""]
+- ["PSo18UIFocusEnvironment", "UIColor"]
+- !private ["PSo18UIFocusEnvironment", "backgroundColor"]
+- !private ["PSo18UIFocusEnvironment", "bounds"]
+- ["PSo18UIFocusEnvironment", "cellSelected"]
+- ["PSo18UIFocusEnvironment", "configureSelfWithDataModel"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "itemTag"]
+- !private ["PSo18UIFocusEnvironment", "layer"]
+- ["PSo18UIFocusEnvironment", "mediawaveColor"]
+- ["PSo18UIFocusEnvironment", "prepareForReuse"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- !private ["PSo18UIFocusEnvironment", "textColor"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["CSo7UILabel", "text"]
+- !private ["CSo7UILabel", "textColor"]
+- ["CSo11UIResponder", "Bool"]
+- ["CSo11UIResponder", "GZLFTag"]
+- ["CSo11UIResponder", "UIColor"]
+- ["CSo11UIResponder", "UILabel"]
+- !private ["CSo11UIResponder", "backgroundColor"]
+- !private ["CSo11UIResponder", "bounds"]
+- ["CSo11UIResponder", "cellSelected"]
+- ["CSo11UIResponder", "configureSelfWithDataModel"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "itemTag"]
+- !private ["CSo11UIResponder", "layer"]
+- ["CSo11UIResponder", "mediawaveColor"]
+- ["CSo11UIResponder", "prepareForReuse"]
+- !private ["CSo11UIResponder", "text"]
+- !private ["CSo11UIResponder", "textColor"]
+- ["PSo18UITraitEnvironment", "UIColor"]
+- !private ["PSo18UITraitEnvironment", "backgroundColor"]
+- !private ["PSo18UITraitEnvironment", "bounds"]
+- ["PSo18UITraitEnvironment", "cellSelected"]
+- ["PSo18UITraitEnvironment", "configureSelfWithDataModel"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "itemTag"]
+- !private ["PSo18UITraitEnvironment", "layer"]
+- ["PSo18UITraitEnvironment", "mediawaveColor"]
+- ["PSo18UITraitEnvironment", "prepareForReuse"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- !private ["PSo18UITraitEnvironment", "textColor"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo6UIView", "Bool"]
+- ["CSo6UIView", "GZLFTag"]
+- ["CSo6UIView", "UIColor"]
+- ["CSo6UIView", "UILabel"]
+- !private ["CSo6UIView", "backgroundColor"]
+- !private ["CSo6UIView", "bounds"]
+- ["CSo6UIView", "cellSelected"]
+- ["CSo6UIView", "configureSelfWithDataModel"]
+- ["CSo6UIView", "init"]
+- ["CSo6UIView", "itemTag"]
+- !private ["CSo6UIView", "layer"]
+- ["CSo6UIView", "mediawaveColor"]
+- ["CSo6UIView", "prepareForReuse"]
+- !private ["CSo6UIView", "text"]
+- !private ["CSo6UIView", "textColor"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- ["PSs24_ColorLiteralConvertible", "init"]
+- !private ["PSs24_ColorLiteralConvertible", "redColor"]
+- !private ["PSs24_ColorLiteralConvertible", "whiteColor"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- ["PSs12_Reflectable", "UIColor"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["PSs12_Reflectable", "backgroundColor"]
+- !private ["PSs12_Reflectable", "bounds"]
+- ["PSs12_Reflectable", "cellSelected"]
+- ["PSs12_Reflectable", "configureSelfWithDataModel"]
+- !private ["PSs12_Reflectable", "height"]
+- ["PSs12_Reflectable", "init"]
+- ["PSs12_Reflectable", "itemTag"]
+- !private ["PSs12_Reflectable", "layer"]
+- ["PSs12_Reflectable", "mediawaveColor"]
+- ["PSs12_Reflectable", "prepareForReuse"]
+- !private ["PSs12_Reflectable", "size"]
+- !private ["PSs12_Reflectable", "text"]
+- !private ["PSs12_Reflectable", "textColor"]
+- ["PSs12_Reflectable", ""]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- !private "CSo7CALayer"
+- !private "PSo13CAMediaTiming"
+- "V12CoreGraphics7CGFloat"
+- !private "VSC6CGRect"
+- !private "VSC6CGSize"
+- "PSs11CVarArgType"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- !private "C9mediawave7GZLFTag"
+- "C9mediawave23GZTagCollectionViewCell"
+- "PSs8Hashable"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- "CSo24UICollectionReusableView"
+- "CSo20UICollectionViewCell"
+- "CSo7UIColor"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "CSo7UILabel"
+- "CSo11UIResponder"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- "PSs24_ColorLiteralConvertible"
+- !private "PSs21_ObjectiveCBridgeable"
+- "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/mediawave-Bridging-Header.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIView+WebCacheOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImageView+HighlightedWebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+MultiFormat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIImage+GIF.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/UIButton+WebCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImagePrefetcher.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageManager.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloaderOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageOperation.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDownloader.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageDecoder.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImageCompat.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDImageCache.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/NSData+ImageContentType.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Headers/SDWebImage-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/SDWebImage.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Headers/FSQCollectionViewAlignedLayout-umbrella.h"
+- "/Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/DerivedData/mediawave/Build/Products/Debug-iphoneos/FSQCollectionViewAlignedLayout.framework/Modules/module.modulemap"
+- "/Users/georgezinyakov/Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"
+interface-hash: "31b52ea69df2e033c964bd848a2ebc69"
