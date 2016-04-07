@@ -11,65 +11,22 @@ import CoreData
 
 
 class GZPlaylistManager: NSObject {
-    
+    static var playlistManagerQueue:NSOperationQueue = NSOperationQueue()
 }
 
 //MARK: Search for youtube playlists by array of selected tags
 extension GZPlaylistManager
 {
-    class func getYTPlaylists( tags: Array<GZLFTag>, perPage: Int, pageNumber: Int )
+    class func getYTPlaylists( tags: Array<GZLFTag>, perPage: Int, nextPageToken: String, success: ( resultPlaylists : Array<GZPlaylist>, nextPageToken : String ) -> Void  )
     {
-        GZAPI_WRAPPER.getAllYoutubePlaylistsByQuery(tags, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
-            
-            let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-            let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-            privateContext.parentContext = uiContext
-            
-            let playlists:Array<JSON> = jsonResponse["items"].arrayValue
-            
-            for ( var i:Int64 = 0 ; i < Int64(playlists.count) ; i++ )
-            {
-                let playlist = playlists[Int(i)]
-                let id = i
-                let title = playlist["snippet"]["title"].stringValue
-                let summary = playlist["snippet"]["description"].stringValue
-                let jsonImage = playlist["snippet"]["thumbnails"]["high"]["url"].stringValue
-                guard !(jsonImage.isEmpty) else {
-                    return
-                }
-                
-                let playlistID = playlist["id"]["playlistId"].stringValue
-                guard !(playlistID.isEmpty) else {
-                    return
-                }
-
-                GZPlaylistFabric.createOrUpdatePlaylist(withPlaylistID: playlistID, id: id, title: title, imageMedium: jsonImage, summary: summary , andLoadInContext: privateContext )
-            }
-            
-            try? privateContext.save()
-            
-            }) { () -> Void in
-                
+        print("GZdownloadPlaylistItemsByID inited")
+        let downloadPlaylistsBySelectedTags = GZdownloadPlaylistsBySelectedTags(tags: tags, perPage: perPage, nextPageToken: nextPageToken) { (resultPlaylists, nextPageToken) -> Void in
+            success(resultPlaylists: resultPlaylists, nextPageToken: nextPageToken)
         }
-
-    }
-    
-}
-
-//MARK: Load existing playlist with id
-extension GZPlaylistManager
-{
-    class func loadYTPlaylist( playlistID: String )
-    {
-        
-        let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        privateContext.parentContext = uiContext
-        
-        GZPlaylistFabric.loadExistingPlaylist(withPlaylistID: playlistID, andLoadInContext: privateContext)
-        
-        try? privateContext.save()
-        
+        playlistManagerQueue.cancelAllOperations()
+        playlistManagerQueue.maxConcurrentOperationCount = 1
+        playlistManagerQueue.addOperation(downloadPlaylistsBySelectedTags)
+        print("GZdownloadPlaylistItemsByID added to queue")
     }
     
 }

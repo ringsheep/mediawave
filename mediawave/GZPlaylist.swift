@@ -6,14 +6,23 @@
 //  Copyright © 2016 George Zinyakov. All rights reserved.
 //
 
-import CoreData
+import UIKit
 
-class GZPlaylist : NSManagedObject {
-    @NSManaged var playlistID : String
-    @NSManaged var id : Int64
-    @NSManaged var title : String
-    @NSManaged var summary : String
-    @NSManaged var imageMedium : String
+class GZPlaylist : NSObject {
+    var playlistID : String
+    var title : String
+    var summary : String
+    var imageMedium : String
     
-    @NSManaged var tracks : Array<GZTrack>?
+    init(
+        withPlaylistID playlistID : String,
+        title : String,
+        summary : String,
+        imageMedium : String
+        ) {
+            self.playlistID = playlistID
+            self.title = title
+            self.summary = summary
+            self.imageMedium = imageMedium
+    }
 }

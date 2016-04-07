@@ -17,14 +17,22 @@ class GZTagCollectionViewCell: UICollectionViewCell
     func configureSelfWithDataModel(tag: GZLFTag) {
         itemTag.text = tag.name
         if(tag.selected){
-            self.layer.cornerRadius = self.bounds.size.height/2
-            self.backgroundColor = self.mediawaveColor
-            self.itemTag.textColor = UIColor.whiteColor()
+            enable()
         }
         else {
-            self.backgroundColor = UIColor.clearColor()
-            self.itemTag.textColor = self.mediawaveColor
+            disable()
         }
+    }
+    
+    func enable() {
+        self.layer.cornerRadius = self.bounds.size.height/2
+        self.backgroundColor = self.mediawaveColor
+        self.itemTag.textColor = UIColor.whiteColor()
+    }
+    
+    func disable() {
+        self.backgroundColor = UIColor.clearColor()
+        self.itemTag.textColor = self.mediawaveColor
     }
     
     override func prepareForReuse() {

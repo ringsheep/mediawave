@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -16,38 +17,43 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h58-Pw-ARa">
-                        <rect key="frame" x="18" y="8" width="30" height="30"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="16" y="8" width="28" height="27.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="UMP-8m-VZd"/>
-                            <constraint firstAttribute="width" constant="30" id="Z6Z-eJ-k8q"/>
+                            <constraint firstAttribute="width" constant="28" id="AaL-hK-XAV"/>
+                            <constraint firstAttribute="width" secondItem="h58-Pw-ARa" secondAttribute="height" multiplier="28:28" id="WXQ-3Q-Zm1"/>
+                            <constraint firstAttribute="height" constant="28" id="lF0-9p-9vA"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Untitled" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t52-Dt-9EL">
-                        <rect key="frame" x="58" y="12" width="244" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Untitled" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t52-Dt-9EL">
+                        <rect key="frame" x="52" y="14" width="191.5" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="191.5" id="xLv-1y-Rof"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xLv-1y-Rof"/>
+                            </mask>
+                        </variation>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="leadingMargin" secondItem="h58-Pw-ARa" secondAttribute="leading" constant="-10" id="8eN-Iv-uxb"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="t52-Dt-9EL" secondAttribute="trailing" constant="10" id="9Kp-Cb-vvu"/>
-                    <constraint firstItem="t52-Dt-9EL" firstAttribute="top" secondItem="KJD-iQ-D7i" secondAttribute="topMargin" constant="4" id="gXi-U1-eLa"/>
-                    <constraint firstItem="t52-Dt-9EL" firstAttribute="leading" secondItem="h58-Pw-ARa" secondAttribute="trailing" constant="10" id="oVY-ia-bse"/>
+                    <constraint firstItem="h58-Pw-ARa" firstAttribute="leading" secondItem="KJD-iQ-D7i" secondAttribute="leading" constant="16" id="9HM-cA-fe3"/>
+                    <constraint firstAttribute="trailing" secondItem="t52-Dt-9EL" secondAttribute="trailing" constant="16" id="9Kp-Cb-vvu"/>
+                    <constraint firstItem="t52-Dt-9EL" firstAttribute="centerY" secondItem="h58-Pw-ARa" secondAttribute="centerY" id="YwE-na-fkI"/>
+                    <constraint firstItem="h58-Pw-ARa" firstAttribute="top" secondItem="KJD-iQ-D7i" secondAttribute="topMargin" id="fuI-p2-iYc"/>
+                    <constraint firstItem="t52-Dt-9EL" firstAttribute="leading" secondItem="h58-Pw-ARa" secondAttribute="trailing" constant="8" id="oVY-ia-bse"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="9Kp-Cb-vvu"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="h58-Pw-ARa" secondAttribute="bottom" constant="6" id="CVs-8N-3BO"/>
-                <constraint firstItem="h58-Pw-ARa" firstAttribute="top" secondItem="nDd-h3-i4V" secondAttribute="top" constant="8" id="O54-sa-poC"/>
-            </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="CVs-8N-3BO"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="trackAvatar" destination="h58-Pw-ARa" id="4kV-Ob-ive"/>
                 <outlet property="trackName" destination="t52-Dt-9EL" id="bGS-Mp-0AD"/>

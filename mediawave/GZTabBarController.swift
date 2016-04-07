@@ -12,31 +12,22 @@ class GZTabBarController: UITabBarController {
 
     @IBOutlet weak var tabbarButton: UIButton!
     let mediawaveColor = UIColor(red: 255/255, green: 96/255, blue: 152/255, alpha: 1)
-//    let subviewArray:NSArray = NSBundle.mainBundle().loadNibNamed("GZTabBarPlayer", owner: self, options: nil)
-//    let tabBarPlayer:UIView = subviewArray[0]
-//    let tabBarPlayer:UIView = GZTabBarPlayer()
-    var tabBarPlayer : GZTabBarPlayer?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.tabBar.selectedItem?.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.tabBar.tintColor = mediawaveColor
-        
 
+        self.viewControllers![0].tabBarItem.title = kGZConstants.feedTitle
+        self.viewControllers![1].tabBarItem.title = kGZConstants.searchTitle
+        self.viewControllers![2].tabBarItem.title = kGZConstants.playerTitle
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-//        self.tabBarPlayer = NSBundle.mainBundle().loadNibNamed("GZTabBarPlayer", owner: self, options: nil)[0] as? GZTabBarPlayer
-//        
-//        self.tabBarPlayer?.frame = CGRectMake(0.0, -70.0, self.tabBar.frame.width  , 70.0)
-//        if (self.tabBarPlayer != nil) {
-//            self.tabBar.addSubview(self.tabBarPlayer!)
-//            print(self.tabBarPlayer)
-//        }
         
     }
 

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class GZAlertTableViewCell: UITableViewCell {
-
+class GZAlertTableViewCell: GZTableViewCell {
+    @IBOutlet weak var alertLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,21 @@ class GZAlertTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureSelfWithAlert( alert: GZTableViewAlert ) {
+        switch alert {
+            case .NoSearchCache: alertLabel.text = kGZConstants.noSearchCache
+            case .NoSearchResults: alertLabel.text = kGZConstants.noSearchResults
+        }
+    
+    }
+    
+    override func prepareForReuse() {
+        alertLabel.text = kGZConstants.error
+    }
 
+}
+
+enum GZTableViewAlert {
+    case NoSearchCache, NoSearchResults
 }

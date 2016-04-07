@@ -13,6 +13,7 @@
 "No" = "No";
 "Cancel" = "Cancel";
 "Edit" = "Edit";
+"Load more" = "Load more";
 
 "GZTagsSelectViewController.introLabel" = "Choose 5 music tags";
 "GZFeedViewController.title" = "Suggested";

@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990837571C9C1209003CA0C0 /* GZQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990837561C9C1209003CA0C0 /* GZQueueManager.swift */; };
+		990837591C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990837581C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift */; };
 		9910F25E1C7089A20091E4F8 /* GZTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F25D1C7089A20091E4F8 /* GZTrack.swift */; };
 		9910F2601C708BB50091E4F8 /* GZArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F25F1C708BB50091E4F8 /* GZArtist.swift */; };
 		9910F2621C708DA40091E4F8 /* GZAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2611C708DA40091E4F8 /* GZAlbum.swift */; };
 		9910F2641C708E8C0091E4F8 /* GZPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2631C708E8C0091E4F8 /* GZPlaylist.swift */; };
-		9910F2671C71CC5A0091E4F8 /* GZPlaylistFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2661C71CC5A0091E4F8 /* GZPlaylistFabric.swift */; };
 		9910F26A1C73600D0091E4F8 /* GZPlaylistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2691C73600D0091E4F8 /* GZPlaylistManager.swift */; };
 		9910F26C1C736C6B0091E4F8 /* GZTracksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F26B1C736C6B0091E4F8 /* GZTracksManager.swift */; };
-		9910F26E1C736C7D0091E4F8 /* GZTrackFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F26D1C736C7D0091E4F8 /* GZTrackFabric.swift */; };
-		9910F2701C7374BD0091E4F8 /* GZAlbumFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F26F1C7374BD0091E4F8 /* GZAlbumFabric.swift */; };
-		9910F2721C7374CA0091E4F8 /* GZArtistFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2711C7374CA0091E4F8 /* GZArtistFabric.swift */; };
 		9910F2741C7379C30091E4F8 /* GZArtistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2731C7379C30091E4F8 /* GZArtistManager.swift */; };
 		9910F2761C737BA10091E4F8 /* GZAlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F2751C737BA10091E4F8 /* GZAlbumManager.swift */; };
+		99209F761CADDD26003DB829 /* GZDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99209F751CADDD26003DB829 /* GZDescriptionTableViewCell.xib */; };
+		99209F781CADF012003DB829 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99209F771CADF012003DB829 /* CoreText.framework */; };
+		99209F7C1CADF0A8003DB829 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99209F7B1CADF0A8003DB829 /* RTLabel.m */; };
+		99209FAC1CB26840003DB829 /* GZCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FAB1CB26840003DB829 /* GZCacheManager.swift */; };
+		99209FAF1CB26B6D003DB829 /* GZSearchCacheFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FAE1CB26B6D003DB829 /* GZSearchCacheFabric.swift */; };
+		99209FB11CB26C2B003DB829 /* GZSearchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FB01CB26C2B003DB829 /* GZSearchCache.swift */; };
 		992539A81C6D13C1004100BF /* GZTabBarPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */; };
-		992539AA1C6D37C5004100BF /* GZTabBarPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992539A91C6D37C5004100BF /* GZTabBarPlayer.swift */; };
 		992539AD1C6DEB9D004100BF /* GZMediaData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 992539AB1C6DEB9D004100BF /* GZMediaData.xcdatamodeld */; };
+		993389181C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993389171C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift */; };
+		9933891A1C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993389191C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift */; };
+		9933891C1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933891B1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift */; };
 		993FA39A1C73A5E600FFCB29 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993FA3991C73A5E600FFCB29 /* FetchedResultsControllerDelegate.swift */; };
 		995244FC1C6518B100A1A279 /* GZFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995244FB1C6518B100A1A279 /* GZFeedViewController.swift */; };
 		995BEEFF1C2984D3001F8518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BEEFE1C2984D3001F8518 /* AppDelegate.swift */; };
@@ -40,14 +46,27 @@
 		995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7831C380074002D9776 /* GZSearchResultsController.swift */; };
 		995CF7861C3828EF002D9776 /* GZSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7851C3828EF002D9776 /* GZSearchViewController.swift */; };
 		995CF78A1C394273002D9776 /* GZLastFmSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7891C394273002D9776 /* GZLastFmSearchManager.swift */; };
+		9960E8951C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */; };
 		9978C6FF1C4FDF0B0044143D /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */; };
 		9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9978C7001C4FDF4C0044143D /* Assets.bundle */; };
+		998BB6001C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998BB5FF1C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift */; };
 		998F8F5B1C6506E5000790DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 998F8F5A1C6506E5000790DC /* Assets.xcassets */; };
 		999149A71C4C1083005719FD /* GZTrackSimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */; };
-		999149A91C4E61B2005719FD /* GZAlbumUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999149A81C4E61B2005719FD /* GZAlbumUIViewController.swift */; };
+		999149A91C4E61B2005719FD /* GZAlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999149A81C4E61B2005719FD /* GZAlbumController.swift */; };
 		999212BE1C4563DE006649EB /* GZTagsSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999212BD1C4563DE006649EB /* GZTagsSelectViewController.swift */; };
+		999BAFBC1CA951A000A2F8F7 /* GZTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999BAFBB1CA951A000A2F8F7 /* GZTableViewManager.swift */; };
+		999BAFBE1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999BAFBD1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib */; };
+		999BAFC01CA95E0000A2F8F7 /* GZAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999BAFBF1CA95E0000A2F8F7 /* GZAlertTableViewCell.swift */; };
+		999BAFC21CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */; };
+		999BAFC41CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999BAFC31CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift */; };
 		99AD26621C299C8D00A2CCA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */; };
+		99B07E841CB71F3400792BA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99B07E861CB71F3400792BA1 /* Localizable.strings */; };
+		99C9DD7D1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9DD7C1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift */; };
 		99E867601C5BB968007CFE6C /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */; };
+		99E9A6891C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9A6881C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift */; };
+		99E9A68B1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */; };
+		99E9C1351C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */; };
+		99F00D881C99A33600FEF016 /* kGZConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00D871C99A33600FEF016 /* kGZConstants.swift */; };
 		99F5D13E1C6796AF0068D4AF /* GZTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5D13D1C6796AF0068D4AF /* GZTabBarController.swift */; };
 		99F6EE471C3E77F1000E4D77 /* trackAdvancedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */; };
 		99F6EE491C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */; };
@@ -55,6 +74,7 @@
 		99F6EE561C4297C5000E4D77 /* GZArtistDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */; };
 		99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */; };
 		99F6EE5D1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */; };
+		99FCEB611CA58AA00087139F /* GZDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FCEB601CA58AA00087139F /* GZDescriptionTableViewCell.swift */; };
 		D6F4EB102B20A1BF84CF568C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9158C18DD64C594048286D64 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,21 +97,28 @@
 
 /* Begin PBXFileReference section */
 		9158C18DD64C594048286D64 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		990837561C9C1209003CA0C0 /* GZQueueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZQueueManager.swift; sourceTree = "<group>"; };
+		990837581C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmArtistsInfoByMbID.swift; sourceTree = "<group>"; };
 		9910F25D1C7089A20091E4F8 /* GZTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTrack.swift; sourceTree = "<group>"; };
 		9910F25F1C708BB50091E4F8 /* GZArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZArtist.swift; sourceTree = "<group>"; };
 		9910F2611C708DA40091E4F8 /* GZAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlbum.swift; sourceTree = "<group>"; };
 		9910F2631C708E8C0091E4F8 /* GZPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZPlaylist.swift; sourceTree = "<group>"; };
-		9910F2661C71CC5A0091E4F8 /* GZPlaylistFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZPlaylistFabric.swift; sourceTree = "<group>"; };
 		9910F2691C73600D0091E4F8 /* GZPlaylistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZPlaylistManager.swift; sourceTree = "<group>"; };
 		9910F26B1C736C6B0091E4F8 /* GZTracksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTracksManager.swift; sourceTree = "<group>"; };
-		9910F26D1C736C7D0091E4F8 /* GZTrackFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTrackFabric.swift; sourceTree = "<group>"; };
-		9910F26F1C7374BD0091E4F8 /* GZAlbumFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlbumFabric.swift; sourceTree = "<group>"; };
-		9910F2711C7374CA0091E4F8 /* GZArtistFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZArtistFabric.swift; sourceTree = "<group>"; };
 		9910F2731C7379C30091E4F8 /* GZArtistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZArtistManager.swift; sourceTree = "<group>"; };
 		9910F2751C737BA10091E4F8 /* GZAlbumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlbumManager.swift; sourceTree = "<group>"; };
+		99209F751CADDD26003DB829 /* GZDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		99209F771CADF012003DB829 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		99209F7A1CADF0A8003DB829 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTLabel.h; path = "../../../../../Downloads/RTLabel-master/RTLabelProject/Classes/RTLabel.h"; sourceTree = "<group>"; };
+		99209F7B1CADF0A8003DB829 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTLabel.m; path = "../../../../../Downloads/RTLabel-master/RTLabelProject/Classes/RTLabel.m"; sourceTree = "<group>"; };
+		99209FAB1CB26840003DB829 /* GZCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZCacheManager.swift; sourceTree = "<group>"; };
+		99209FAE1CB26B6D003DB829 /* GZSearchCacheFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchCacheFabric.swift; sourceTree = "<group>"; };
+		99209FB01CB26C2B003DB829 /* GZSearchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchCache.swift; sourceTree = "<group>"; };
 		992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTabBarPlayer.xib; sourceTree = "<group>"; };
-		992539A91C6D37C5004100BF /* GZTabBarPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTabBarPlayer.swift; sourceTree = "<group>"; };
 		992539AC1C6DEB9D004100BF /* GZMediaData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GZMediaData.xcdatamodel; sourceTree = "<group>"; };
+		993389171C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByQuery.swift; sourceTree = "<group>"; };
+		993389191C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByMbID.swift; sourceTree = "<group>"; };
+		9933891B1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadPlaylistItemsByID.swift; sourceTree = "<group>"; };
 		993FA3991C73A5E600FFCB29 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedResultsControllerDelegate.swift; path = ../../../../../Downloads/FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		995244FB1C6518B100A1A279 /* GZFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZFeedViewController.swift; sourceTree = "<group>"; };
 		995BEEFB1C2984D3001F8518 /* mediawave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mediawave.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,15 +143,31 @@
 		995CF7831C380074002D9776 /* GZSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchResultsController.swift; sourceTree = "<group>"; };
 		995CF7851C3828EF002D9776 /* GZSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchViewController.swift; sourceTree = "<group>"; };
 		995CF7891C394273002D9776 /* GZLastFmSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZLastFmSearchManager.swift; sourceTree = "<group>"; };
+		9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmAlbumsByQuery.swift; sourceTree = "<group>"; };
 		9978C6FD1C4FDF0B0044143D /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"; sourceTree = "<group>"; };
 		9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.m"; sourceTree = "<group>"; };
 		9978C7001C4FDF4C0044143D /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Assets.bundle; path = "../../../../../Downloads/youtube-ios-player-helper-master/youtube-ios-player-helper/Assets.bundle"; sourceTree = "<group>"; };
+		998BB5FF1C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmArtistsByQuery.swift; sourceTree = "<group>"; };
 		998F8F5A1C6506E5000790DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTrackSimpleTableViewCell.swift; sourceTree = "<group>"; };
-		999149A81C4E61B2005719FD /* GZAlbumUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlbumUIViewController.swift; sourceTree = "<group>"; };
+		999149A81C4E61B2005719FD /* GZAlbumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlbumController.swift; sourceTree = "<group>"; };
 		999212BD1C4563DE006649EB /* GZTagsSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTagsSelectViewController.swift; sourceTree = "<group>"; };
+		999BAFBB1CA951A000A2F8F7 /* GZTableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTableViewManager.swift; sourceTree = "<group>"; };
+		999BAFBD1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZAlertTableViewCell.xib; sourceTree = "<group>"; };
+		999BAFBF1CA95E0000A2F8F7 /* GZAlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlertTableViewCell.swift; sourceTree = "<group>"; };
+		999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZLoaderTableViewCell.xib; sourceTree = "<group>"; };
+		999BAFC31CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZLoaderTableViewCell.swift; sourceTree = "<group>"; };
 		99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		99B07E821CB71EE400792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		99B07E831CB71EE400792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		99B07E871CB71F3A00792BA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		99B07E881CB71F7F00792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		99C9DD7C1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmAlbumsByMbID.swift; sourceTree = "<group>"; };
 		99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageEffects.swift; path = "../../../../../Downloads/SwiftUIImageEffects-master/Source/UIImageEffects.swift"; sourceTree = "<group>"; };
+		99E9A6881C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadTracksYTMediaByQuery.swift; sourceTree = "<group>"; };
+		99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByAlbumMbID.swift; sourceTree = "<group>"; };
+		99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadPlaylistsBySelectedTags.swift; sourceTree = "<group>"; };
+		99F00D871C99A33600FEF016 /* kGZConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kGZConstants.swift; sourceTree = "<group>"; };
 		99F5D13D1C6796AF0068D4AF /* GZTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTabBarController.swift; sourceTree = "<group>"; };
 		99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = trackAdvancedCell.xib; sourceTree = "<group>"; };
 		99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZtrackAdvancedCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +176,7 @@
 		99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZArtistDetails.swift; sourceTree = "<group>"; };
 		99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTagCollectionViewCell.xib; sourceTree = "<group>"; };
 		99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		99FCEB601CA58AA00087139F /* GZDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F095448A50778CBED7C68244 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99209F781CADF012003DB829 /* CoreText.framework in Frameworks */,
 				D6F4EB102B20A1BF84CF568C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,40 +211,57 @@
 		3F919D7D1A56DDC859071D58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99209F771CADF012003DB829 /* CoreText.framework */,
 				9158C18DD64C594048286D64 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9910F2651C71CA970091E4F8 /* Fabrics */ = {
+		99209F791CADF08B003DB829 /* RTLabel */ = {
 			isa = PBXGroup;
 			children = (
-				9910F2661C71CC5A0091E4F8 /* GZPlaylistFabric.swift */,
-				9910F26D1C736C7D0091E4F8 /* GZTrackFabric.swift */,
-				9910F26F1C7374BD0091E4F8 /* GZAlbumFabric.swift */,
-				9910F2711C7374CA0091E4F8 /* GZArtistFabric.swift */,
+				99209F7A1CADF0A8003DB829 /* RTLabel.h */,
+				99209F7B1CADF0A8003DB829 /* RTLabel.m */,
+			);
+			name = RTLabel;
+			sourceTree = "<group>";
+		};
+		99209FAD1CB26B52003DB829 /* Fabrics */ = {
+			isa = PBXGroup;
+			children = (
+				99209FAE1CB26B6D003DB829 /* GZSearchCacheFabric.swift */,
 			);
 			name = Fabrics;
 			sourceTree = "<group>";
 		};
-		9910F2681C735FFE0091E4F8 /* in development */ = {
+		993389141C982E7A003481E7 /* downloadAlbums */ = {
 			isa = PBXGroup;
 			children = (
-				9910F2691C73600D0091E4F8 /* GZPlaylistManager.swift */,
-				9910F26B1C736C6B0091E4F8 /* GZTracksManager.swift */,
-				9910F2731C7379C30091E4F8 /* GZArtistManager.swift */,
-				9910F2751C737BA10091E4F8 /* GZAlbumManager.swift */,
+				9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */,
+				99C9DD7C1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift */,
 			);
-			name = "in development";
+			name = downloadAlbums;
 			sourceTree = "<group>";
 		};
-		993FA3981C73988F00FFCB29 /* legacy */ = {
+		993389151C982E8B003481E7 /* downloadTracks */ = {
+			isa = PBXGroup;
+			children = (
+				993389171C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift */,
+				993389191C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift */,
+				9933891B1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift */,
+				99E9A6881C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift */,
+				99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */,
+			);
+			name = downloadTracks;
+			sourceTree = "<group>";
+		};
+		993FA3981C73988F00FFCB29 /* legacy-OFF */ = {
 			isa = PBXGroup;
 			children = (
 				995CF7891C394273002D9776 /* GZLastFmSearchManager.swift */,
 				995C9D1A1C4981650015CE93 /* GZYoutubeSearchManager.swift */,
 			);
-			name = legacy;
+			name = "legacy-OFF";
 			sourceTree = "<group>";
 		};
 		995BEEF21C2984D3001F8518 = {
@@ -228,14 +290,18 @@
 			isa = PBXGroup;
 			children = (
 				998F8F5A1C6506E5000790DC /* Assets.xcassets */,
+				99F00D861C99A31A00FEF016 /* Globals */,
 				995CF7941C3D3102002D9776 /* CustomViews */,
 				995CF7931C3D30E9002D9776 /* Storyboards */,
 				995CF7921C3D30DB002D9776 /* Libs */,
 				995CF7911C3D30CB002D9776 /* Models */,
-				9910F2651C71CA970091E4F8 /* Fabrics */,
+				99E9C1331C8F32AF008619A4 /* Operations */,
 				995CF7901C3D30A3002D9776 /* Managers */,
+				99209FAD1CB26B52003DB829 /* Fabrics */,
 				995CF78F1C3D3087002D9776 /* Controllers */,
 				995BEF0A1C2984D3001F8518 /* Info.plist */,
+				995BEEFE1C2984D3001F8518 /* AppDelegate.swift */,
+				995BEF2C1C298519001F8518 /* GZAPI_Wrapper.swift */,
 				99F6EE4A1C3EB5BB000E4D77 /* mediawave-Bridging-Header.h */,
 			);
 			path = mediawave;
@@ -264,7 +330,9 @@
 			children = (
 				999212BD1C4563DE006649EB /* GZTagsSelectViewController.swift */,
 				99F5D13D1C6796AF0068D4AF /* GZTabBarController.swift */,
-				99F5D1401C6796DD0068D4AF /* TabBar Tabs */,
+				995CF7851C3828EF002D9776 /* GZSearchViewController.swift */,
+				995244FB1C6518B100A1A279 /* GZFeedViewController.swift */,
+				995C9D231C4A4F1A0015CE93 /* GZTrackViewController.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -273,8 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				995C9D201C4A3C6C0015CE93 /* General */,
-				99F6EE591C42A980000E4D77 /* Cells */,
-				99F6EE581C42A96F000E4D77 /* Search */,
 				99F6EE571C42A95F000E4D77 /* Details */,
 			);
 			name = Controllers;
@@ -283,10 +349,12 @@
 		995CF7901C3D30A3002D9776 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				993FA3981C73988F00FFCB29 /* legacy */,
-				9910F2681C735FFE0091E4F8 /* in development */,
-				995BEF2C1C298519001F8518 /* GZAPI_Wrapper.swift */,
-				995BEEFE1C2984D3001F8518 /* AppDelegate.swift */,
+				9910F2691C73600D0091E4F8 /* GZPlaylistManager.swift */,
+				9910F26B1C736C6B0091E4F8 /* GZTracksManager.swift */,
+				9910F2731C7379C30091E4F8 /* GZArtistManager.swift */,
+				9910F2751C737BA10091E4F8 /* GZAlbumManager.swift */,
+				99209FAB1CB26840003DB829 /* GZCacheManager.swift */,
+				993FA3981C73988F00FFCB29 /* legacy-OFF */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -300,6 +368,7 @@
 				9910F25F1C708BB50091E4F8 /* GZArtist.swift */,
 				9910F2611C708DA40091E4F8 /* GZAlbum.swift */,
 				9910F2631C708E8C0091E4F8 /* GZPlaylist.swift */,
+				99209FB01CB26C2B003DB829 /* GZSearchCache.swift */,
 				992539AB1C6DEB9D004100BF /* GZMediaData.xcdatamodeld */,
 			);
 			name = Models;
@@ -308,6 +377,7 @@
 		995CF7921C3D30DB002D9776 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				99209F791CADF08B003DB829 /* RTLabel */,
 				993FA3991C73A5E600FFCB29 /* FetchedResultsControllerDelegate.swift */,
 				99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */,
 				9978C6FC1C4FDEE90044143D /* youtube-ios-player-helper */,
@@ -328,11 +398,8 @@
 		995CF7941C3D3102002D9776 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */,
-				995C9D251C4C0F4B0015CE93 /* GZtrackSimpleCell.xib */,
-				99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */,
-				995C9D1C1C49A3980015CE93 /* GZPlaylistTableViewCell.xib */,
-				992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */,
+				997C9F011CAC818B00FF9861 /* Xibs */,
+				99F6EE591C42A980000E4D77 /* Classes */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -347,44 +414,115 @@
 			name = "youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
-		99F5D1401C6796DD0068D4AF /* TabBar Tabs */ = {
+		997C9F011CAC818B00FF9861 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				995CF7851C3828EF002D9776 /* GZSearchViewController.swift */,
-				995244FB1C6518B100A1A279 /* GZFeedViewController.swift */,
-				995C9D231C4A4F1A0015CE93 /* GZTrackViewController.swift */,
+				999BAFC81CA9714900A2F8F7 /* content */,
+				999BAFC71CA9712B00A2F8F7 /* utilitary */,
 			);
-			name = "TabBar Tabs";
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		999BAFC51CA970F900A2F8F7 /* utilitary */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */,
+				999BAFBF1CA95E0000A2F8F7 /* GZAlertTableViewCell.swift */,
+				999BAFC31CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift */,
+			);
+			name = utilitary;
+			sourceTree = "<group>";
+		};
+		999BAFC61CA9710D00A2F8F7 /* content */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */,
+				999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */,
+				995C9D1E1C49AA100015CE93 /* GZPlaylistTableViewCell.swift */,
+				99FCEB601CA58AA00087139F /* GZDescriptionTableViewCell.swift */,
+			);
+			name = content;
+			sourceTree = "<group>";
+		};
+		999BAFC71CA9712B00A2F8F7 /* utilitary */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */,
+				992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */,
+				999BAFBD1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib */,
+				999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */,
+			);
+			name = utilitary;
+			sourceTree = "<group>";
+		};
+		999BAFC81CA9714900A2F8F7 /* content */ = {
+			isa = PBXGroup;
+			children = (
+				99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */,
+				99209F751CADDD26003DB829 /* GZDescriptionTableViewCell.xib */,
+				995C9D251C4C0F4B0015CE93 /* GZtrackSimpleCell.xib */,
+				995C9D1C1C49A3980015CE93 /* GZPlaylistTableViewCell.xib */,
+			);
+			name = content;
+			sourceTree = "<group>";
+		};
+		99E9C1331C8F32AF008619A4 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				99F00D821C996A0400FEF016 /* downloadArtists */,
+				99F00D811C9969F600FEF016 /* downloadPlaylists */,
+				993389151C982E8B003481E7 /* downloadTracks */,
+				993389141C982E7A003481E7 /* downloadAlbums */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		99F00D811C9969F600FEF016 /* downloadPlaylists */ = {
+			isa = PBXGroup;
+			children = (
+				99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */,
+			);
+			name = downloadPlaylists;
+			sourceTree = "<group>";
+		};
+		99F00D821C996A0400FEF016 /* downloadArtists */ = {
+			isa = PBXGroup;
+			children = (
+				998BB5FF1C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift */,
+				990837581C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift */,
+			);
+			name = downloadArtists;
+			sourceTree = "<group>";
+		};
+		99F00D861C99A31A00FEF016 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				99F00D871C99A33600FEF016 /* kGZConstants.swift */,
+				990837561C9C1209003CA0C0 /* GZQueueManager.swift */,
+				999BAFBB1CA951A000A2F8F7 /* GZTableViewManager.swift */,
+				99B07E861CB71F3400792BA1 /* Localizable.strings */,
+			);
+			name = Globals;
 			sourceTree = "<group>";
 		};
 		99F6EE571C42A95F000E4D77 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				995CF7831C380074002D9776 /* GZSearchResultsController.swift */,
 				99F6EE551C4297C5000E4D77 /* GZArtistDetails.swift */,
 				995C9D211C4A4DB70015CE93 /* GZTracklistViewController.swift */,
-				999149A81C4E61B2005719FD /* GZAlbumUIViewController.swift */,
+				999149A81C4E61B2005719FD /* GZAlbumController.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
 		};
-		99F6EE581C42A96F000E4D77 /* Search */ = {
+		99F6EE591C42A980000E4D77 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				995CF7831C380074002D9776 /* GZSearchResultsController.swift */,
+				999BAFC61CA9710D00A2F8F7 /* content */,
+				999BAFC51CA970F900A2F8F7 /* utilitary */,
 			);
-			name = Search;
-			sourceTree = "<group>";
-		};
-		99F6EE591C42A980000E4D77 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */,
-				999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */,
-				99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */,
-				995C9D1E1C49AA100015CE93 /* GZPlaylistTableViewCell.swift */,
-				992539A91C6D37C5004100BF /* GZTabBarPlayer.swift */,
-			);
-			name = Cells;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		C7F1D8F5080ADA7CB7D4FE8F /* Pods */ = {
@@ -468,6 +606,11 @@
 					995BEEFA1C2984D3001F8518 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = L738KA9SZ5;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					995BEF0E1C2984D3001F8518 = {
 						CreatedOnToolsVersion = 7.2;
@@ -488,6 +631,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 995BEEF21C2984D3001F8518;
 			productRefGroup = 995BEEFC1C2984D3001F8518 /* Products */;
@@ -506,6 +650,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				999BAFBE1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib in Resources */,
+				999BAFC21CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib in Resources */,
 				992539A81C6D13C1004100BF /* GZTabBarPlayer.xib in Resources */,
 				9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */,
 				995C9D261C4C0F4B0015CE93 /* GZtrackSimpleCell.xib in Resources */,
@@ -513,8 +659,10 @@
 				99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */,
 				99F6EE471C3E77F1000E4D77 /* trackAdvancedCell.xib in Resources */,
 				995C9D1D1C49A3990015CE93 /* GZPlaylistTableViewCell.xib in Resources */,
+				99B07E841CB71F3400792BA1 /* Localizable.strings in Resources */,
 				998F8F5B1C6506E5000790DC /* Assets.xcassets in Resources */,
 				995BEF041C2984D3001F8518 /* Main.storyboard in Resources */,
+				99209F761CADDD26003DB829 /* GZDescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,42 +736,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				9910F2741C7379C30091E4F8 /* GZArtistManager.swift in Sources */,
+				99E9C1351C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift in Sources */,
+				99F00D881C99A33600FEF016 /* kGZConstants.swift in Sources */,
 				993FA39A1C73A5E600FFCB29 /* FetchedResultsControllerDelegate.swift in Sources */,
-				9910F2671C71CC5A0091E4F8 /* GZPlaylistFabric.swift in Sources */,
+				990837571C9C1209003CA0C0 /* GZQueueManager.swift in Sources */,
 				995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */,
 				999212BE1C4563DE006649EB /* GZTagsSelectViewController.swift in Sources */,
 				992539AD1C6DEB9D004100BF /* GZMediaData.xcdatamodeld in Sources */,
 				999149A71C4C1083005719FD /* GZTrackSimpleTableViewCell.swift in Sources */,
 				99F5D13E1C6796AF0068D4AF /* GZTabBarController.swift in Sources */,
-				999149A91C4E61B2005719FD /* GZAlbumUIViewController.swift in Sources */,
+				99209FAF1CB26B6D003DB829 /* GZSearchCacheFabric.swift in Sources */,
+				99209FB11CB26C2B003DB829 /* GZSearchCache.swift in Sources */,
+				999149A91C4E61B2005719FD /* GZAlbumController.swift in Sources */,
 				995C9D1F1C49AA100015CE93 /* GZPlaylistTableViewCell.swift in Sources */,
 				9910F26C1C736C6B0091E4F8 /* GZTracksManager.swift in Sources */,
 				9910F2621C708DA40091E4F8 /* GZAlbum.swift in Sources */,
+				99C9DD7D1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift in Sources */,
 				99F6EE491C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift in Sources */,
 				9910F2761C737BA10091E4F8 /* GZAlbumManager.swift in Sources */,
-				9910F26E1C736C7D0091E4F8 /* GZTrackFabric.swift in Sources */,
+				999BAFC41CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift in Sources */,
+				999BAFC01CA95E0000A2F8F7 /* GZAlertTableViewCell.swift in Sources */,
 				995CF7861C3828EF002D9776 /* GZSearchViewController.swift in Sources */,
 				99F6EE5D1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift in Sources */,
-				9910F2701C7374BD0091E4F8 /* GZAlbumFabric.swift in Sources */,
+				999BAFBC1CA951A000A2F8F7 /* GZTableViewManager.swift in Sources */,
 				995244FC1C6518B100A1A279 /* GZFeedViewController.swift in Sources */,
 				99F6EE541C3FF373000E4D77 /* GZLFObject.swift in Sources */,
 				995BEEFF1C2984D3001F8518 /* AppDelegate.swift in Sources */,
 				995C9D221C4A4DB70015CE93 /* GZTracklistViewController.swift in Sources */,
 				995BEF2D1C298519001F8518 /* GZAPI_Wrapper.swift in Sources */,
+				99209FAC1CB26840003DB829 /* GZCacheManager.swift in Sources */,
 				9910F25E1C7089A20091E4F8 /* GZTrack.swift in Sources */,
 				995CF78A1C394273002D9776 /* GZLastFmSearchManager.swift in Sources */,
-				9910F2721C7374CA0091E4F8 /* GZArtistFabric.swift in Sources */,
+				9960E8951C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift in Sources */,
 				9910F2641C708E8C0091E4F8 /* GZPlaylist.swift in Sources */,
 				995C9D241C4A4F1A0015CE93 /* GZTrackViewController.swift in Sources */,
-				992539AA1C6D37C5004100BF /* GZTabBarPlayer.swift in Sources */,
+				990837591C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift in Sources */,
+				998BB6001C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift in Sources */,
 				99AD26621C299C8D00A2CCA6 /* SwiftyJSON.swift in Sources */,
 				99F6EE561C4297C5000E4D77 /* GZArtistDetails.swift in Sources */,
+				99E9A6891C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift in Sources */,
 				995C9D191C491C100015CE93 /* GZLFTag.swift in Sources */,
+				99FCEB611CA58AA00087139F /* GZDescriptionTableViewCell.swift in Sources */,
+				99209F7C1CADF0A8003DB829 /* RTLabel.m in Sources */,
 				9978C6FF1C4FDF0B0044143D /* YTPlayerView.m in Sources */,
+				9933891A1C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift in Sources */,
 				9910F2601C708BB50091E4F8 /* GZArtist.swift in Sources */,
 				995C9D1B1C4981650015CE93 /* GZYoutubeSearchManager.swift in Sources */,
+				993389181C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift in Sources */,
 				9910F26A1C73600D0091E4F8 /* GZPlaylistManager.swift in Sources */,
 				99E867601C5BB968007CFE6C /* UIImageEffects.swift in Sources */,
+				9933891C1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift in Sources */,
+				99E9A68B1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +826,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				995BEF031C2984D3001F8518 /* Base */,
+				99B07E831CB71EE400792BA1 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -671,8 +835,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				995BEF081C2984D3001F8518 /* Base */,
+				99B07E821CB71EE400792BA1 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		99B07E861CB71F3400792BA1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99B07E871CB71F3A00792BA1 /* en */,
+				99B07E881CB71F7F00792BA1 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

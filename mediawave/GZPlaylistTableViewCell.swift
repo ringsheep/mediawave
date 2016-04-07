@@ -8,16 +8,13 @@
 
 import UIKit
 
-class GZPlaylistTableViewCell: UITableViewCell {
+class GZPlaylistTableViewCell: GZTableViewCell {
     @IBOutlet weak var playlistName: UILabel!
     @IBOutlet weak var playlistBackground: UIImageView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        // set transparent cell selection style
-        self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -26,11 +23,18 @@ class GZPlaylistTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureSelfWithDataModel(playlist:GZPlaylist)
+    func configureSelfWithDataModel(title: String, image: NSURL, playlistID : String)
     {
-        if(playlist.playlistID != ""){
-            playlistName.text = playlist.title
-            playlistBackground.sd_setImageWithURL(NSURL(string: playlist.imageMedium))
+        dispatch_async(dispatch_get_main_queue()) {
+            if (title != "") {
+                self.playlistName.text = title
+            }
+            else {
+                self.playlistName.text = kGZConstants.untitled
+            }
+            if (image != "") {
+                self.playlistBackground.sd_setImageWithURL(image)
+            }
         }
     }
     

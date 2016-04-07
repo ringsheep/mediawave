@@ -9,10 +9,19 @@
 import UIKit
 import MediaPlayer
 import AudioToolbox
+import AVKit
 
 class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
-    @IBOutlet weak var shuffleButton: UIButton!
+    
+    var currentIndex:Int?
+    var currentTracks:Array<GZTrack>?
+    var isPlaying:Bool = false
+    var isRepeat:Bool = false
+    var playlistID:String?
+    
     @IBOutlet weak var youtubePlayer: YTPlayerView!
+    @IBOutlet weak var volumeView: MPVolumeView!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var firstTimeLabel: UILabel!
     @IBOutlet weak var secondTimeLabel: UILabel!
     @IBOutlet weak var trackName: UILabel!
@@ -21,83 +30,94 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
     @IBOutlet weak var playButtonOutlet: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     @IBAction func previousButton(sender: AnyObject) {
-        if (self.currentIndexPath?.row > 0) {
-            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row - 1))!
-            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
-            self.loadTrack(self.currentSourceID!, indexPath: self.currentIndexPath!, tracksCount: self.tracksCount!)
+        guard ( currentIndex != nil || currentTracks != nil) else {
+            return
+        }
+        if ( currentIndex > 0 ) {
+            let newIndex = currentIndex! - 1
+            self.loadTracksToPlayer(atIndex: newIndex, playlist: currentTracks!)
         }
     }
     @IBAction func playButton(sender: AnyObject) {
+        guard ( currentIndex != nil || currentTracks != nil) else {
+            return
+        }
         self.playButtonOutlet.selected = !(self.playButtonOutlet.selected)
-        if (self.playButtonOutlet.selected) {
-            self.youtubePlayer.playVideo()
+        if (isPlaying) {
+            self.youtubePlayer.pauseVideo()
+            isPlaying = false
         }
         else {
-            self.youtubePlayer.pauseVideo()
+            self.youtubePlayer.playVideo()
+            isPlaying = true
         }
     }
     @IBAction func nextButton(sender: AnyObject) {
-        if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
-            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
-            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
-            self.loadTrack(self.currentSourceID!, indexPath: self.currentIndexPath!, tracksCount: self.tracksCount!)
+        guard ( currentIndex != nil || currentTracks != nil) else {
+            return
+        }
+        if ( currentIndex < currentTracks!.count ) {
+            let newIndex = currentIndex! + 1
+            self.loadTracksToPlayer(atIndex: newIndex, playlist: currentTracks!)
         }
     }
-    @IBAction func shuffleButtonPressed(sender: AnyObject) {
-        
-    }
     @IBAction func repeatButtonPressed(sender: AnyObject) {
+        guard ( currentIndex != nil || currentTracks != nil) else {
+            return
+        }
         self.repeatButton.selected = !(self.repeatButton.selected)
+        isRepeat = !(isRepeat)
     }
     @IBAction func shareButtonPressed(sender: AnyObject) {
-        let message:String = "Найдено в mediawave:"
-        let messageURL:NSURL = NSURL(string: "http://www.youtube.com/watch?v=" + currentSourceID!)!
+        guard ( currentIndex != nil || currentTracks != nil) else {
+            return
+        }
+        self.youtubePlayer.pauseVideo()
+        // load specified track from context
+        let track = self.currentTracks![currentIndex!]
+        
+        let message:String = kGZConstants.foundAlert
+        let messageURL:NSURL = NSURL(string: kGZConstants.youtubeBaseURL + track.sourceID)!
         
         let activityViewController = UIActivityViewController(activityItems: [message, messageURL], applicationActivities: nil)
         self.navigationController?.presentViewController(activityViewController, animated: true) {
             
         }
     }
-
-    var currentSourceID:String?
-    var currentIndexPath:NSIndexPath?
-    var tracksCount:Int?
-    var sendedID:String?
-    let mediawaveColor = UIColor(red: 255/255, green: 96/255, blue: 152/255, alpha: 1)
-    let volumeView:MPVolumeView = MPVolumeView()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.youtubePlayer.delegate = self
+        self.title = kGZConstants.playerTitle
         
         // time slider settings
         self.timeSlider.value = 0
         self.timeSlider.setThumbImage(UIImage(named: "Control Slider"), forState: UIControlState.Normal)
+        let testCGrect = CGRect(x: 40, y: 40, width: 50, height: 10)
+        self.timeSlider.thumbRectForBounds(testCGrect, trackRect: testCGrect, value: 10)
         
         // play button settings
         self.playButtonOutlet.setImage(UIImage(named: "Play Filled-50"), forState: UIControlState.Normal)
         self.playButtonOutlet.setImage(UIImage(named: "Pause Filled-50"), forState: UIControlState.Selected)
-
+        
         // repeat button settings
         self.repeatButton.setImage(UIImage(named: "Repeat-50"), forState: UIControlState.Normal)
         self.repeatButton.setImage(UIImage(named: "Repeat-50")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Selected)
-        self.repeatButton.tintColor = mediawaveColor
+        self.repeatButton.tintColor = kGZConstants.mediawaveColor
         
         // shuffle button settings
-        self.shuffleButton.setImage(UIImage(named: "Shuffle-50"), forState: UIControlState.Normal)
-        self.shuffleButton.setImage(UIImage(named: "Shuffle-50")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Selected)
-        self.shuffleButton.tintColor = mediawaveColor
+        self.shareButton.setImage(UIImage(named: "Upload-50"), forState: UIControlState.Normal)
+        self.shareButton.setImage(UIImage(named: "Upload-50")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Selected)
+        self.shareButton.tintColor = kGZConstants.mediawaveColor
         
-//        for view:UIView in volumeView.subviews {
-//            if ( view.classForCoder.description() == "MPVolumeSlider" ) {
-//                volumeSlider = view as! UISlider
-//            }
-//        }
-
+        // volume view settings
+        volumeView.backgroundColor = UIColor.clearColor()
+        volumeView.showsVolumeSlider = true
+        volumeView.showsRouteButton = true
+        volumeView.tintColor = kGZConstants.mediawaveColor
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -133,21 +153,24 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
         // if ended, repeat if repeat button is selected
         if ( state == YTPlayerState.Ended) {
             self.playButtonOutlet.selected = false
-            if (self.repeatButton.selected) {
+            isPlaying = false
+            if (isRepeat) {
                 self.youtubePlayer.stopVideo()
                 self.youtubePlayer.playVideo()
+                return
             }
-            if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
-                let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
-                self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
-                self.loadTrack( self.currentSourceID!, indexPath: self.currentIndexPath! , tracksCount: self.tracksCount! )
+            if ( currentIndex < currentTracks?.count ) {
+                let newIndex = currentIndex! + 1
+                self.loadTracksToPlayer(atIndex: newIndex, playlist: currentTracks!)
             }
         }
         else if ( state == YTPlayerState.Playing ) {
             self.playButtonOutlet.selected = true
+            isPlaying = true
         }
         else if ( state == YTPlayerState.Paused ) {
             self.playButtonOutlet.selected = false
+            isPlaying = false
         }
     }
     
@@ -155,15 +178,15 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
         let seekTime:Float = Float(self.youtubePlayer.duration()) * self.timeSlider.value
         self.youtubePlayer.seekToSeconds(seekTime, allowSeekAhead: true)
     }
-
+    
 }
 
 extension GZTrackViewController {
-    func loadTrack( sourceID: String, indexPath: NSIndexPath, tracksCount: Int ) {
+    func loadTracksToPlayer( atIndex index: Int, playlist: Array<GZTrack> ) {
         
-        self.currentSourceID = sourceID
-        self.currentIndexPath = indexPath
-        self.tracksCount = tracksCount
+        guard ( playlist.count != 0 ) else {
+            return
+        }
         
         // player javascript variables
         let playerVars:NSDictionary = [
@@ -176,28 +199,44 @@ extension GZTrackViewController {
             "origin" : "http://localhost"
         ]
         
+        currentIndex = index
+        currentTracks = playlist
+        
+        guard ( currentIndex < currentTracks?.count ) else {
+            return
+        }
+        
+        // load specified track from context
+        let track = currentTracks![currentIndex!]
+        
+        // if track's source is empty, then scope to next track if it's available
+        guard ( !(track.sourceID.isEmpty) ) else {
+            if ( currentIndex < currentTracks?.count ) {
+                print("failed to load track")
+                let newIndex = currentIndex! + 1
+                self.loadTracksToPlayer(atIndex: newIndex, playlist: currentTracks!)
+            }
+            return
+        }
+        
+        let audioSession:AVAudioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory("AVAudioSessionCategoryPlayback")
+        
         // load tracks and update view
-        if ( sourceID != "" ) {
-            self.youtubePlayer.loadWithVideoId(sourceID, playerVars: playerVars as [NSObject : AnyObject])
-            let duration = self.youtubePlayer.duration()
-            let durationMinutes = Int(duration/60)
-            let durationSeconds = Int(duration%60)
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.trackName.text = self.currentTracks[self.currentIndex].name
-//                self.trackArtist.text = self.currentTracks[self.currentIndex].artist
-                self.timeSlider.value = 0
-                self.firstTimeLabel.text = "00:00"
-                self.secondTimeLabel.text = "\(durationMinutes.format("02")):\(durationSeconds.format("02"))"
-            })
-            print("track \(sourceID) loaded")
-        }
-        else if ( self.currentIndexPath?.row < (self.tracksCount! - 1) ) {
-            print("failed to load track")
-            let newIndex:NSInteger = (self.currentIndexPath?.indexAtPosition(self.currentIndexPath!.row + 1))!
-            self.currentIndexPath?.indexPathByRemovingLastIndex().indexPathByAddingIndex(newIndex)
-            self.loadTrack( sourceID, indexPath: self.currentIndexPath! , tracksCount: self.tracksCount! )
-        }
+        self.youtubePlayer.loadWithVideoId(track.sourceID, playerVars: playerVars as [NSObject : AnyObject])
+        let duration = self.youtubePlayer.duration()
+        let durationMinutes = Int(duration/60)
+        let durationSeconds = Int(duration%60)
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.trackName.text = track.title
+            self.trackArtist.text = ""
+            self.timeSlider.value = 0
+            self.firstTimeLabel.text = "00:00"
+            self.secondTimeLabel.text = "\(durationMinutes.format("02")):\(durationSeconds.format("02"))"
+        })
+        print("track \(track.sourceID) loaded")
+        
     }
 }
 

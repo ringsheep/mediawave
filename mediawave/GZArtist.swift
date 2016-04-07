@@ -6,14 +6,23 @@
 //  Copyright © 2016 George Zinyakov. All rights reserved.
 //
 
-import CoreData
+import UIKit
 
-class GZArtist : NSManagedObject {
-    @NSManaged var mbID : String
-    @NSManaged var name : String
-    @NSManaged var summary : String
-    @NSManaged var imageMedium : String
+class GZArtist : NSObject {
+    var mbID : String
+    var name : String
+    var summary : String
+    var imageMedium : String
     
-    @NSManaged var topTracks : Array<GZTrack>?
-    @NSManaged var topAlbums : Array<GZAlbum>?
+    init(
+        withMbID mbID : String,
+        name : String,
+        summary : String,
+        imageMedium : String
+        ) {
+            self.mbID = mbID
+            self.name = name
+            self.summary = summary
+            self.imageMedium = imageMedium
+    }
 }

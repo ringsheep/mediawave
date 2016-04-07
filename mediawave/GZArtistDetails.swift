@@ -7,59 +7,75 @@
 //
 
 import UIKit
+import CoreData
 
-class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var artistName: UILabel!
-    @IBOutlet weak var artistBio: UILabel!
-    @IBOutlet weak var bgImage: UIImageView!
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var bgImageHeight: NSLayoutConstraint!
+class GZArtistDetails: GZTableViewController {
+    // item used for query in detailed screen
+    var selectedAlbum:GZAlbum?
     
-    var artistQuery:String = ""
-    var artistInfo:GZLFObject = GZLFObject()
-    var artistAlbums:Array<GZLFObject> = Array<GZLFObject>()
-    var artistTracks:Array<GZLFObject> = Array<GZLFObject>()
+    var artist:GZArtist?
     var selectedRow:Int?
+    var nextAlbumsPage:Int?
+    var nextTracksPage:Int?
+    
+    var artistAlbums:Array<GZAlbum> = Array<GZAlbum>()
+    var artistTracks:Array<GZTrack> = Array<GZTrack>()
+    
+    var totalAlbumPages:Int = 0
+    
+    var artistInfoView:UIView?
+    var descriptionCell:GZDescriptionTableViewCell?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // setting the table view
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        // cell for tracks and albums
-        let nibTrackAdvanced = UINib (nibName: "trackAdvancedCell", bundle: nil)
-        self.tableView.registerNib(nibTrackAdvanced, forCellReuseIdentifier: "trackAdvancedCell")
+        
+        // cell for loader
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
+        
+        let nibDescriptionAdvanced = UINib (nibName: kGZConstants.GZDescriptionTableViewCell, bundle: nil)
+        self.tableView.registerNib(nibDescriptionAdvanced, forCellReuseIdentifier: kGZConstants.GZDescriptionTableViewCell)
+        
+        // cell for albums
+        let nibTrackAdvanced = UINib (nibName: kGZConstants.trackAdvancedCell, bundle: nil)
+        self.tableView.registerNib(nibTrackAdvanced, forCellReuseIdentifier: kGZConstants.trackAdvancedCell)
+        
+        // cell for tracks
+        let nibTrackSimple = UINib (nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
+        self.tableView.registerNib(nibTrackSimple, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
+        
+        self.nextTracksPage = 1
+        self.nextAlbumsPage = 1
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+
+        GZArtistManager.getArtistsInfoLF(artist!, success: { (resultArtist) -> Void in
+            self.artist! = resultArtist
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        })
+        GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: 3, pageNumber: nextAlbumsPage!) { (resultAlbums, totalPages) -> Void in
+            self.artistAlbums = resultAlbums
+            self.totalAlbumPages = totalPages
+            self.nextAlbumsPage! += 1
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+        GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: nextTracksPage!) { (resultTracks) -> Void in
+            self.artistTracks = resultTracks
+            self.nextTracksPage! += 1
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
-        super.viewDidAppear(true)
-        
-        GZLastFmSearchManager.getArtistInfoLF(artistQuery) { (infoPack) -> Void in
-            self.artistInfo = infoPack
-            if ( self.artistInfo.id != nil ) {
-                if (self.artistInfo.avatarMedium != nil) {
-                    self.bgImage.sd_setImageWithURL(self.artistInfo.avatarMedium)
-                }
-                GZLastFmSearchManager.getArtistTopAlbumsLF(self.artistQuery, perPage: 3, pageNumber: 1) { (albums) -> Void in
-                    GZLastFmSearchManager.getArtistTopTracksLF(self.artistQuery, perPage: 6, pageNumber: 1) { (tracks) -> Void in
-                        GZYoutubeSearchManager.getYTMediaItem(tracks, success: { (tracks) -> Void in
-                            self.artistAlbums = albums
-                            self.artistTracks = tracks
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.artistName.text = self.artistInfo.name
-                                self.artistBio.text = self.artistInfo.summary
-                                self.title = self.artistInfo.name
-                                self.tableView.reloadData()
-                            })
-                        })
-                    }
-                }
-            }
-        }
-        
+    override func viewWillDisappear(animated: Bool) {
+        GZQueueManager.searchQueue.cancelAllOperations()
     }
     
     convenience init(horizontalAlignment: FSQCollectionViewHorizontalAlignment, verticalAlignment: FSQCollectionViewVerticalAlignment, itemSpacing: CGFloat, lineSpacing: CGFloat, insets: UIEdgeInsets) {
@@ -67,77 +83,150 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     // MARK: Table View functions
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // number of sections: first header section + albums section if there are albums + tracks section if there are tracks
+        return Int(!(self.artist == nil)) + Int(!(self.artistAlbums.isEmpty)) + Int(!(self.artistTracks.isEmpty))
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        if (section == 1)
+        {
+            return kGZConstants.topalbums
+        }
+        else if (section == 2)
+        {
+            return kGZConstants.toptracks
+        }
+        return ""
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (section == 0)
         {
-            return "Top Albums"
+            return 1
         }
-        else
+        else if (section == 1 && self.nextAlbumsPage != self.totalAlbumPages)
         {
-            return "Top Tracks"
+            return self.artistAlbums.count + 1
         }
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if (section == 0)
+        else if (section == 1 && self.nextAlbumsPage == self.totalAlbumPages)
         {
             return self.artistAlbums.count
         }
-        else
+        else if (section == 2)
         {
             return self.artistTracks.count
         }
+        return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("trackAdvancedCell", forIndexPath: indexPath) as! GZtrackAdvancedCellTableViewCell
-        cell.trackArtist.text = ""
-        if ( artistAlbums.count != 0 && artistTracks.count != 0 )
-        {
-            if ( indexPath.section == 0)
-            {
-                cell.trackName.text = artistAlbums[indexPath.row].name
-                cell.trackAvatar.sd_setImageWithURL(artistAlbums[indexPath.row].avatarMedium)
-            }
-            else
-            {
-                cell.trackName.text = artistTracks[indexPath.row].name
-                cell.trackAvatar.sd_setImageWithURL(artistTracks[indexPath.row].avatarMedium)
-            }
-            tableViewHeight.constant = tableView.contentSize.height
+        if ( indexPath == NSIndexPath(forRow: (self.artistAlbums.count), inSection: 1 ) ) {
+            return kGZConstants.defaultCellHeight
         }
-        // set transparent cell selection style
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
+        else if ( indexPath.section == 1 ) {
+            return kGZConstants.advancedCellHeight
+        }
+        else if ( indexPath.section == 2 ) {
+            return kGZConstants.simpleCellHeight
+        }
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        if ( indexPath.row == (self.artistTracks.count - 1) && indexPath.section == 2 && nextTracksPage != 1 ) {
+            GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: nextTracksPage!) { (resultTracks) -> Void in
+                self.nextTracksPage! += 1
+                self.artistTracks.appendContentsOf(resultTracks)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        else if ( indexPath.row == self.artistAlbums.count && indexPath.section == 1 ) {
+            // last cell in albums section - load more button
+            let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.cellGenericId, forIndexPath: indexPath)
+            cell.textLabel?.text = "Load more"
+            // fontsize
+            return cell
+        }
+        else if ( indexPath.section == 0 ) {
+            let descriptionCell:GZDescriptionTableViewCell = (self.tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZDescriptionTableViewCell) as? GZDescriptionTableViewCell)!
+            descriptionCell.updateFonts()
+            descriptionCell.configureSelfWithDataModel(self.artist!.name, avatar: self.artist!.imageMedium, description: self.artist!.summary)
+            
+            descriptionCell.setNeedsUpdateConstraints()
+            descriptionCell.updateConstraintsIfNeeded()
+            
+            return descriptionCell
+        }
+        else if ( indexPath.section == 1 ) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.trackAdvancedCell, forIndexPath: indexPath) as! GZtrackAdvancedCellTableViewCell
+            configureAdvancedCell(tableViewCell: cell, indexPath: indexPath)
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZtrackSimpleCell, forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
+        configureSimpleCell(tableViewCell: cell, indexPath: indexPath)
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    // MARK: configure a cell of search results
+    func configureAdvancedCell( tableViewCell cell : GZtrackAdvancedCellTableViewCell, indexPath : NSIndexPath ) -> Void
     {
-        return 70.0
+        let model = self.artistAlbums[indexPath.row]
+        cell.title.numberOfLines = 2
+        cell.configureSelfWithDataModel(model.imageMedium, title: model.title, artist: "", noMedia: false)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func configureSimpleCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
     {
-        if ( indexPath.section == 0)
-        {
-            selectedRow = indexPath.row
-            self.performSegueWithIdentifier("toAlbumFromArtist", sender: self)
+        let track = self.artistTracks[indexPath.row]
+        if ( !(cell.isConfigured) ) {
+            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) -> Void in
+                self.artistTracks[indexPath.row] = resultTrack
+                let noMedia = self.artistTracks[indexPath.row].sourceID.isEmpty
+                cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
+            })
         }
         else {
-            selectedRow = indexPath.row
+            let noMedia = track.sourceID.isEmpty
+            cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: noMedia)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        self.selectedRow = indexPath.row
+        if ( indexPath == NSIndexPath(forRow: (self.artistAlbums.count), inSection: 1 ) && nextAlbumsPage < totalAlbumPages ) {
+            // if "Load more" was pressed
+            GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: nextAlbumsPage!) { (resultAlbums, totalPages) -> Void in
+                self.artistAlbums.appendContentsOf(resultAlbums)
+                self.totalAlbumPages = totalPages
+                self.nextAlbumsPage! += 1
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        else if ( indexPath.section == 1 && indexPath.row != self.artistAlbums.count ) {
+            selectedAlbum = self.artistAlbums[indexPath.row]
+            self.performSegueWithIdentifier(kGZConstants.toAlbumFromArtist, sender: self)
+        }
+        else if ( indexPath.section == 2 ) {
+            let track = self.artistTracks[indexPath.row]
+            guard !(track.sourceID.isEmpty) else {
+                return
+            }
             for viewController:UIViewController in self.tabBarController!.viewControllers! {
                 if (viewController.isKindOfClass(GZTrackViewController)) {
                     let trackController = viewController as! GZTrackViewController
                     self.tabBarController?.selectedViewController = trackController
-                    trackController.loadTrack(artistTracks[selectedRow!].sourceID!, indexPath: indexPath, tracksCount: self.tableView.numberOfRowsInSection(1) )
+                    trackController.loadTracksToPlayer(atIndex: selectedRow!, playlist: self.artistTracks)
                 }
             }
         }
@@ -147,15 +236,10 @@ class GZArtistDetails: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "toAlbumFromArtist") {
-            let viewController:GZAlbumUIViewController = segue.destinationViewController as! GZAlbumUIViewController
-            viewController.currentAlbum = artistAlbums[selectedRow!]
+        if (segue.identifier == kGZConstants.toAlbumFromArtist) {
+            let viewController:GZAlbumController = segue.destinationViewController as! GZAlbumController
+            viewController.currentAlbum = selectedAlbum
         }
-        else if (segue.identifier == "toTrackFromArtist") {
-            let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTrack(artistTracks[selectedRow!].sourceID!, indexPath: NSIndexPath(), tracksCount: self.tableView.numberOfRowsInSection(1) )
-        }
-        
     }
     //
 }

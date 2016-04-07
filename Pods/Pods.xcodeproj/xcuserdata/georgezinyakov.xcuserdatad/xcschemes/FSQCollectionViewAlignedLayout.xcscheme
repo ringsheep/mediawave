@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '327FBF0EBD0F8A6266DE939A'
+               BlueprintIdentifier = '4923AF24EB0FAEDD4E8D4A89'
                BlueprintName = 'FSQCollectionViewAlignedLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'FSQCollectionViewAlignedLayout.framework'>

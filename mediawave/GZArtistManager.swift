@@ -8,34 +8,41 @@
 
 import UIKit
 
-class GZArtistManager {
+class GZArtistManager: GZQueueManager {
+    static var artistManagerQueue:NSOperationQueue = NSOperationQueue()
     
+    static var downloadLastfmArtistsByQuery:GZdownloadLastfmArtistsByQuery?
+    static var downloadLastfmArtistsInfoByMbID:GZdownloadLastfmArtistsInfoByMbID?
 }
 
 // MARK: Search artists by query
 extension GZArtistManager {
-    class func getArtistsLF(searchQuery: String, perPage: Int, pageNumber: Int)
+    class func getArtistsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultArtists : Array<GZArtist> ) -> Void)
     {
+        print("GZdownloadLastfmArtistsByQuery init")
+        super.searchQueue.maxConcurrentOperationCount = 1
         
-        GZAPI_WRAPPER.getAllLastfmArtistsByQuery(searchQuery, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
-            
-            let artists:Array<JSON> = jsonResponse["results"]["artistmatches"]["artist"].arrayValue
-            
-            for artist:JSON in artists
-            {
-                let jsonItem:GZArtist = GZArtist()
-                jsonItem.name = artist["name"].stringValue
-                jsonItem.mbID = artist["mbid"].stringValue
-                let jsonImages = artist["image"].arrayValue
-                let jsonImageMedium = jsonImages[1]["#text"].stringValue
-                jsonItem.imageMedium = jsonImageMedium
-                if (jsonItem.mbID != "") {
-                    GZArtistFabric.createOrUpdatePlaylist(withArtist: jsonItem)
-                }
-            }
-            
-            }) { () -> Void in
-                
+        self.downloadLastfmArtistsByQuery = GZdownloadLastfmArtistsByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultArtists) -> Void in
+            success(resultArtists: resultArtists)
         }
+        
+        super.searchQueue.addOperation(downloadLastfmArtistsByQuery!)
+        print("GZdownloadLastfmArtistsByQuery queued")
+    }
+}
+
+// MARK: download summary to the requested artist
+extension GZArtistManager {
+    class func getArtistsInfoLF(artist: GZArtist, success: ( resultArtist : GZArtist ) -> Void)
+    {
+        print("GZdownloadLastfmArtistsInfoByMbID init")
+        super.searchQueue.maxConcurrentOperationCount = 1
+        
+        self.downloadLastfmArtistsInfoByMbID = GZdownloadLastfmArtistsInfoByMbID(withArtist: artist) { (resultArtist) -> Void in
+            success(resultArtist: resultArtist)
+        }
+        
+        super.searchQueue.addOperation(downloadLastfmArtistsInfoByMbID!)
+        print("GZdownloadLastfmArtistsInfoByMbID queued")
     }
 }

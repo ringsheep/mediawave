@@ -8,34 +8,37 @@
 
 import UIKit
 
-class GZAlbumManager {
+class GZAlbumManager: GZQueueManager {
+    static var albumManagerQueue:NSOperationQueue = NSOperationQueue()
     
+    static var downloadLastfmAlbumsByQuery:GZdownloadLastfmAlbumsByQuery?
+    static var downloadLastfmAlbumsByMbID:GZdownloadLastfmAlbumsByMbID?
 }
 
 // MARK: Search albums by query
 extension GZAlbumManager {
-    class func getAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int)
+    class func getAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultAlbums : Array<GZAlbum> ) -> Void)
     {
-        GZAPI_WRAPPER.getAllLastfmAlbumsByQuery(searchQuery, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
-            
-            let albums:Array<JSON> = jsonResponse["results"]["albummatches"]["album"].arrayValue
-            
-            for album:JSON in albums
-            {
-                let jsonItem:GZAlbum = GZAlbum()
-//                jsonItem.artist = album["artist"].stringValue
-                jsonItem.title = album["name"].stringValue
-                jsonItem.mbID = album["mbid"].stringValue
-                let jsonImages = album["image"].arrayValue
-                let jsonImageMedium = jsonImages[1]["#text"].stringValue
-                jsonItem.imageMedium = jsonImageMedium
-                if (jsonItem.mbID != "") {
-                    GZAlbumFabric.createOrUpdateAlbum(withAlbum: jsonItem)
-                }
-            }
-            
-            }) { () -> Void in
-                
+        print("GZdownloadLastfmAlbumsByQuery init")
+        self.downloadLastfmAlbumsByQuery = GZdownloadLastfmAlbumsByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultAlbums) -> Void in
+            success(resultAlbums: resultAlbums)
         }
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadLastfmAlbumsByQuery!)
+        print("GZdownloadLastfmAlbumsByQuery queued")
+    }
+}
+
+// MARK: Search top albums by artist MBID
+extension GZAlbumManager {
+    class func getAlbumsLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: ( resultAlbums : Array<GZAlbum>, totalPages: Int ) -> Void)
+    {
+        print("GZdownloadLastfmAlbumsByMbID init")
+        self.downloadLastfmAlbumsByMbID = GZdownloadLastfmAlbumsByMbID(withMbID: mbID, perPage: perPage, pageNumber: pageNumber) { (resultAlbums, totalPages) -> Void in
+            success(resultAlbums: resultAlbums, totalPages: totalPages)
+        }
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadLastfmAlbumsByMbID!)
+        print("GZdownloadLastfmAlbumsByMbID queued")
     }
 }

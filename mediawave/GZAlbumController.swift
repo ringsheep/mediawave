@@ -8,41 +8,39 @@
 
 import UIKit
 
-class GZAlbumController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var albumName: UILabel!
-    @IBOutlet weak var albumDescription: UILabel!
-    @IBOutlet weak var albumTracks: UITableView!
-    @IBOutlet weak var albumImage: UIImageView!
-    @IBOutlet weak var albumTracksHeight: NSLayoutConstraint!
+class GZAlbumController: GZTableViewController {
     
-    var currentAlbum:GZLFObject = GZLFObject()
-    var currentAlbumTracks:Array<GZLFObject> = Array<GZLFObject>()
+    var currentAlbum:GZAlbum?
+    var currentAlbumTracks:Array<GZTrack> = []
     var selectedRow:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // setting the table view
-        self.albumTracks.dataSource = self
-        self.albumTracks.delegate = self
         // Do any additional setup after loading the view.
         
-        let nibTrackSimple = UINib (nibName: "GZtrackSimpleCell", bundle: nil)
-        self.albumTracks.registerNib(nibTrackSimple, forCellReuseIdentifier: "GZtrackSimpleCell")
+        let nibTrackSimple = UINib (nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
+        self.tableView.registerNib(nibTrackSimple, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
+        
+        let nibDescriptionAdvanced = UINib (nibName: kGZConstants.GZDescriptionTableViewCell, bundle: nil)
+        self.tableView.registerNib(nibDescriptionAdvanced, forCellReuseIdentifier: kGZConstants.GZDescriptionTableViewCell)
 
-        if (currentAlbum.id != nil) {
-            GZLastFmSearchManager.getAlbumTracksLF(self.currentAlbum.id!) { (tracks) -> Void in
-                GZYoutubeSearchManager.getYTMediaItem(tracks, success: { (tracks) -> Void in
-                    self.currentAlbumTracks = tracks
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.albumName.text = self.currentAlbum.name
-                        self.albumDescription.text = self.currentAlbum.summary
-                        self.albumImage.sd_setImageWithURL(self.currentAlbum.avatarMedium)
-                        self.albumTracks.reloadData()
-                    })
-                })
-            }
+        guard ( !(currentAlbum!.mbID.isEmpty) ) else {
+            return
         }
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+        
+        GZTracksManager.getTracksLF(byAlbumMbID: (currentAlbum?.mbID)!) { (resultTracks) -> Void in
+            self.currentAlbumTracks = resultTracks
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        GZQueueManager.searchQueue.cancelAllOperations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,54 +48,69 @@ class GZAlbumController: UIViewController, UITableViewDataSource, UITableViewDel
         // Dispose of any resources that can be recreated.
     }
     
-    convenience init(horizontalAlignment: FSQCollectionViewHorizontalAlignment, verticalAlignment: FSQCollectionViewVerticalAlignment, itemSpacing: CGFloat, lineSpacing: CGFloat, insets: UIEdgeInsets) {
-        self.init()
+    // MARK: Table view functions
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
     }
     
-    // MARK: Table view functions
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            return kGZConstants.simpleCellHeight
+        }
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return currentAlbumTracks.count
+        }
         return 1
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentAlbumTracks.count
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            return
+        }
         selectedRow = indexPath.row
         for viewController:UIViewController in self.tabBarController!.viewControllers! {
             if (viewController.isKindOfClass(GZTrackViewController)) {
                 let trackController = viewController as! GZTrackViewController
                 self.tabBarController?.selectedViewController = trackController
-                trackController.loadTrack(atIndex: selectedRow!)
+                trackController.loadTracksToPlayer(atIndex: selectedRow!, playlist: self.currentAlbumTracks)
             }
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GZtrackSimpleCell", forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
-        currentAlbumTracks[indexPath.row].avatarMedium = currentAlbum.avatarMedium
-        //cell.configureSelfWithDataModel(currentAlbumTracks[indexPath.row])
-        self.albumTracksHeight.constant = self.albumTracks.contentSize.height
-        // set transparent cell selection style
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if ( indexPath.section == 0 ) {
+            let descriptionCell:GZDescriptionTableViewCell = (self.tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZDescriptionTableViewCell) as? GZDescriptionTableViewCell)!
+            descriptionCell.updateFonts()
+            descriptionCell.configureSelfWithDataModel(self.currentAlbum!.title, avatar: self.currentAlbum!.imageMedium, description: "")
+            
+            descriptionCell.setNeedsUpdateConstraints()
+            descriptionCell.updateConstraintsIfNeeded()
+            
+            return descriptionCell
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZtrackSimpleCell, forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
+        configureSimpleCell(tableViewCell: cell, indexPath: indexPath)
         return cell
     }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if (segue.identifier == "toTrackFromAlbum") {
-            let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTrack(atIndex: selectedRow!)
+    
+    func configureSimpleCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
+    {
+        currentAlbumTracks[indexPath.row].imageMedium = currentAlbum!.imageMedium
+        let track = self.currentAlbumTracks[indexPath.row]
+        if ( !(cell.isConfigured) ) {
+            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) -> Void in
+                self.currentAlbumTracks[indexPath.row] = resultTrack
+                let noMedia = resultTrack.sourceID.isEmpty
+                cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
+            })
+        }
+        else {
+            let noMedia = track.sourceID.isEmpty
+            cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: noMedia)
         }
     }
 

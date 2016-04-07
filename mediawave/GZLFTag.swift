@@ -16,7 +16,7 @@ class GZLFTag: NSObject, NSCoding {
     
     init( nameValue: String)
     {
-        name = nameValue
+        name = nameValue.lowercaseString
         super.init()
     }
     

@@ -8,17 +8,16 @@
 
 import UIKit
 
-class GZtrackAdvancedCellTableViewCell: UITableViewCell {
-    @IBOutlet weak var trackAvatar: UIImageView!
-    @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var trackArtist: UILabel!
+class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var artist: UILabel!
+    
+    var isConfigured:Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        // set transparent cell selection style
-        self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -27,24 +26,45 @@ class GZtrackAdvancedCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureSelfWithDataModel(LFObject:GZLFObject)
+    func configureSelfWithDataModel( avatar: String, title: String, artist: String, noMedia : Bool )
     {
-        if(LFObject.id != nil){
-            trackName.text = LFObject.name
-            if ( LFObject.artist != nil ) {
-                trackArtist.text = "by " + LFObject.artist!
+        dispatch_async(dispatch_get_main_queue()) {
+            if ( !(title.isEmpty) ) {
+                self.title.text = title
             }
             else {
-                trackArtist.text = ""
+                self.title.text = kGZConstants.untitled
             }
-            trackAvatar.sd_setImageWithURL(LFObject.avatarMedium)
+            
+            if ( !(artist.isEmpty) ) {
+                self.artist.text = "by " + artist
+            }
+            else {
+                self.artist.text = ""
+            }
+            
+            if ( !(avatar.isEmpty) ) {
+                self.avatar.sd_setImageWithURL(NSURL(string: avatar))
+            }
+            
+            if (noMedia) {
+                self.title.alpha = 0.3
+                self.artist.alpha = 0.3
+                self.avatar.alpha = 0.3
+            }
+            else {
+                self.title.alpha = 1
+                self.artist.alpha = 1
+                self.avatar.alpha = 1
+            }
         }
+        isConfigured = true
     }
     
     override func prepareForReuse() {
-        trackAvatar.image = nil
-        trackArtist.text = nil
-        trackName.text = nil
+        avatar.image = nil
+        artist.text = nil
+        title.text = nil
     }
 
 }

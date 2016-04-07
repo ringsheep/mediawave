@@ -7,121 +7,82 @@
 //
 
 import UIKit
+import CoreData
 
-class GZSearchResultsController: UITableViewController {
+class GZSearchResultsController: GZTableViewController {
+    
+    // arrays of objects for search results
+    var resultArtists:Array<GZArtist> = []
+    var resultAlbums:Array<GZAlbum> = []
+    var resultTracks:Array<GZTrack> = []
 
-    var tracksArray:Array<GZLFObject> = Array<GZLFObject>()
-    var albumsArray:Array<GZLFObject> = Array<GZLFObject>()
-    var artistsArray:Array<GZLFObject> = Array<GZLFObject>()
-    // array for search suggestions
-    var searchArray:Array<GZLFObject>?
     // item used for query in detailed screen
-    var selectedItemName:String?
+    var selectedArtist:GZArtist?
+    var selectedAlbum:GZAlbum?
+    var selectedTrack:GZTrack?
+    let perPage = 3
     
     var selectedRow:Int?
     // delegate object for previous controller
     var FeedVCDelegate:GZSearchViewController = GZSearchViewController()
+    
     var searchIsEnded:Bool = false
+    var searchNoResults:Bool = false
     
+    let searchQueue:NSOperationQueue = NSOperationQueue()
+    
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+
+// MARK: - ViewController Life Cycle
+extension GZSearchResultsController {
     override func viewDidLoad() {
-    super.viewDidLoad()
-    // setting the table view
-    self.tableView.dataSource = self
-    self.tableView.delegate = self
-    // cell for search suggestion (simple one)
-    self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    // cell for search results (advanced)
-    let nibTrackAdvanced = UINib (nibName: "trackAdvancedCell", bundle: nil)
-    self.tableView.registerNib(nibTrackAdvanced, forCellReuseIdentifier: "trackAdvancedCell")
+        super.viewDidLoad()
+        
+        var activityIndicatorFrame = CGRect()
+        activityIndicatorFrame.origin.x = (self.view.frame.size.width / 2) - (activityIndicatorFrame.size.width / 2)
+        activityIndicatorFrame.origin.y = (self.view.frame.size.height / 3) - (activityIndicatorFrame.size.height / 2)
+        activityIndicator.frame = activityIndicatorFrame
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(self.activityIndicator)
+        activityIndicator.stopAnimating()
+        
+        // cell for search suggestion (simple one)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
+        
+        // cell for search results (advanced)
+        let nibTrackAdvanced = UINib (nibName: kGZConstants.trackAdvancedCell, bundle: nil)
+        self.tableView.registerNib(nibTrackAdvanced, forCellReuseIdentifier: kGZConstants.trackAdvancedCell)
+        
+        // cell for alerts
+        let alertNib = UINib(nibName: kGZConstants.GZAlertTableViewCell, bundle: nil)
+        self.tableView.registerNib(alertNib, forCellReuseIdentifier: kGZConstants.GZAlertTableViewCell)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if (searchIsEnded) {
-            return 3
-        }
-        else {
-            return 1
-        }
+    override func viewDidDisappear(animated: Bool) {
+        clearData()
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (searchIsEnded) {
-            if (section == 0) {
-                return "Artists"
-            }
-            else if (section == 1) {
-                return "Albums"
-            }
-            else {
-                return "Tracks"
-            }
-        }
-        else {
-            return ""
-        }
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchIsEnded) {
-            // search results
-            if (section == 0) {
-                return artistsArray.count
-            }
-            else if (section == 1) {
-                return albumsArray.count
-            }
-            else {
-                return tracksArray.count
-            }
-        }
-        else {
-            // search suggestions
-            return artistsArray.count + albumsArray.count + tracksArray.count
-        }
-    }
-    
+}
+
+// MARK: - TableViewController Delegate
+extension GZSearchResultsController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (searchIsEnded) {
             // search results
-            return 70.00
+            return kGZConstants.advancedCellHeight
+        }
+        else if (searchNoResults) {
+            return kGZConstants.playlistCellHeight
         }
         else {
             // search suggestions
-            return 35.0
-        }
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // todo: advanced and simple layout
-        if (searchIsEnded) {
-            // search results
-            let cell = tableView.dequeueReusableCellWithIdentifier("trackAdvancedCell", forIndexPath: indexPath) as! GZtrackAdvancedCellTableViewCell
-            if (indexPath.section == 0) {
-                let artist:GZLFObject = artistsArray[indexPath.row]
-                cell.configureSelfWithDataModel(artist)
-            }
-            else if (indexPath.section == 1) {
-                let album:GZLFObject = albumsArray[indexPath.row]
-                cell.configureSelfWithDataModel(album)
-            }
-            else if (indexPath.section == 2) {
-                let track:GZLFObject = tracksArray[indexPath.row]
-                cell.configureSelfWithDataModel(track)
-            }
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-            searchArray = Array<GZLFObject>()
-            searchArray!.appendContentsOf(artistsArray)
-            searchArray!.appendContentsOf(albumsArray)
-            searchArray!.appendContentsOf(tracksArray)
-            let LFObject:GZLFObject = searchArray![indexPath.row]
-            cell.textLabel?.text = LFObject.name
-            // set transparent cell selection style
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
-            return cell
+            return kGZConstants.defaultCellHeight
         }
     }
     
@@ -131,63 +92,258 @@ class GZSearchResultsController: UITableViewController {
         // hide keyboard
         FeedVCDelegate.searchController?.searchBar.resignFirstResponder()
         // add selected string to search field and refresh search results with advanced layout
+        if (searchNoResults) {
+            return
+        }
         if (searchIsEnded)
         {
-            if (indexPath.section == 0 )
+            if (indexPath.section == 1 )
             {
                 // FeedVCDelegate.searchController?.searchBar.text = artistsArray[indexPath.row].name
-                selectedItemName = artistsArray[indexPath.row].id
-                FeedVCDelegate.performSegueWithIdentifier("toArtistFromSearchResults", sender: self)
+                selectedArtist = self.resultArtists[indexPath.row]
+                FeedVCDelegate.performSegueWithIdentifier(kGZConstants.toArtistFromSearchResults, sender: self)
             }
-            else if (indexPath.section == 1 )
+            else if (indexPath.section == 2 )
             {
-                selectedItemName = albumsArray[indexPath.row].id
-                FeedVCDelegate.performSegueWithIdentifier("toAlbumFromSearchResults", sender: self)
+                selectedAlbum = self.resultAlbums[indexPath.row]
+                FeedVCDelegate.performSegueWithIdentifier(kGZConstants.toArtistFromSearchResults, sender: self)
             }
-            else if (indexPath.section == 2)
+            else if (indexPath.section == 3)
             {
-                selectedItemName = tracksArray[indexPath.row].id
-                FeedVCDelegate.performSegueWithIdentifier("toTrackFromSearchResults", sender: self)
+                selectedTrack = self.resultTracks[indexPath.row]
+                guard !(selectedTrack!.sourceID.isEmpty) else {
+                    return
+                }
+                for viewController:UIViewController in FeedVCDelegate.tabBarController!.viewControllers! {
+                    if (viewController.isKindOfClass(GZTrackViewController)) {
+                        let trackController = viewController as! GZTrackViewController
+                        FeedVCDelegate.tabBarController?.selectedViewController = trackController
+                        trackController.loadTracksToPlayer(atIndex: selectedRow!, playlist: self.resultTracks)
+                    }
+                }
             }
         }
         else
         {
-            FeedVCDelegate.searchController?.searchBar.text = searchArray![indexPath.row].name
-            FeedVCDelegate.searchContentForQuery((FeedVCDelegate.searchController?.searchBar.text)!)
-            self.searchIsEnded = true
-        }
-        
-        // todo: segue inside object
-//        FeedVCDelegate.performSegueWithIdentifier("toSearchEndFromHome", sender: self)
-//        FeedVCDelegate.searchController?.active = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // todo: segue inside object
-        if segue.identifier == "toArtistFromSearchResults" {
-            let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails
-            viewController.artistQuery = selectedItemName!
-        }
-        else if segue.identifier == "toAlbumFromSearchResults" {
-            let viewController:GZAlbumUIViewController = segue.destinationViewController as! GZAlbumUIViewController
-            viewController.currentAlbum = albumsArray[selectedRow!]
-        }
-        else if segue.identifier == "toTrackFromSearchResults" {
-            let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails
-            viewController.artistQuery = selectedItemName!
+            var currentQuery = ""
+            if (indexPath.section == 1 )
+            {
+                selectedArtist = self.resultArtists[indexPath.row]
+                FeedVCDelegate.searchController?.searchBar.text = selectedArtist!.name
+                currentQuery = selectedArtist!.name
+            }
+            else if (indexPath.section == 2 )
+            {
+                selectedAlbum = self.resultAlbums[indexPath.row]
+                FeedVCDelegate.searchController?.searchBar.text = selectedAlbum!.title
+                currentQuery = selectedAlbum!.title
+            }
+            else if (indexPath.section == 3 )
+            {
+                selectedTrack = self.resultTracks[indexPath.row]
+                FeedVCDelegate.searchController?.searchBar.text = selectedTrack!.title
+                currentQuery = selectedTrack!.title
+            }
+            self.endCurrentSearch(withQuery: currentQuery)
         }
     }
-    
 }
 
+// MARK: - TableViewController DataSource
 extension GZSearchResultsController {
-    func launchOneAfterAnother(completion: () -> ()) {
-        completion()
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 4
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (searchIsEnded) {
+            if (section == 1 && self.resultArtists.count != 0) {
+                return kGZConstants.artists
+            }
+            else if (section == 2 && self.resultAlbums.count != 0) {
+                return kGZConstants.albums
+            }
+            else if (section == 3 && self.resultTracks.count != 0) {
+                return kGZConstants.tracks
+            }
+        }
+        return ""
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ( section == 0 && searchNoResults ) {
+            return 1
+        }
+        else if ( section == 1 ) {
+            return resultArtists.count
+        }
+        else if ( section == 2 ) {
+            return resultAlbums.count
+        }
+        else if ( section == 3 ) {
+            return resultTracks.count
+        }
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // advanced and simple layout
+        if (searchNoResults) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("GZAlertTableViewCell", forIndexPath: indexPath) as! GZAlertTableViewCell
+            cell.configureSelfWithAlert(GZTableViewAlert.NoSearchResults)
+            return cell
+        }
+        else if (searchIsEnded) {
+            // search results
+            let cell = tableView.dequeueReusableCellWithIdentifier("trackAdvancedCell", forIndexPath: indexPath) as! GZtrackAdvancedCellTableViewCell
+            configureAdvancedCell(tableViewCell: cell, indexPath: indexPath)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            configureSimpleCell(tableViewCell: cell, indexPath: indexPath)
+            return cell
+        }
+    }
+    
+    // MARK: configure a cell of search results
+    func configureAdvancedCell( tableViewCell cell : GZtrackAdvancedCellTableViewCell, indexPath : NSIndexPath ) -> Void
+    {
+        if ( indexPath.section == 1 ) {
+            let resultArtist = self.resultArtists[indexPath.row]
+            cell.configureSelfWithDataModel(resultArtist.imageMedium, title: resultArtist.name, artist: "", noMedia: false)
+        }
+        else if ( indexPath.section == 2 ) {
+            let resultAlbum = self.resultAlbums[indexPath.row]
+            cell.configureSelfWithDataModel(resultAlbum.imageMedium, title: resultAlbum.title, artist: resultAlbum.artistName, noMedia: false)
+        }
+        else if ( indexPath.section == 3 ) {
+            let requestTrack = self.resultTracks[indexPath.row]
+            if ( !(cell.isConfigured) ) {
+                GZTracksManager.getTracksYTMedia(withTrack: requestTrack, success: { (resultTrack) -> Void in
+                    self.resultTracks[indexPath.row] = resultTrack
+                    let noMedia = resultTrack.sourceID.isEmpty
+                    cell.configureSelfWithDataModel(resultTrack.imageMedium, title: resultTrack.title, artist: resultTrack.artistName, noMedia: noMedia)
+                })
+            }
+            else {
+                let noMedia = requestTrack.sourceID.isEmpty
+                cell.configureSelfWithDataModel(requestTrack.imageMedium, title: requestTrack.title, artist: requestTrack.artistName, noMedia: noMedia)
+            }
+            
+        }
+    }
+    
+    // MARK: configure a cell of search advices
+    func configureSimpleCell( tableViewCell cell : UITableViewCell, indexPath : NSIndexPath ) -> Void
+    {
+        // set transparent cell selection style
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
+        
+        if ( indexPath.section == 1 ) {
+            let resultArtist = self.resultArtists[indexPath.row]
+            cell.textLabel?.text = resultArtist.name
+        }
+        else if ( indexPath.section == 2 ) {
+            let resultAlbum = self.resultAlbums[indexPath.row]
+            cell.textLabel?.text = resultAlbum.title
+        }
+        else if ( indexPath.section == 3 ) {
+            let resultTrack = self.resultTracks[indexPath.row]
+            cell.textLabel?.text = resultTrack.title
+        }
+    }
+}
+
+// MARK: - General function for performing search on lastfm api
+extension GZSearchResultsController {
+    func searchContent( withQuery query: String )
+    {
+        print("a new search is launched with a query \(query)")
+        print("queue items: \(GZQueueManager.searchQueue.operations)")
+        self.activityIndicator.startAnimating()
+        
+        GZArtistManager.getArtistsLF(query, perPage: perPage, pageNumber: 1) { (resultArtists) -> Void in
+            self.resultArtists = resultArtists
+            
+            if ( self.resultArtists.count == 0 ) {
+               return
+            }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.activityIndicator.stopAnimating()
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
+            })
+        }
+        
+        GZAlbumManager.getAlbumsLF(query, perPage: perPage, pageNumber: 1) { (resultAlbums) -> Void in
+            self.resultAlbums = resultAlbums
+            
+            if ( self.resultAlbums.count == 0 ) {
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
+            })
+        }
+        
+        GZTracksManager.getTracksLF(query, perPage: perPage, pageNumber: 1) { (resultTracks) -> Void in
+            self.resultTracks = resultTracks
+            
+            if (self.resultArtists.count == 0 && self.resultAlbums.count == 0 && self.resultTracks.count == 0) {
+                self.searchNoResults = true
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+                return
+            }
+            else if ( self.resultTracks.count == 0 ) {
+                return
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadSections(NSIndexSet(index: 3), withRowAnimation: .Fade)
+                })
+            }
+            
+        }
+
+    }
+}
+
+// MARK: - Clear all data within search results controller
+extension GZSearchResultsController {
+    func clearData() {
+        GZQueueManager.searchQueue.cancelAllOperations()
+        self.activityIndicator.stopAnimating()
+        self.resultArtists = []
+        self.resultAlbums = []
+        self.resultTracks = []
+        self.searchIsEnded = false
+        self.searchNoResults = false
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
+}
+
+// MARK: - Ending search and caching the search query
+extension GZSearchResultsController {
+    func endCurrentSearch( withQuery query: String ) {
+        self.searchIsEnded = true
+        
+        // cache the selected search query
+        guard ( query != "" || query != " " ) else {
+            return
+        }
+        let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        GZCacheManager.cacheSearchQuery(withQuery: query, andPropagateToContext: uiContext)
+        try? uiContext.save()
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            // stop activity indicator when the table begins updating
+            self.activityIndicator.stopAnimating()
+            self.tableView.reloadData()
+        })
     }
 }

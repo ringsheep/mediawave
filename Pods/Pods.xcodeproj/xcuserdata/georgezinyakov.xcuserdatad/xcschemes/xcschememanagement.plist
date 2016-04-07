@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PureLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YoutubeSourceParserKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>243D4246717D53DE8323CEC29FB14FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2B327FFD0C12D03490D806CFF0D02E74</key>
+		<key>23EA8FF605526DDEB18A6BA1A3019650</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>5AA33F692CA610C34D5959871D5BD88C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D901EE7FB2512A54206E4685D577D843</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4A85A108DB5B60FD7CF045EA46AF4D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECDA29466F2DC80E8746054F6AAA1CAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

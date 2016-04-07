@@ -9,6 +9,10 @@
 import Foundation
 
 class kGZConstants {
+}
+
+//MARK: - Top musical tags
+extension kGZConstants {
     static var topTags:Array<GZLFTag> = [
         GZLFTag(nameValue: "Rock"),
         GZLFTag(nameValue: "Electronic"),
@@ -61,4 +65,63 @@ class kGZConstants {
         GZLFTag(nameValue: "90s"),
         GZLFTag(nameValue: "00s")
     ]
+}
+
+//MARK: - Numeric constants
+extension kGZConstants {
+    static var mediawaveColor = UIColor(red: 255/255, green: 96/255, blue: 152/255, alpha: 1)
+    
+    static var playlistCellHeight:CGFloat = 210.0
+    static var advancedCellHeight:CGFloat = 70.0
+    static var simpleCellHeight:CGFloat = 45.0
+    static var defaultCellHeight:CGFloat = 35.0
+}
+
+//MARK: - Identifiers
+extension kGZConstants {
+    static var GZSearchCache = "GZSearchCache"
+    
+    static var cellGenericId = "Cell"
+    static var GZAlertTableViewCell = "GZAlertTableViewCell"
+    static var GZtrackSimpleCell = "GZtrackSimpleCell"
+    static var GZDescriptionTableViewCell = "GZDescriptionTableViewCell"
+    static var GZPlaylistTableViewCell = "GZPlaylistTableViewCell"
+    static var trackAdvancedCell = "trackAdvancedCell"
+    
+    static var toArtistFromSearchResults = "toArtistFromSearchResults"
+    static var toAlbumFromSearchResults = "toAlbumFromSearchResults"
+    static var toAlbumFromArtist = "toAlbumFromArtist"
+    static var toTagsFromFeed = "toTagsFromFeed"
+    static var toPlaylistFromFeed = "toPlaylistFromFeed"
+    
+    static var youtubeBaseURL = "http://www.youtube.com/watch?v="
+}
+
+//MARK: - Localiseable strings
+extension kGZConstants {
+    static var continueLabel = NSLocalizedString("Continue", comment: "")
+    static var error = NSLocalizedString("Unknown error", comment: "")
+    static var untitled = NSLocalizedString("Untitled", comment: "")
+    static var yes = NSLocalizedString("Yes", comment: "")
+    static var no = NSLocalizedString("No", comment: "")
+    static var cancel = NSLocalizedString("Cancel", comment: "")
+    static var edit = NSLocalizedString("Edit", comment: "")
+    static var loadMore = NSLocalizedString("Load more", comment: "")
+    
+    static var introLabel = NSLocalizedString("GZTagsSelectViewController.introLabel", comment: "")
+    static var feedTitle = NSLocalizedString("GZFeedViewController.title", comment: "")
+    static var searchTitle = NSLocalizedString("GZSearchViewController.title", comment: "")
+    static var playerTitle = NSLocalizedString("GZTrackViewController.title", comment: "")
+    static var noSearchCache = NSLocalizedString("GZAlertTableViewCell.NoSearchCache", comment: "")
+    static var noSearchResults = NSLocalizedString("GZAlertTableViewCell.NoSearchResults", comment: "")
+    static var clearSearch = NSLocalizedString("GZSearchViewController.clearSearch", comment: "")
+    static var clearSearchPromt = NSLocalizedString("GZSearchViewController.clearSearchPromt", comment: "")
+    static var clearSearchDescript = NSLocalizedString("GZSearchViewController.clearSearchDescript", comment: "")
+    static var recentlySearched = NSLocalizedString("GZSearchViewController.recentlySearched", comment: "")
+    static var artists = NSLocalizedString("GZSearchResultsController.artists", comment: "")
+    static var albums = NSLocalizedString("GZSearchResultsController.albums", comment: "")
+    static var tracks = NSLocalizedString("GZSearchResultsController.tracks", comment: "")
+    static var topalbums = NSLocalizedString("GZArtistDetails.topalbums", comment: "")
+    static var toptracks = NSLocalizedString("GZArtistDetails.toptracks", comment: "")
+    static var foundAlert = NSLocalizedString("GZTrackViewController.foundAlert", comment: "")
 }

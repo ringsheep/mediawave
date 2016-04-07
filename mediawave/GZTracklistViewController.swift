@@ -7,115 +7,40 @@
 //
 
 import UIKit
-import CoreData
 
-class GZTracklistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FetchedResultsControllerHandler {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
+class GZTracklistViewController: GZTableViewController {
     
-    var sendedID:String?
     var selectedRow:Int?
-    
-    // MARK: Info Fetch Results Controller
-    lazy var infoFetchResultsController : NSFetchedResultsController =
-    {
-        // context
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-        // entity for request
-        let entity = NSEntityDescription.entityForName("GZPlaylist", inManagedObjectContext: managedObjectContext)
-        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-        
-        // request
-        let req = NSFetchRequest()
-        req.entity = entity
-        req.sortDescriptors = [sortDescriptor]
-        
-        // controller with context and request
-        let controller = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // fetching
-        try? controller.performFetch()
-        return controller
-    }()
-    
-    // MARK: Info Fetch Results Controller Wrapper
-    var infoFetchResultsControllerWrapper:FetchedResultsControllerDelegate?
-    
-//    // MARK: Tracks Fetch Results Controller
-//    lazy var tracksFetchResultsController : NSFetchedResultsController =
-//    {
-//        // context
-//        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-//        
-//        // entity for request
-//        let entity = NSEntityDescription.entityForName("GZTrack", inManagedObjectContext: managedObjectContext)
-//        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-//        
-//        // request
-//        let req = NSFetchRequest()
-//        req.entity = entity
-//        req.sortDescriptors = [sortDescriptor]
-//        
-//        // controller with context and request
-//        let controller = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-//        
-//        // fetching
-//        try? controller.performFetch()
-//        return controller
-//    }()
-    
-    // MARK: Tracks Fetch Results Controller Wrapper
-//    var tracksFetchResultsControllerWrapper:FetchedResultsControllerDelegate?
+    var selectedPlaylist:GZPlaylist?
+    var playlistTracks:Array<GZTrack> = []
+    var nextPageToken:String?
 
     // MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // nib for head cell
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        let playlistNib = UINib(nibName: "GZPlaylistTableViewCell", bundle: nil)
-        self.tableView.registerNib(playlistNib, forCellReuseIdentifier: "GZPlaylistTableViewCell")
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
+        let playlistNib = UINib(nibName: kGZConstants.GZPlaylistTableViewCell, bundle: nil)
+        self.tableView.registerNib(playlistNib, forCellReuseIdentifier: kGZConstants.GZPlaylistTableViewCell)
         
         // nib for track cell
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        let trackNib = UINib(nibName: "GZtrackSimpleCell", bundle: nil)
-        self.tableView.registerNib(trackNib, forCellReuseIdentifier: "GZtrackSimpleCell")
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
+        let trackNib = UINib(nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
+        self.tableView.registerNib(trackNib, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
         
-        self.tableView.separatorColor = UIColor.clearColor()
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        print("sended id is \(sendedID)")
+        GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in
+            self.playlistTracks = resultTracks
+            self.nextPageToken = nextPageToken
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+            })
+        }
         
     }
     
-    // MARK: View Did Appear
-    override func viewDidAppear(animated: Bool)
-    {
-
-        // MARK: loading current tracklist info
-        GZPlaylistManager.loadYTPlaylist(sendedID!)
-        
-//        // MARK: getting tracklist items
-//        GZTracksManager.getYTPlaylistItems(sendedID!, perPage: 10, pageNumber: 1)
-        
-        // intialising the info FRC wrapper
-        self.infoFetchResultsControllerWrapper = FetchedResultsControllerDelegate()
-        // setting it's FRC as our frc and it's handler as our controller
-        self.infoFetchResultsControllerWrapper?.fetchedResultsController = self.infoFetchResultsController
-        self.infoFetchResultsControllerWrapper?.handler = self
-        
-//        // intialising the tracks FRC wrapper
-//        self.tracksFetchResultsControllerWrapper = FetchedResultsControllerDelegate()
-//        // setting it's FRC as our frc and it's handler as our controller
-//        self.tracksFetchResultsControllerWrapper?.fetchedResultsController = self.tracksFetchResultsController
-//        self.tracksFetchResultsControllerWrapper?.handler = self
-        
-        try? self.infoFetchResultsController.performFetch()
-//        try? self.tracksFetchResultsController.performFetch()
+    override func viewWillDisappear(animated: Bool) {
+        GZQueueManager.searchQueue.cancelAllOperations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,93 +49,80 @@ class GZTracklistViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    // MARK: Back button is pressed
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+        }
+    }
+    
     // MARK: table view data source functions
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if ( tableView == tableView ) {
-            if let sectionInfo = self.infoFetchResultsController.sections
-            {
-                // playlist tracks section with list of tracks
-                return (sectionInfo[section] ).numberOfObjects
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.playlistTracks.count
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // playlist tracks section with list of tracks
+        return kGZConstants.simpleCellHeight
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // infinite scroll
+        if ( indexPath.row == (self.playlistTracks.count - 1) && nextPageToken != "" ) {
+            GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: nextPageToken!) { (resultTracks, nextPageToken) -> Void in
+                self.nextPageToken = nextPageToken
+                self.playlistTracks.appendContentsOf(resultTracks)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
             }
-            else {
-                return 0
-            }
-        }
-        else {
-            return 0
         }
         
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if ( indexPath.section == 0) {
-            // playlist info section with banner and playlist name
-            return 210.0
-        }
-        else {
-            // playlist tracks section with list of tracks
-            return 50.0
-        }
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if ( indexPath.section == 0) {
-            // playlist info section with banner and playlist name
-            let cell = tableView.dequeueReusableCellWithIdentifier("GZPlaylistTableViewCell", forIndexPath: indexPath) as! GZPlaylistTableViewCell
-            configureInfoCell(tableViewCell: cell, indexPath: indexPath)
-            return cell
-        }
-        else {
-            // playlist tracks section with list of tracks
-            let cell = tableView.dequeueReusableCellWithIdentifier("GZtrackSimpleCell", forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
-//            configureTrackCell(tableViewCell: cell, indexPath: indexPath)
-            // refresh dynamically calculated table view height
-            self.tableViewHeight.constant = self.tableView.contentSize.height
-            return cell
-        }
+        // playlist tracks section with list of tracks
+        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZtrackSimpleCell, forIndexPath: indexPath) as! GZTrackSimpleTableViewCell
+        configureTrackCell(tableViewCell: cell, indexPath: indexPath)
+        return cell
     }
     
     // MARK: configure a playlist info cell
     func configureInfoCell( tableViewCell cell : GZPlaylistTableViewCell, indexPath : NSIndexPath ) -> Void
     {
-        let model = self.infoFetchResultsController.objectAtIndexPath(indexPath) as! GZPlaylist
-        print(model.title)
-        cell.configureSelfWithDataModel(model)
+        cell.configureSelfWithDataModel(selectedPlaylist!.title, image: NSURL(string: (selectedPlaylist!.imageMedium))!, playlistID: selectedPlaylist!.playlistID)
     }
     
-//    // MARK: configure a track cell
-//    func configureTrackCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
-//    {
-//        let model = self.tracksFetchResultsController.objectAtIndexPath(indexPath) as! GZTrack
-////        model.playlist = GZPlaylistFabric.loadExistingPlaylist(withPlaylistID: sendedID!)
-//        print(model.title)
-//        cell.configureSelfWithDataModel(model)
-//    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        if ( indexPath.section == 0) {
-//            // playlist info section with banner and playlist name
-//        }
-//        else {
-//            // playlist tracks section with list of tracks
-//            selectedRow = indexPath.row
-//            for viewController:UIViewController in self.tabBarController!.viewControllers! {
-//                if (viewController.isKindOfClass(GZTrackViewController)) {
-//                    let trackController = viewController as! GZTrackViewController
-//                    self.tabBarController?.selectedViewController = trackController
-//                    let track = self.tracksFetchResultsController.objectAtIndexPath(indexPath) as! GZTrack
-//                    let sourceID = track.sourceID
-//                    trackController.loadTrack(sourceID, indexPath: indexPath, tracksCount: self.tableView.numberOfRowsInSection(1) )
-//                }
-//            }
-//        }
+    // MARK: configure a track cell
+    func configureTrackCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
+    {
+        let track = self.playlistTracks[indexPath.row]
+        cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: track.sourceID.isEmpty)
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // playlist tracks section with list of tracks
+        selectedRow = indexPath.row
+        for viewController:UIViewController in self.tabBarController!.viewControllers! {
+            if (viewController.isKindOfClass(GZTrackViewController)) {
+                let trackController = viewController as! GZTrackViewController
+                self.tabBarController?.selectedViewController = trackController
+                trackController.loadTracksToPlayer(atIndex: selectedRow!, playlist: self.playlistTracks)
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZPlaylistTableViewCell) as! GZPlaylistTableViewCell
+        configureInfoCell(tableViewCell: cell, indexPath: NSIndexPath(forRow: 0, inSection: 0))
+        let view = UIView(frame: cell.frame)
+        view.addSubview(cell)
+        return view
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 210.0
+    }
 
     // MARK: - Navigation
 
@@ -219,46 +131,4 @@ class GZTracklistViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
 
-}
-
-// MARK: FRC events and control
-extension GZTracklistViewController
-{
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        if ( type == .Insert) {
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        }
-        if ( type == .Update ) {
-            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        }
-        if ( type == .Move ) {
-            if let newIndexPath = newIndexPath {
-                if let indexPath = indexPath {
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-                }
-            }
-        }
-        if ( type == .Delete ) {
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-    
-    // this two functions are empty just because they are not optional
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String?) -> String? {
-        return nil
-    }
 }

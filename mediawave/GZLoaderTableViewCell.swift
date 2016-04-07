@@ -8,10 +8,12 @@
 
 import UIKit
 
-class GZLoaderTableViewCell: UITableViewCell {
+class GZLoaderTableViewCell: GZTableViewCell {
+    @IBOutlet weak var loadMoreLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.loadMoreLabel.text = kGZConstants.loadMore
         // Initialization code
     }
 
@@ -19,6 +21,10 @@ class GZLoaderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        
     }
 
 }

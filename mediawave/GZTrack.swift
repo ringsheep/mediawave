@@ -6,17 +6,39 @@
 //  Copyright © 2016 George Zinyakov. All rights reserved.
 //
 
-import CoreData
+import UIKit
 
-class GZTrack : NSManagedObject {
-    @NSManaged var id : Int64
-    @NSManaged var mbID : String
-    @NSManaged var sourceID : String
-    @NSManaged var youtubeID : String
-    @NSManaged var title : String
-    @NSManaged var imageMedium : String
+class GZTrack : NSObject {
+    var mbID : String
+    var sourceID : String
+    var youtubeID : String
+    var title : String
+    var imageMedium : String
+    var artistName : String
+    var playlistID : String
+    var artistMbID : String
+    var albumMbID : String
     
-    @NSManaged var playlist : GZPlaylist?
-    @NSManaged var artist : GZArtist?
-    @NSManaged var album : GZAlbum?
+    init(
+        withMbID mbID : String,
+        sourceID : String,
+        youtubeID : String,
+        title : String,
+        imageMedium : String,
+        artistName : String,
+        playlistID : String,
+        artistMbID : String,
+        albumMbID : String
+        ) {
+            self.mbID = mbID
+            self.sourceID = sourceID
+            self.youtubeID = youtubeID
+            self.title = title
+            self.imageMedium = imageMedium
+            self.artistName = artistName
+            self.playlistID = playlistID
+            self.artistMbID = artistMbID
+            self.albumMbID = albumMbID
+    }
 }
+

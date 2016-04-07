@@ -7,78 +7,99 @@
 //
 
 import UIKit
-import CoreData
 
-class GZTracksManager {
+class GZTracksManager: GZQueueManager {
+    static var tracksManagerQueue:NSOperationQueue = NSOperationQueue()
     
+    static var downloadPlaylistItemsByID:GZdownloadPlaylistItemsByID?
+    static var downloadLastfmTracksByQuery:GZdownloadLastfmTracksByQuery?
+    static var downloadLastfmTracksByMbID:GZdownloadLastfmTracksByMbID?
+    static var downloadTracksYTMediaByQuery:GZdownloadTracksYTMediaByQuery?
+    static var downloadLastfmTracksByAlbumMbID:GZdownloadLastfmTracksByAlbumMbID?
 }
 
 //MARK: Get youtube playlist items by playlist ID
 extension GZTracksManager
 {   
-    class func getYTPlaylistItems( id: String, perPage: Int, pageNumber: Int)
+    class func getYTPlaylistItems( id: String, perPage: Int, nextPageToken: String, success: ( resultTracks : Array<GZTrack>, nextPageToken : String ) -> Void )
     {
-        GZAPI_WRAPPER.getYoutubePlaylistItemsByID(id, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
-            
-            let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-            let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-            privateContext.parentContext = uiContext
-            
-            let tracks:Array<JSON> = jsonResponse["items"].arrayValue
-            
-            for ( var i:Int64 = 0 ; i < Int64(tracks.count) ; i++ )
-            {
-                let track = tracks[Int(i)]
-                let id = i
-                let title = track["snippet"]["title"].stringValue
-                let youtubeID = track["id"].stringValue
-                let sourceID = track["snippet"]["resourceId"]["videoId"].stringValue
-                let imageMedium = track["snippet"]["thumbnails"]["medium"]["url"].stringValue
-                guard !(imageMedium.isEmpty) else {
-                    return
-                }
-                
-                guard ( title != "Deleted video" && title != "Private video" ) else {
-                    return
-                }
-                GZTrackFabric.createOrUpdateTrack(withID: id, imageMedium: imageMedium, mbID: "", sourceID: sourceID, title: title, youtubeID: youtubeID , andLoadInContext: privateContext)
-            }
-            
-            try? privateContext.save()
-            
-            }) { () -> Void in
-                
+        print("GZdownloadPlaylistItemsByID init")
+        self.downloadPlaylistItemsByID = GZdownloadPlaylistItemsByID(withPlaylistID: id, perPage: perPage, nextPageToken: nextPageToken) { (resultTracks, nextPageToken) -> Void in
+            success(resultTracks: resultTracks, nextPageToken: nextPageToken)
         }
+
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadPlaylistItemsByID!)
+        print("GZdownloadPlaylistItemsByID queued")
     }
 }
 
-//MARK: Get youtube playlist item by lastfm artist name and track name
+// MARK: Search for tracks by query
 extension GZTracksManager
 {
-    class func getYTMediaItem( lastfmTrack: GZTrack )
+    class func getTracksLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultTracks : Array<GZTrack> ) -> Void)
     {
-        let query:String = (lastfmTrack.artist?.name)! + " " + (lastfmTrack.title)
-        GZAPI_WRAPPER.getAllYoutubeMediaByQuery(query, perPage: 1, pageNumber: 1, success: { (jsonResponse) -> Void in
-            
-            let uiContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-            let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-            privateContext.parentContext = uiContext
-            
-            let tracks:Array<JSON> = jsonResponse["items"].arrayValue
-            let track = tracks[0]
-            
-            let sourceID = track["id"]["videoId"].stringValue
-            let title = track["snippet"]["title"].stringValue
-            // check if the title of first found video on youtube really contains the name of the artist and the name of the tack
-            guard ((title.lowercaseString.rangeOfString(lastfmTrack.artist!.name.lowercaseString) != nil) && (title.lowercaseString.rangeOfString(lastfmTrack.title.lowercaseString) != nil)) else {
-                return
-            }
-            GZTrackFabric.createOrUpdateTrack(withID: lastfmTrack.id, imageMedium: lastfmTrack.imageMedium, mbID: lastfmTrack.mbID, sourceID: sourceID, title: lastfmTrack.title, youtubeID: "" , andLoadInContext: privateContext)
-            
-            try? privateContext.save()
-
-            }) { () -> Void in
-                
+        print("GZdownloadLastfmTracksByQuery init")
+        self.downloadLastfmTracksByQuery = GZdownloadLastfmTracksByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultTracks) -> Void in
+            success(resultTracks: resultTracks)
         }
+
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadLastfmTracksByQuery!)
+        print("GZdownloadLastfmTracksByQuery queued")
+    }
+}
+
+// MARK: Search for top tracks by artist MBID
+extension GZTracksManager {
+    class func getTracksLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: ( resultTracks : Array<GZTrack> ) -> Void)
+    {
+        print("GZdownloadLastfmTracksByMbID init")
+        self.downloadLastfmTracksByMbID = GZdownloadLastfmTracksByMbID(withMbID: mbID, perPage: perPage, pageNumber: pageNumber) { (resultTracks) -> Void in
+            success(resultTracks: resultTracks)
+        }
+        
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadLastfmTracksByMbID!)
+        print("GZdownloadLastfmTracksByMbID queued")
+    }
+}
+
+// MARK: Search for top tracks by album MBID
+extension GZTracksManager {
+    class func getTracksLF(byAlbumMbID mbID: String, success: ( resultTracks : Array<GZTrack> ) -> Void)
+    {
+        print("GZdownloadLastfmTracksByMbID init")
+        self.downloadLastfmTracksByAlbumMbID = GZdownloadLastfmTracksByAlbumMbID(withMbID: mbID) { (resultTracks) -> Void in
+            success(resultTracks: resultTracks)
+        }
+        
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadLastfmTracksByAlbumMbID!)
+        print("GZdownloadLastfmTracksByMbID queued")
+    }
+}
+
+// MARK: Search for tracks by query
+extension GZTracksManager
+{
+    class func getTracksYTMedia(withTrack track: GZTrack, success: ( resultTrack : GZTrack ) -> Void)
+    {
+        print("GZdownloadTracksYTMediaByQuery init")
+        self.downloadTracksYTMediaByQuery = GZdownloadTracksYTMediaByQuery(withTrack: track) { (resultTrack) -> Void in
+            success(resultTrack: resultTrack)
+        }
+        
+        if (self.downloadLastfmTracksByQuery != nil && self.downloadLastfmTracksByQuery?.finished == false) {
+            self.downloadTracksYTMediaByQuery?.addDependency(self.downloadLastfmTracksByQuery!)
+        }
+        
+        if (self.downloadPlaylistItemsByID != nil && self.downloadPlaylistItemsByID?.finished == false) {
+            self.downloadTracksYTMediaByQuery?.addDependency(self.downloadPlaylistItemsByID!)
+        }
+        
+        super.searchQueue.maxConcurrentOperationCount = 1
+        super.searchQueue.addOperation(downloadTracksYTMediaByQuery!)
+        print("GZdownloadTracksYTMediaByQuery queued")
     }
 }

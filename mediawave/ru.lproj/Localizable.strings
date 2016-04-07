@@ -6,27 +6,28 @@
   Copyright © 2016 George Zinyakov. All rights reserved.
 */
 
-"Continue" = "Continue";
-"Unknown error" = "Unknown error";
-"Untitled" = "Untitled";
-"Yes" = "Yes";
-"No" = "No";
-"Cancel" = "Cancel";
-"Edit" = "Edit";
+"Continue" = "Продолжить";
+"Unknown error" = "Неизвестная ошибка";
+"Untitled" = "Без названия";
+"Yes" = "Да";
+"No" = "Нет";
+"Cancel" = "Отмена";
+"Edit" = "Изменить";
+"Load more" = "Загрузить ещё";
 
-"GZTagsSelectViewController.introLabel" = "Choose 5 music tags";
-"GZFeedViewController.title" = "Suggested";
-"GZTrackViewController.title" = "Player";
-"GZAlertTableViewCell.NoSearchCache" = "You can find any kind of artists, albums and tracks.";
-"GZAlertTableViewCell.NoSearchResults" = "Nothing found for this query.\nTry something else.";
-"GZSearchViewController.title" = "Search";
-"GZSearchViewController.recentlySearched" = "Recently searched";
-"GZSearchViewController.clearSearch" = "Clear search history";
-"GZSearchViewController.clearSearchDescript" = "You can clear the history of recent search requests";
-"GZSearchViewController.clearSearchPromt" = "Do you really want to delete all the search history?";
-"GZSearchResultsController.artists" = "Artists";
-"GZSearchResultsController.albums" = "Albums";
-"GZSearchResultsController.tracks" = "Tracks";
-"GZArtistDetails.topalbums" = "Top Albums";
-"GZArtistDetails.toptracks" = "Top Tracks";
-"GZTrackViewController.foundAlert" = "Found in mediawave:";
+"GZTagsSelectViewController.introLabel" = "Выберите 5 основных тем";
+"GZFeedViewController.title" = "Рекомендации";
+"GZTrackViewController.title" = "Проигрыватель";
+"GZAlertTableViewCell.NoSearchCache" = "Через поиск вы можете искать любых исполнителей, альбомы и композиции";
+"GZAlertTableViewCell.NoSearchResults" = "Ничего не найдено по данному запросу.\nПопробуйте что-нибудь еще.";
+"GZSearchViewController.title" = "Поиск";
+"GZSearchViewController.recentlySearched" = "Недавно вы искали";
+"GZSearchViewController.clearSearch" = "Очистить историю поиска";
+"GZSearchViewController.clearSearchDescript" = "Вы можете очистить историю недавних поисковых запросов";
+"GZSearchViewController.clearSearchPromt" = "Вы действительно хотите удалить всю историю поиска?";
+"GZSearchResultsController.artists" = "Исполнители";
+"GZSearchResultsController.albums" = "Альбомы";
+"GZSearchResultsController.tracks" = "Композиции";
+"GZArtistDetails.topalbums" = "Лучшие альбомы";
+"GZArtistDetails.toptracks" = "Лучшие композиции";
+"GZTrackViewController.foundAlert" = "Найдено в mediawave:";
