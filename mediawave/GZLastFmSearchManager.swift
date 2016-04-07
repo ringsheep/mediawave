@@ -172,30 +172,6 @@ extension GZLastFmSearchManager {
     }
 }
 
-// MARK: Search for top tags by artist MBID
-extension GZLastFmSearchManager {
-    class func getArtistTopTagsLF(parentID: String, perPage: Int, pageNumber: Int, success: ((tags: Array<GZLFTag>) -> Void))
-    {
-        var objects:Array<GZLFTag> = Array<GZLFTag>()
-        
-        GZAPI_WRAPPER.getTopLastfmTagsByArtist(parentID, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
-            
-            let tags:Array<JSON> = jsonResponse["toptags"]["tag"].arrayValue
-            
-            for tag:JSON in tags
-            {
-                let jsonItem:GZLFTag = GZLFTag(nameValue: tag["name"].stringValue)
-                objects.append(jsonItem)
-            }
-            
-            success(tags: objects)
-            
-            }) { () -> Void in
-                
-        }
-    }
-}
-
 // MARK: Search for artist info by artist MBID
 extension GZLastFmSearchManager {
     class func getArtistInfoLF(parentID: String, success: ((infoPack: GZLFObject) -> Void))

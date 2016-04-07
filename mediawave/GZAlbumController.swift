@@ -1,5 +1,5 @@
 //
-//  GZAlbumUIViewController.swift
+//  GZAlbumController.swift
 //  mediawave
 //
 //  Created by George Zinyakov on 1/19/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GZAlbumController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var albumDescription: UILabel!
     @IBOutlet weak var albumTracks: UITableView!
@@ -73,7 +73,7 @@ class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableV
             if (viewController.isKindOfClass(GZTrackViewController)) {
                 let trackController = viewController as! GZTrackViewController
                 self.tabBarController?.selectedViewController = trackController
-                trackController.loadTrack(currentAlbumTracks[selectedRow!].sourceID!, indexPath: indexPath, tracksCount: self.albumTracks.numberOfRowsInSection(1) )
+                trackController.loadTrack(atIndex: selectedRow!)
             }
         }
     }
@@ -97,7 +97,7 @@ class GZAlbumUIViewController: UIViewController, UITableViewDataSource, UITableV
         // Pass the selected object to the new view controller.
         if (segue.identifier == "toTrackFromAlbum") {
             let viewController:GZTrackViewController = segue.destinationViewController as! GZTrackViewController
-            viewController.loadTrack(currentAlbumTracks[selectedRow!].sourceID!, indexPath: NSIndexPath(), tracksCount: self.albumTracks.numberOfRowsInSection(1) )
+            viewController.loadTrack(atIndex: selectedRow!)
         }
     }
 

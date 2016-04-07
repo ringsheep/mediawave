@@ -16,13 +16,14 @@ class GZYoutubeSearchManager: NSObject {
 extension GZYoutubeSearchManager
 {
     
-    class func getYTPlaylists( tags: Array<GZLFTag>, perPage: Int, pageNumber: Int, success: ((playlists: Array<GZLFObject>) -> Void) )
+    class func getYTPlaylists( tags: Array<GZLFTag>, perPage: Int, nextPageToken: String, success: ((playlists: Array<GZLFObject>, nextPage: String) -> Void) )
     {
         var objects:Array<GZLFObject> = Array<GZLFObject>()
         
-        GZAPI_WRAPPER.getAllYoutubePlaylistsByQuery(tags, perPage: perPage, pageNumber: pageNumber, success: { (jsonResponse) -> Void in
+        GZAPI_WRAPPER.getAllYoutubePlaylistsByQuery(tags, perPage: perPage, nextPage: nextPageToken, success: { (jsonResponse) -> Void in
             
             let playlists:Array<JSON> = jsonResponse["items"].arrayValue
+            let nextPageToken = jsonResponse["nextPageToken"].stringValue
             
             for playlist:JSON in playlists
             {
@@ -40,7 +41,7 @@ extension GZYoutubeSearchManager
 
             }
             
-            success(playlists: objects)
+            success(playlists: objects, nextPage: nextPageToken)
             
             }) { () -> Void in
             
