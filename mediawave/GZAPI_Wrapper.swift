@@ -130,6 +130,7 @@ extension GZAPI_WRAPPER {
         let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "youtube", endpoint: "search")
         //request - получили объект классса NSURLRequest
         
+        
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
             
             // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).

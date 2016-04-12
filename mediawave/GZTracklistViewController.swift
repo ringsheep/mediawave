@@ -13,14 +13,16 @@ class GZTracklistViewController: GZTableViewController {
     var selectedRow:Int?
     var selectedPlaylist:GZPlaylist?
     var playlistTracks:Array<GZTrack> = []
-    var nextPageToken:String?
+    
+    let perPage = 10
+    var nextPageTokens:Array<String> = Array<String>()
 
     // MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(GZTracklistViewController.getPlaylistData), forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(GZTracklistViewController.refreshData), forControlEvents: .ValueChanged)
         
         // nib for head cell
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
@@ -32,7 +34,7 @@ class GZTracklistViewController: GZTableViewController {
         let trackNib = UINib(nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
         self.tableView.registerNib(trackNib, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
         
-        
+        getPlaylistData(self.perPage)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -67,17 +69,17 @@ class GZTracklistViewController: GZTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // infinite scroll
-        if ( indexPath.row == (self.playlistTracks.count - 1) && nextPageToken != "" ) {
-            GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: nextPageToken!) { (resultTracks, nextPageToken) -> Void in
+        if ( indexPath.row == (self.playlistTracks.count - 1) && nextPageTokens.last != "" ) {
+            GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: self.perPage, nextPageToken: nextPageTokens.last!) { (resultTracks, nextPageToken) -> Void in
                 
                 var newRowsIndexArray = Array<NSIndexPath>()
                 for (index, element) in resultTracks.enumerate() {
                     let newIndex = index + self.playlistTracks.count
-                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
+                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 0)
                     newRowsIndexArray.append(newIndexPath)
                 }
                 
-                self.nextPageToken = nextPageToken
+                self.nextPageTokens.append(nextPageToken)
                 self.playlistTracks.appendContentsOf(resultTracks)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.insertRowsAtIndexPaths(newRowsIndexArray, withRowAnimation: .Fade)
@@ -131,14 +133,27 @@ class GZTracklistViewController: GZTableViewController {
 }
 
 extension GZTracklistViewController {
-    @objc private func getPlaylistData() {
-        GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in
+    @objc private func getPlaylistData( perPage: Int ) {
+        GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: perPage, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in
             self.playlistTracks = resultTracks
-            self.nextPageToken = nextPageToken
+            self.nextPageTokens.append(nextPageToken)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
             })
         }
         self.refreshControl?.endRefreshing()
+    }
+    
+    @objc private func refreshData() {
+        if (GZQueueManager.searchQueue.operations.count != 0) {
+            GZQueueManager.searchQueue.cancelAllOperations()
+        }
+        let numberOfPagesDownloaded = self.nextPageTokens.count
+        var totalPerPage = numberOfPagesDownloaded * self.perPage
+        if (totalPerPage > 50) {
+            totalPerPage = 50
+            self.nextPageTokens.removeRange(5...(self.nextPageTokens.count-1))
+        }
+        getPlaylistData(totalPerPage)
     }
 }

@@ -15,6 +15,8 @@ class GZArtistDetails: GZTableViewController {
     
     var artist:GZArtist?
     var selectedRow:Int?
+    
+    let perPage:Int = 6
     var nextAlbumsPage:Int?
     var nextTracksPage:Int?
     
@@ -110,7 +112,7 @@ extension GZArtistDetails {
         if ( indexPath == loaderIndexPath && nextAlbumsPage < totalAlbumPages ) {
             self.didLoadMoreAlbumsStarted = true
             self.tableView.reloadRowsAtIndexPaths([loaderIndexPath], withRowAnimation: .None)
-            GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: nextAlbumsPage!) { (resultAlbums, totalPages) -> Void in
+            GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: self.perPage, pageNumber: nextAlbumsPage!) { (resultAlbums, totalPages) -> Void in
                 
                 var newRowsIndexArray = Array<NSIndexPath>()
                 for (index, element) in resultAlbums.enumerate() {
@@ -197,7 +199,7 @@ extension GZArtistDetails {
     {
         // infinite scroll for tracks
         if ( indexPath.row == (self.artistTracks.count - 1) && indexPath.section == 2 && nextTracksPage != 1 ) {
-            GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: nextTracksPage!) { (resultTracks) -> Void in
+            GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: self.perPage, pageNumber: nextTracksPage!) { (resultTracks) -> Void in
                 
                 var newRowsIndexArray = Array<NSIndexPath>()
                 for (index, element) in resultTracks.enumerate() {
@@ -282,6 +284,9 @@ extension GZArtistDetails {
 // MARK: - Get Artist's Data
 extension GZArtistDetails {
     @objc private func getArtistData() {
+        if (GZQueueManager.searchQueue.operations.count != 0) {
+            GZQueueManager.searchQueue.cancelAllOperations()
+        }
         GZArtistManager.getArtistsInfoLF(artist!, success: { (resultArtist) -> Void in
             self.artist! = resultArtist
             
@@ -290,7 +295,7 @@ extension GZArtistDetails {
             })
 
         })
-        GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: 3, pageNumber: 1) { (resultAlbums, totalPages) -> Void in
+        GZAlbumManager.getAlbumsLF(byArtistMbID: (self.artist?.mbID)!, perPage: (self.perPage)/2, pageNumber: 1) { (resultAlbums, totalPages) -> Void in
             self.artistAlbums = resultAlbums
             self.totalAlbumPages = totalPages
             
@@ -299,9 +304,10 @@ extension GZArtistDetails {
             })
             
         }
-        GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: 6, pageNumber: 1) { (resultTracks) -> Void in
+        GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: self.perPage, pageNumber: 1) { (resultTracks) -> Void in
             self.artistTracks = resultTracks
             
+            NSNotificationCenter.defaultCenter().postNotificationName("GZTrackSimpleTableViewCell_NeedsDataRequest", object: nil)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
             })

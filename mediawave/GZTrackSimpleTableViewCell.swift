@@ -17,6 +17,7 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GZTrackSimpleTableViewCell.checkIfNeedsDataRequest), name:"GZTrackSimpleTableViewCell_NeedsDataRequest", object: nil)
         // Initialization code
     }
 
@@ -57,6 +58,12 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
         trackAvatar.image = nil
         trackName.text = nil
         activityIndicator.stopAnimating()
+    }
+    
+    func checkIfNeedsDataRequest(notification: NSNotification) {
+        if (notification.name == "GZTrackSimpleTableViewCell_NeedsDataRequest") {
+            self.isConfigured = false
+        }
     }
 
 }
