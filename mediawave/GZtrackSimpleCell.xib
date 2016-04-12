@@ -38,12 +38,17 @@
                             </mask>
                         </variation>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FtG-ja-tcq">
+                        <rect key="frame" x="150" y="12" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="h58-Pw-ARa" firstAttribute="leading" secondItem="KJD-iQ-D7i" secondAttribute="leading" constant="16" id="9HM-cA-fe3"/>
                     <constraint firstAttribute="trailing" secondItem="t52-Dt-9EL" secondAttribute="trailing" constant="16" id="9Kp-Cb-vvu"/>
+                    <constraint firstItem="FtG-ja-tcq" firstAttribute="centerY" secondItem="KJD-iQ-D7i" secondAttribute="centerY" id="PXS-Ra-bRS"/>
                     <constraint firstItem="t52-Dt-9EL" firstAttribute="centerY" secondItem="h58-Pw-ARa" secondAttribute="centerY" id="YwE-na-fkI"/>
+                    <constraint firstItem="FtG-ja-tcq" firstAttribute="centerX" secondItem="KJD-iQ-D7i" secondAttribute="centerX" id="Z9q-1H-aO1"/>
                     <constraint firstItem="h58-Pw-ARa" firstAttribute="top" secondItem="KJD-iQ-D7i" secondAttribute="topMargin" id="fuI-p2-iYc"/>
                     <constraint firstItem="t52-Dt-9EL" firstAttribute="leading" secondItem="h58-Pw-ARa" secondAttribute="trailing" constant="8" id="oVY-ia-bse"/>
                 </constraints>
@@ -55,6 +60,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="activityIndicator" destination="FtG-ja-tcq" id="oSp-KT-c94"/>
                 <outlet property="trackAvatar" destination="h58-Pw-ARa" id="4kV-Ob-ive"/>
                 <outlet property="trackName" destination="t52-Dt-9EL" id="bGS-Mp-0AD"/>
             </connections>

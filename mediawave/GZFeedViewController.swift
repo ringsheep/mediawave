@@ -41,20 +41,13 @@ class GZFeedViewController: GZTableViewController {
         self.title = kGZConstants.feedTitle
         self.navigationItem.rightBarButtonItem?.title = kGZConstants.edit
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(GZFeedViewController.getPlaylists), forControlEvents: .ValueChanged)
+        
         let playlistNib = UINib(nibName: kGZConstants.GZPlaylistTableViewCell, bundle: nil)
         self.tableView.registerNib(playlistNib, forCellReuseIdentifier: kGZConstants.GZPlaylistTableViewCell)
-        
-        // if we have some selected tags, we perform a request for playlists
-        if (selectedTags.count != 0) {
-            GZPlaylistManager.getYTPlaylists(selectedTags, perPage: self.perPage, nextPageToken: "", success: { (resultPlaylists, nextPageToken) -> Void in
-                self.playlists = resultPlaylists
-                self.nextPageToken = nextPageToken
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
-                })
-            })
-        }
 
+        getPlaylists()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -84,10 +77,17 @@ class GZFeedViewController: GZTableViewController {
         // infinite scroll
         if ( indexPath.row == (self.playlists.count - 1) && nextPageToken != "" ) {
             GZPlaylistManager.getYTPlaylists(self.selectedTags, perPage: self.perPage, nextPageToken: self.nextPageToken!, success: { (resultPlaylists, nextPageToken) -> Void in
+
+                var newRowsIndexArray = Array<NSIndexPath>()
+                for (index, element) in resultPlaylists.enumerate() {
+                    let newIndex = index + self.playlists.count
+                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 0)
+                    newRowsIndexArray.append(newIndexPath)
+                }
                 self.nextPageToken = nextPageToken
                 self.playlists.appendContentsOf(resultPlaylists)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
+                    self.tableView.insertRowsAtIndexPaths(newRowsIndexArray, withRowAnimation: .Fade)
                 })
             })
         }
@@ -124,4 +124,20 @@ class GZFeedViewController: GZTableViewController {
         }
     }
 
+}
+
+extension GZFeedViewController {
+    func getPlaylists() {
+        // if we have some selected tags, we perform a request for playlists
+        if (selectedTags.count != 0) {
+            GZPlaylistManager.getYTPlaylists(selectedTags, perPage: self.perPage, nextPageToken: "", success: { (resultPlaylists, nextPageToken) -> Void in
+                self.playlists = resultPlaylists
+                self.nextPageToken = nextPageToken
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+                })
+                self.refreshControl?.endRefreshing()
+            })
+        }
+    }
 }

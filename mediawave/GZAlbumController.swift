@@ -16,7 +16,9 @@ class GZAlbumController: GZTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(GZAlbumController.getAlbumData), forControlEvents: .ValueChanged)
         
         let nibTrackSimple = UINib (nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
         self.tableView.registerNib(nibTrackSimple, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
@@ -31,12 +33,7 @@ class GZAlbumController: GZTableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         
-        GZTracksManager.getTracksLF(byAlbumMbID: (currentAlbum?.mbID)!) { (resultTracks) -> Void in
-            self.currentAlbumTracks = resultTracks
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        }
+        getAlbumData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -84,6 +81,7 @@ class GZAlbumController: GZTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if ( indexPath.section == 0 ) {
             let descriptionCell:GZDescriptionTableViewCell = (self.tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZDescriptionTableViewCell) as? GZDescriptionTableViewCell)!
+            descriptionCell.title.numberOfLines = 2
             descriptionCell.updateFonts()
             descriptionCell.configureSelfWithDataModel(self.currentAlbum!.title, avatar: self.currentAlbum!.imageMedium, description: "")
             
@@ -97,7 +95,7 @@ class GZAlbumController: GZTableViewController {
         return cell
     }
     
-    func configureSimpleCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
+    private func configureSimpleCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
     {
         currentAlbumTracks[indexPath.row].imageMedium = currentAlbum!.imageMedium
         let track = self.currentAlbumTracks[indexPath.row]
@@ -114,4 +112,19 @@ class GZAlbumController: GZTableViewController {
         }
     }
 
+}
+
+extension GZAlbumController {
+    @objc private func getAlbumData() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+        })
+        GZTracksManager.getTracksLF(byAlbumMbID: (currentAlbum?.mbID)!) { (resultTracks) -> Void in
+            self.currentAlbumTracks = resultTracks
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
+            })
+        }
+        self.refreshControl?.endRefreshing()
+    }
 }

@@ -19,6 +19,9 @@ class GZTracklistViewController: GZTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(GZTracklistViewController.getPlaylistData), forControlEvents: .ValueChanged)
+        
         // nib for head cell
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kGZConstants.cellGenericId)
         let playlistNib = UINib(nibName: kGZConstants.GZPlaylistTableViewCell, bundle: nil)
@@ -29,13 +32,6 @@ class GZTracklistViewController: GZTableViewController {
         let trackNib = UINib(nibName: kGZConstants.GZtrackSimpleCell, bundle: nil)
         self.tableView.registerNib(trackNib, forCellReuseIdentifier: kGZConstants.GZtrackSimpleCell)
         
-        GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in
-            self.playlistTracks = resultTracks
-            self.nextPageToken = nextPageToken
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
-            })
-        }
         
     }
     
@@ -73,10 +69,18 @@ class GZTracklistViewController: GZTableViewController {
         // infinite scroll
         if ( indexPath.row == (self.playlistTracks.count - 1) && nextPageToken != "" ) {
             GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: nextPageToken!) { (resultTracks, nextPageToken) -> Void in
+                
+                var newRowsIndexArray = Array<NSIndexPath>()
+                for (index, element) in resultTracks.enumerate() {
+                    let newIndex = index + self.playlistTracks.count
+                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
+                    newRowsIndexArray.append(newIndexPath)
+                }
+                
                 self.nextPageToken = nextPageToken
                 self.playlistTracks.appendContentsOf(resultTracks)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
+                    self.tableView.insertRowsAtIndexPaths(newRowsIndexArray, withRowAnimation: .Fade)
                 })
             }
         }
@@ -88,13 +92,13 @@ class GZTracklistViewController: GZTableViewController {
     }
     
     // MARK: configure a playlist info cell
-    func configureInfoCell( tableViewCell cell : GZPlaylistTableViewCell, indexPath : NSIndexPath ) -> Void
+    private func configureInfoCell( tableViewCell cell : GZPlaylistTableViewCell, indexPath : NSIndexPath ) -> Void
     {
         cell.configureSelfWithDataModel(selectedPlaylist!.title, image: NSURL(string: (selectedPlaylist!.imageMedium))!, playlistID: selectedPlaylist!.playlistID)
     }
     
     // MARK: configure a track cell
-    func configureTrackCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
+    private func configureTrackCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
     {
         let track = self.playlistTracks[indexPath.row]
         cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: track.sourceID.isEmpty)
@@ -124,11 +128,17 @@ class GZTracklistViewController: GZTableViewController {
         return 210.0
     }
 
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+extension GZTracklistViewController {
+    @objc private func getPlaylistData() {
+        GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: 10, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in
+            self.playlistTracks = resultTracks
+            self.nextPageToken = nextPageToken
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+            })
+        }
+        self.refreshControl?.endRefreshing()
     }
-
 }

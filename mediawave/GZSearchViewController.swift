@@ -196,11 +196,23 @@ extension GZSearchViewController: UIActionSheetDelegate {
             }
             alertController.addAction(cancelAction)
             
+            // delete search history
             let deleteAction = UIAlertAction(title: kGZConstants.yes, style: .Destructive) { (action) in
                 let fetchRequest = NSFetchRequest(entityName: kGZConstants.GZSearchCache)
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                // NSBatchDeleteRequest is available only since ios9
+                if #available(iOS 9.0, *) {
+                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                    try? (UIApplication.sharedApplication().delegate as! AppDelegate).persistentStoreCoordinator.executeRequest(deleteRequest, withContext: self.cacheFetchResultsController.managedObjectContext)
+                }
+                // old way of deleting objects from managed object context
+                else {
+                    fetchRequest.includesPropertyValues = false
+                    let searches = try? self.cacheFetchResultsController.managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+                    for search in searches! {
+                        self.cacheFetchResultsController.managedObjectContext.deleteObject(search)
+                    }
+                }
                 
-                try? (UIApplication.sharedApplication().delegate as! AppDelegate).persistentStoreCoordinator.executeRequest(deleteRequest, withContext: self.cacheFetchResultsController.managedObjectContext)
                 self.updateSearchHistory()
             }
             alertController.addAction(deleteAction)

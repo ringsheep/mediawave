@@ -11,6 +11,7 @@ import UIKit
 class GZTrackSimpleTableViewCell: GZTableViewCell {
     @IBOutlet weak var trackAvatar: UIImageView!
     @IBOutlet weak var trackName: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var isConfigured:Bool = false
     
@@ -28,6 +29,7 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
     func configureSelfWithDataModel(title: String, imageMedium: String, noMedia: Bool)
     {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.activityIndicator.stopAnimating()
             if ( !(title.isEmpty) ) {
                 self.trackName.text = title
             }
@@ -54,6 +56,7 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
     override func prepareForReuse() {
         trackAvatar.image = nil
         trackName.text = nil
+        activityIndicator.stopAnimating()
     }
 
 }

@@ -39,7 +39,6 @@ class GZPlaylistTableViewCell: GZTableViewCell {
     }
     
     override func prepareForReuse() {
-        playlistBackground.image = nil
         playlistName.text = nil
     }
 }

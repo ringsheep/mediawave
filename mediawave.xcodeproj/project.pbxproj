@@ -23,7 +23,6 @@
 		99209FAC1CB26840003DB829 /* GZCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FAB1CB26840003DB829 /* GZCacheManager.swift */; };
 		99209FAF1CB26B6D003DB829 /* GZSearchCacheFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FAE1CB26B6D003DB829 /* GZSearchCacheFabric.swift */; };
 		99209FB11CB26C2B003DB829 /* GZSearchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99209FB01CB26C2B003DB829 /* GZSearchCache.swift */; };
-		992539A81C6D13C1004100BF /* GZTabBarPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */; };
 		992539AD1C6DEB9D004100BF /* GZMediaData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 992539AB1C6DEB9D004100BF /* GZMediaData.xcdatamodeld */; };
 		993389181C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993389171C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift */; };
 		9933891A1C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993389191C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift */; };
@@ -114,7 +113,6 @@
 		99209FAB1CB26840003DB829 /* GZCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZCacheManager.swift; sourceTree = "<group>"; };
 		99209FAE1CB26B6D003DB829 /* GZSearchCacheFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchCacheFabric.swift; sourceTree = "<group>"; };
 		99209FB01CB26C2B003DB829 /* GZSearchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchCache.swift; sourceTree = "<group>"; };
-		992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTabBarPlayer.xib; sourceTree = "<group>"; };
 		992539AC1C6DEB9D004100BF /* GZMediaData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GZMediaData.xcdatamodel; sourceTree = "<group>"; };
 		993389171C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByQuery.swift; sourceTree = "<group>"; };
 		993389191C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByMbID.swift; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 			isa = PBXGroup;
 			children = (
 				99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */,
-				992539A71C6D13C1004100BF /* GZTabBarPlayer.xib */,
 				999BAFBD1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib */,
 				999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */,
 			);
@@ -652,7 +649,6 @@
 			files = (
 				999BAFBE1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib in Resources */,
 				999BAFC21CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib in Resources */,
-				992539A81C6D13C1004100BF /* GZTabBarPlayer.xib in Resources */,
 				9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */,
 				995C9D261C4C0F4B0015CE93 /* GZtrackSimpleCell.xib in Resources */,
 				995BEF091C2984D3001F8518 /* LaunchScreen.storyboard in Resources */,
@@ -888,7 +884,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -927,7 +923,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -943,7 +939,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Zinyakov.mediawave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.mediawave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -959,7 +955,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Zinyakov.mediawave;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.mediawave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/lib";

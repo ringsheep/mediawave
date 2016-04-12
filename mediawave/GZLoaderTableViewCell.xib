@@ -39,6 +39,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="lh6-Xk-4ef" id="Uc7-eV-boV"/>
                 <outlet property="loadMoreLabel" destination="Pup-9X-Vzg" id="Vep-A9-PIA"/>
             </connections>
             <point key="canvasLocation" x="286" y="201"/>

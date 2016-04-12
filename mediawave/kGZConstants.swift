@@ -86,6 +86,7 @@ extension kGZConstants {
     static var GZtrackSimpleCell = "GZtrackSimpleCell"
     static var GZDescriptionTableViewCell = "GZDescriptionTableViewCell"
     static var GZPlaylistTableViewCell = "GZPlaylistTableViewCell"
+    static var GZLoaderTableViewCell = "GZLoaderTableViewCell"
     static var trackAdvancedCell = "trackAdvancedCell"
     
     static var toArtistFromSearchResults = "toArtistFromSearchResults"

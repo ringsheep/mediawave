@@ -23,6 +23,7 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4P-aA-bar">
                         <rect key="frame" x="16" y="8" width="288" height="162.5"/>
+                        <color key="tintColor" red="1" green="0.37647058820000001" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="d4P-aA-bar" secondAttribute="height" multiplier="71:40" id="glJ-4p-KWZ"/>
                         </constraints>

@@ -12,6 +12,7 @@ class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var isConfigured:Bool = false
     
@@ -29,6 +30,7 @@ class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
     func configureSelfWithDataModel( avatar: String, title: String, artist: String, noMedia : Bool )
     {
         dispatch_async(dispatch_get_main_queue()) {
+            self.activityIndicator.stopAnimating()
             if ( !(title.isEmpty) ) {
                 self.title.text = title
             }
@@ -65,6 +67,7 @@ class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
         avatar.image = nil
         artist.text = nil
         title.text = nil
+        activityIndicator.stopAnimating()
     }
 
 }

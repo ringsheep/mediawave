@@ -106,7 +106,7 @@ extension GZSearchResultsController {
             else if (indexPath.section == 2 )
             {
                 selectedAlbum = self.resultAlbums[indexPath.row]
-                FeedVCDelegate.performSegueWithIdentifier(kGZConstants.toArtistFromSearchResults, sender: self)
+                FeedVCDelegate.performSegueWithIdentifier(kGZConstants.toAlbumFromSearchResults, sender: self)
             }
             else if (indexPath.section == 3)
             {
@@ -293,6 +293,7 @@ extension GZSearchResultsController {
             if (self.resultArtists.count == 0 && self.resultAlbums.count == 0 && self.resultTracks.count == 0) {
                 self.searchNoResults = true
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 })
                 return

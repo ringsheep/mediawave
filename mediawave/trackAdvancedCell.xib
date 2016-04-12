@@ -34,6 +34,9 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vkC-8k-rUE">
+                        <rect key="frame" x="150" y="26" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -44,10 +47,13 @@
                     <constraint firstItem="ly6-TR-Nys" firstAttribute="top" secondItem="vnJ-LZ-KUR" secondAttribute="top" id="VLx-Qd-AJg"/>
                     <constraint firstItem="vnJ-LZ-KUR" firstAttribute="top" secondItem="pdO-MS-CxA" secondAttribute="topMargin" constant="4" id="Xvi-co-DUg"/>
                     <constraint firstItem="vnJ-LZ-KUR" firstAttribute="leading" secondItem="pdO-MS-CxA" secondAttribute="leading" constant="20" id="aM7-4y-5GV"/>
+                    <constraint firstItem="vkC-8k-rUE" firstAttribute="centerX" secondItem="pdO-MS-CxA" secondAttribute="centerX" id="jh0-YA-Wuh"/>
+                    <constraint firstItem="vkC-8k-rUE" firstAttribute="centerY" secondItem="pdO-MS-CxA" secondAttribute="centerY" id="lws-u5-BqR"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="activityIndicator" destination="vkC-8k-rUE" id="U9h-98-dn8"/>
                 <outlet property="artist" destination="8bv-JV-Sx3" id="r2d-w2-n3H"/>
                 <outlet property="avatar" destination="vnJ-LZ-KUR" id="2NL-vX-wzN"/>
                 <outlet property="title" destination="ly6-TR-Nys" id="bzf-D8-oqH"/>

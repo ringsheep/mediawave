@@ -10,6 +10,7 @@ import UIKit
 
 class GZLoaderTableViewCell: GZTableViewCell {
     @IBOutlet weak var loadMoreLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +25,7 @@ class GZLoaderTableViewCell: GZTableViewCell {
     }
     
     override func prepareForReuse() {
-        
+        activityIndicator.stopAnimating()
     }
 
 }
