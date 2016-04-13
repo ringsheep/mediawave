@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class GZFeedViewController: GZTableViewController {
     
@@ -23,7 +22,6 @@ class GZFeedViewController: GZTableViewController {
         let viewController = appDelegate.window!.rootViewController
         if (viewController!.isKindOfClass(GZTagsSelectViewController)) {
             // check if root vc is tag select - then we pop the stack of nav controller
-//            self.navigationController?.popToViewController(viewController, animated: true)
             self.presentingViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
             })
         }
@@ -32,11 +30,12 @@ class GZFeedViewController: GZTableViewController {
             self.performSegueWithIdentifier(kGZConstants.toTagsFromFeed, sender: self)
         }
     }
-    
-    // MARK: Fetch Results Controller Wrapper
-    var fetchResultsControllerWrapper:FetchedResultsControllerDelegate?
 
-    // MARK: View Did Load
+}
+
+//-------------------------------------------------------------
+//MARK: - ViewController Life Cycle
+extension GZFeedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = kGZConstants.feedTitle
@@ -47,38 +46,37 @@ class GZFeedViewController: GZTableViewController {
         
         let playlistNib = UINib(nibName: kGZConstants.GZPlaylistTableViewCell, bundle: nil)
         self.tableView.registerNib(playlistNib, forCellReuseIdentifier: kGZConstants.GZPlaylistTableViewCell)
-
+        
         getPlaylists(self.perPage)
     }
     
     override func viewWillDisappear(animated: Bool) {
         GZQueueManager.searchQueue.cancelAllOperations()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
 
-    // MARK: - Table view data source
+//-------------------------------------------------------------
+// MARK: - TableView DataSource
+extension GZFeedViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playlists.count
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return kGZConstants.playlistCellHeight
-    }
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // infinite scroll
         if ( indexPath.row == (self.playlists.count - 1) && nextPageTokens.last != "" ) {
             GZPlaylistManager.getYTPlaylists(self.selectedTags, perPage: self.perPage, nextPageToken: self.nextPageTokens.last!, success: { (resultPlaylists, nextPageToken) -> Void in
-
+                
                 var newRowsIndexArray = Array<NSIndexPath>()
                 for (index, element) in resultPlaylists.enumerate() {
                     let newIndex = index + self.playlists.count
@@ -104,14 +102,24 @@ class GZFeedViewController: GZTableViewController {
         let model = self.playlists[indexPath.row]
         cell.configureSelfWithDataModel(model.title, image: NSURL(string: model.imageMedium)!, playlistID: model.playlistID)
     }
-    
+}
+
+//-------------------------------------------------------------
+// MARK: - TableView Delegate
+extension GZFeedViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedPath = indexPath
         self.performSegueWithIdentifier(kGZConstants.toPlaylistFromFeed, sender: self)
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return kGZConstants.playlistCellHeight
+    }
+}
 
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//-------------------------------------------------------------
+// MARK: - Navigation
+extension GZFeedViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == kGZConstants.toPlaylistFromFeed) {
             let viewController:GZTracklistViewController = segue.destinationViewController as! GZTracklistViewController
@@ -124,9 +132,10 @@ class GZFeedViewController: GZTableViewController {
             tagsController.selectedTagsArray = Array<GZLFTag>()
         }
     }
-
 }
 
+//-------------------------------------------------------------
+//MARK: - Getting data and refreshing main procedures
 extension GZFeedViewController {
     @objc private func getPlaylists( perPage: Int ) {
         // if we have some selected tags, we perform a request for playlists

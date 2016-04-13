@@ -31,6 +31,8 @@ class GZArtistDetails: GZTableViewController {
     var didLoadMoreAlbumsStarted:Bool = false
     var isTracksActivityIndicatorNeeded = false
     
+    var configuredCells = NSMutableDictionary()
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -124,9 +126,12 @@ extension GZArtistDetails {
                 self.artistAlbums.appendContentsOf(resultAlbums)
                 self.totalAlbumPages = totalPages
                 self.nextAlbumsPage! += 1
+                
+                let newLoaderIndexPath = NSIndexPath(forRow: (self.artistAlbums.count), inSection: 1 )
                 self.didLoadMoreAlbumsStarted = false
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.insertRowsAtIndexPaths(newRowsIndexArray, withRowAnimation: .Fade)
+                    self.tableView.reloadRowsAtIndexPaths([newLoaderIndexPath], withRowAnimation: .None)
                 })
             }
         }
@@ -261,21 +266,22 @@ extension GZArtistDetails {
     private func configureSimpleCell( tableViewCell cell : GZTrackSimpleTableViewCell, indexPath : NSIndexPath ) -> Void
     {
         let track = self.artistTracks[indexPath.row]
-        if ( !(cell.isConfigured) ) {
-            
-            if (self.isTracksActivityIndicatorNeeded) {
-                cell.activityIndicator.startAnimating()
+        if ( (configuredCells.valueForKey(String(indexPath.row))) != nil) {
+            let state = configuredCells.valueForKey(String(indexPath.row)) as! String
+            if (state == "configured") {
+                let noMedia = track.sourceID.isEmpty
+                cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: noMedia)
             }
+        }
+        else {
+            cell.activityIndicator.startAnimating()
             GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) -> Void in
-                self.isTracksActivityIndicatorNeeded = false
                 self.artistTracks[indexPath.row] = resultTrack
                 let noMedia = self.artistTracks[indexPath.row].sourceID.isEmpty
                 cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
+                
+                self.configuredCells.setValue("configured", forKey: String(indexPath.row))
             })
-        }
-        else {
-            let noMedia = track.sourceID.isEmpty
-            cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: noMedia)
         }
     }
 }
@@ -307,7 +313,7 @@ extension GZArtistDetails {
         GZTracksManager.getTracksLF(byArtistMbID: (self.artist?.mbID)!, perPage: self.perPage, pageNumber: 1) { (resultTracks) -> Void in
             self.artistTracks = resultTracks
             
-            NSNotificationCenter.defaultCenter().postNotificationName("GZTrackSimpleTableViewCell_NeedsDataRequest", object: nil)
+            self.configuredCells.removeAllObjects()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
             })

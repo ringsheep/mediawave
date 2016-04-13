@@ -16,8 +16,11 @@ class GZTracklistViewController: GZTableViewController {
     
     let perPage = 10
     var nextPageTokens:Array<String> = Array<String>()
+}
 
-    // MARK: View Did Load
+//-------------------------------------------------------------
+// MARK: - ViewController Life Cycle
+extension GZTracklistViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +43,7 @@ class GZTracklistViewController: GZTableViewController {
     override func viewWillDisappear(animated: Bool) {
         GZQueueManager.searchQueue.cancelAllOperations()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,19 +55,17 @@ class GZTracklistViewController: GZTableViewController {
         if parent == nil {
         }
     }
-    
-    // MARK: table view data source functions
+}
+
+//-------------------------------------------------------------
+// MARK: - TableView DataSource
+extension GZTracklistViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playlistTracks.count
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // playlist tracks section with list of tracks
-        return kGZConstants.simpleCellHeight
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -105,6 +106,27 @@ class GZTracklistViewController: GZTableViewController {
         let track = self.playlistTracks[indexPath.row]
         cell.configureSelfWithDataModel(track.title, imageMedium: track.imageMedium, noMedia: track.sourceID.isEmpty)
     }
+}
+
+//-------------------------------------------------------------
+// MARK: - TableView Delegate
+extension GZTracklistViewController {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // playlist tracks section with list of tracks
+        return kGZConstants.simpleCellHeight
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 210.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZPlaylistTableViewCell) as! GZPlaylistTableViewCell
+        configureInfoCell(tableViewCell: cell, indexPath: NSIndexPath(forRow: 0, inSection: 0))
+        let view = UIView(frame: cell.frame)
+        view.addSubview(cell)
+        return view
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // playlist tracks section with list of tracks
@@ -117,21 +139,10 @@ class GZTracklistViewController: GZTableViewController {
             }
         }
     }
-    
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZPlaylistTableViewCell) as! GZPlaylistTableViewCell
-        configureInfoCell(tableViewCell: cell, indexPath: NSIndexPath(forRow: 0, inSection: 0))
-        let view = UIView(frame: cell.frame)
-        view.addSubview(cell)
-        return view
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 210.0
-    }
-
 }
 
+//-------------------------------------------------------------
+// MARK: - Getting and refreshing data procedure
 extension GZTracklistViewController {
     @objc private func getPlaylistData( perPage: Int ) {
         GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: perPage, nextPageToken: "") { (resultTracks, nextPageToken) -> Void in

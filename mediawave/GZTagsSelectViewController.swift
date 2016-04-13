@@ -33,9 +33,12 @@ class GZTagsSelectViewController: UIViewController, UICollectionViewDataSource, 
 
     let topTags = kGZConstants.topTags
     var selectedTagsArray:Array<GZLFTag> = Array<GZLFTag>()
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
+}
+
+//-------------------------------------------------------------
+// MARK: - Navigation
+extension GZTagsSelectViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // segue to the main nav controller from tags select
         if segue.identifier == "toMainFromTagSelect" {
@@ -56,9 +59,9 @@ class GZTagsSelectViewController: UIViewController, UICollectionViewDataSource, 
             }
         }
     }
-
 }
 
+//-------------------------------------------------------------
 // MARK: - ViewController Life Cycle
 extension GZTagsSelectViewController {
     override func viewDidLoad() {
@@ -107,6 +110,7 @@ extension GZTagsSelectViewController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - UICollectionView DataSource
 extension GZTagsSelectViewController {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -133,6 +137,7 @@ extension GZTagsSelectViewController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - UICollectionView Delegate
 extension GZTagsSelectViewController {
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -177,6 +182,7 @@ extension GZTagsSelectViewController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - ContinueButton Reload State
 extension GZTagsSelectViewController {
     func continueButtonReloadState() {
@@ -191,6 +197,7 @@ extension GZTagsSelectViewController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - Tags setting up
 extension GZTagsSelectViewController {
     func awakeSelectedTags() -> Array<GZLFTag> {

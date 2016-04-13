@@ -85,6 +85,16 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
         }
     }
     
+    @IBAction func onTimeSliderChange(sender: AnyObject) {
+        let seekTime:Float = Float(self.youtubePlayer.duration()) * self.timeSlider.value
+        self.youtubePlayer.seekToSeconds(seekTime, allowSeekAhead: true)
+    }
+    
+}
+
+//-------------------------------------------------------------
+//MARK: - ViewController Life Cycle
+extension GZTrackViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.youtubePlayer.delegate = self
@@ -122,7 +132,11 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+}
+
+//-------------------------------------------------------------
+//MARK: - YT player helper delegate
+extension GZTrackViewController {
     func playerView(playerView: YTPlayerView!, didPlayTime playTime: Float) {
         // set value for progress and update time slider
         let duration = Float(self.youtubePlayer.duration())
@@ -173,14 +187,10 @@ class GZTrackViewController: UIViewController, YTPlayerViewDelegate {
             isPlaying = false
         }
     }
-    
-    @IBAction func onTimeSliderChange(sender: AnyObject) {
-        let seekTime:Float = Float(self.youtubePlayer.duration()) * self.timeSlider.value
-        self.youtubePlayer.seekToSeconds(seekTime, allowSeekAhead: true)
-    }
-    
 }
 
+//-------------------------------------------------------------
+//MARK: - Loading and launching tracks procedure
 extension GZTrackViewController {
     func loadTracksToPlayer( atIndex index: Int, playlist: Array<GZTrack> ) {
         
@@ -230,7 +240,7 @@ extension GZTrackViewController {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.trackName.text = track.title
-            self.trackArtist.text = ""
+            self.trackArtist.text = track.artistName
             self.timeSlider.value = 0
             self.firstTimeLabel.text = "00:00"
             self.secondTimeLabel.text = "\(durationMinutes.format("02")):\(durationSeconds.format("02"))"

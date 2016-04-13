@@ -14,8 +14,6 @@ class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var isConfigured:Bool = false
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -60,7 +58,6 @@ class GZtrackAdvancedCellTableViewCell: GZTableViewCell {
                 self.avatar.alpha = 1
             }
         }
-        isConfigured = true
     }
     
     override func prepareForReuse() {

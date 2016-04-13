@@ -13,11 +13,8 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var isConfigured:Bool = false
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GZTrackSimpleTableViewCell.checkIfNeedsDataRequest), name:"GZTrackSimpleTableViewCell_NeedsDataRequest", object: nil)
         // Initialization code
     }
 
@@ -51,19 +48,13 @@ class GZTrackSimpleTableViewCell: GZTableViewCell {
                 self.trackAvatar.alpha = 1
             }
         })
-        isConfigured = true
     }
     
     override func prepareForReuse() {
         trackAvatar.image = nil
         trackName.text = nil
         activityIndicator.stopAnimating()
-    }
-    
-    func checkIfNeedsDataRequest(notification: NSNotification) {
-        if (notification.name == "GZTrackSimpleTableViewCell_NeedsDataRequest") {
-            self.isConfigured = false
-        }
+        super.prepareForReuse()
     }
 
 }

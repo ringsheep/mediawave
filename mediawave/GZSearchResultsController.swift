@@ -15,6 +15,8 @@ class GZSearchResultsController: GZTableViewController {
     var resultArtists:Array<GZArtist> = []
     var resultAlbums:Array<GZAlbum> = []
     var resultTracks:Array<GZTrack> = []
+    
+    var configuredCells = NSMutableDictionary()
 
     // item used for query in detailed screen
     var selectedArtist:GZArtist?
@@ -40,6 +42,7 @@ class GZSearchResultsController: GZTableViewController {
     
 }
 
+//-------------------------------------------------------------
 // MARK: - ViewController Life Cycle
 extension GZSearchResultsController {
     override func viewDidLoad() {
@@ -70,6 +73,7 @@ extension GZSearchResultsController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - TableViewController Delegate
 extension GZSearchResultsController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -149,6 +153,7 @@ extension GZSearchResultsController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - TableViewController DataSource
 extension GZSearchResultsController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -219,16 +224,21 @@ extension GZSearchResultsController {
         }
         else if ( indexPath.section == 3 ) {
             let requestTrack = self.resultTracks[indexPath.row]
-            if ( !(cell.isConfigured) ) {
+            if ( self.configuredCells.valueForKey(String(indexPath.row)) != nil ) {
+                let state = self.configuredCells.valueForKey(String(indexPath.row)) as! String
+                if (state == "configured") {
+                    let noMedia = requestTrack.sourceID.isEmpty
+                    cell.configureSelfWithDataModel(requestTrack.imageMedium, title: requestTrack.title, artist: requestTrack.artistName, noMedia: noMedia)
+                }
+            }
+            else {
+                cell.activityIndicator.startAnimating()
                 GZTracksManager.getTracksYTMedia(withTrack: requestTrack, success: { (resultTrack) -> Void in
                     self.resultTracks[indexPath.row] = resultTrack
                     let noMedia = resultTrack.sourceID.isEmpty
                     cell.configureSelfWithDataModel(resultTrack.imageMedium, title: resultTrack.title, artist: resultTrack.artistName, noMedia: noMedia)
+                    self.configuredCells.setValue("configured", forKey: String(indexPath.row))
                 })
-            }
-            else {
-                let noMedia = requestTrack.sourceID.isEmpty
-                cell.configureSelfWithDataModel(requestTrack.imageMedium, title: requestTrack.title, artist: requestTrack.artistName, noMedia: noMedia)
             }
             
         }
@@ -256,6 +266,7 @@ extension GZSearchResultsController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - General function for performing search on lastfm api
 extension GZSearchResultsController {
     func searchContent( withQuery query: String )
@@ -312,6 +323,7 @@ extension GZSearchResultsController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - Clear all data within search results controller
 extension GZSearchResultsController {
     func clearData() {
@@ -320,6 +332,7 @@ extension GZSearchResultsController {
         self.resultArtists = []
         self.resultAlbums = []
         self.resultTracks = []
+        self.configuredCells.removeAllObjects()
         self.searchIsEnded = false
         self.searchNoResults = false
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -328,6 +341,7 @@ extension GZSearchResultsController {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - Ending search and caching the search query
 extension GZSearchResultsController {
     func endCurrentSearch( withQuery query: String ) {

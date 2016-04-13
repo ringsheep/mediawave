@@ -43,15 +43,11 @@ class GZSearchViewController: GZTableViewController, UISearchControllerDelegate 
         return controller
     }()
     
-    var fetchResultsControllerWrapper:FetchedResultsControllerDelegate?
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: prepare for segue
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+}
+
+//-------------------------------------------------------------
+//MARK: - Navigation
+extension GZSearchViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kGZConstants.toArtistFromSearchResults {
             let viewController:GZArtistDetails = segue.destinationViewController as! GZArtistDetails
@@ -62,9 +58,9 @@ class GZSearchViewController: GZTableViewController, UISearchControllerDelegate 
             viewController.currentAlbum = searchResultsController?.selectedAlbum
         }
     }
-
 }
 
+//-------------------------------------------------------------
 // MARK: - ViewController Life Cycle
 extension GZSearchViewController
 {
@@ -91,8 +87,14 @@ extension GZSearchViewController
         
         updateSearchHistory()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
+//-------------------------------------------------------------
 // MARK: - TableViewController Delegate
 extension GZSearchViewController
 {
@@ -118,6 +120,7 @@ extension GZSearchViewController
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - TableViewController DataSource
 extension GZSearchViewController
 {
@@ -165,6 +168,7 @@ extension GZSearchViewController
     
 }
 
+//-------------------------------------------------------------
 // MARK: - UISearchBar Delegate
 extension GZSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -185,6 +189,7 @@ extension GZSearchViewController: UISearchBarDelegate {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - UIActionSheetDelegate
 extension GZSearchViewController: UIActionSheetDelegate {
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
@@ -224,6 +229,7 @@ extension GZSearchViewController: UIActionSheetDelegate {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - UISearchResultsUpdating Delegate
 extension GZSearchViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -253,6 +259,7 @@ extension GZSearchViewController: UISearchResultsUpdating {
     }
 }
 
+//-------------------------------------------------------------
 // MARK: - Update search history
 extension GZSearchViewController {
     func updateSearchHistory() {

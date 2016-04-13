@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZTracklistViewController.swift"
-            timestampString = "482183291.483433"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189">
+            startingLineNumber = "200"
+            endingLineNumber = "200">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,21 +34,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZTracklistViewController.swift"
-            timestampString = "482183291.483433"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mediawave/GZTracklistViewController.swift"
-            timestampString = "482183291.483433"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "203"
@@ -62,11 +48,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZTracklistViewController.swift"
-            timestampString = "482183291.483433"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183">
+            startingLineNumber = "214"
+            endingLineNumber = "214">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,11 +62,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZTracklistViewController.swift"
-            timestampString = "482183291.483433"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241">
+            startingLineNumber = "194"
+            endingLineNumber = "194">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mediawave/GZTracklistViewController.swift"
+            timestampString = "482243742.073022"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZtrackAdvancedCellTableViewCell.swift"
-            timestampString = "481817912.440571"
+            timestampString = "482240591.188772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "configureSelfWithDataModel(_:title:artist:noMedia:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481762708.57811"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481986474.743083"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481986474.743083"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481986474.743083"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -383,11 +383,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481762708.57811"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "configureSearchCacheCell(tableViewCell:indexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -447,11 +447,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZSearchViewController.swift"
-            timestampString = "481986474.743083"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -463,27 +463,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181396.833018"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181554.061235"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "getPlaylists(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -495,11 +479,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181567.221805"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "getPlaylists(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -511,11 +495,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482183291.483433"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "refreshData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -527,11 +511,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181617.512454"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "getPlaylists(_:)"
             landmarkType = "5">
             <Locations>
@@ -575,11 +559,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181666.053242"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "getPlaylists(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -591,11 +575,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZFeedViewController.swift"
-            timestampString = "482181672.966825"
+            timestampString = "482243742.073022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "getPlaylists(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -606,60 +590,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mediawave/GZArtistDetails.swift"
-            timestampString = "482183360.542711"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "configureSimpleCell(tableViewCell:indexPath:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "mediawave.GZArtistDetails.(configureSimpleCell in _83949BCA118AE1B5010D6EFFC85D222D) (tableViewCell : mediawave.GZTrackSimpleTableViewCell, indexPath : __ObjC.NSIndexPath) -&gt; ()"
-                  moduleName = "mediawave"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZArtistDetails.swift"
-                  timestampString = "482190444.816778"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "416">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "mediawave.GZArtistDetails.((configureSimpleCell in _83949BCA118AE1B5010D6EFFC85D222D) (tableViewCell : mediawave.GZTrackSimpleTableViewCell, indexPath : __ObjC.NSIndexPath) -&gt; ()).(closure #1)"
-                  moduleName = "mediawave"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/georgezinyakov/Desktop/xcode-projects/mediawave/mediawave/mediawave/GZArtistDetails.swift"
-                  timestampString = "482190444.816997"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "mediawave/GZTrackSimpleTableViewCell.swift"
-            timestampString = "482190417.079804"
+            timestampString = "482240591.188772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -671,27 +607,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mediawave/GZArtistDetails.swift"
-            timestampString = "482190503.385392"
+            timestampString = "482239556.884228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "configureSimpleCell(tableViewCell:indexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mediawave/GZArtistDetails.swift"
-            timestampString = "482190504.105484"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "configureSimpleCell(tableViewCell:indexPath:)"
             landmarkType = "5">
          </BreakpointContent>
