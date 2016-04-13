@@ -19,7 +19,7 @@
 "GZFeedViewController.title" = "Рекомендации";
 "GZTrackViewController.title" = "Проигрыватель";
 "GZAlertTableViewCell.NoSearchCache" = "Через поиск вы можете искать любых исполнителей, альбомы и композиции";
-"GZAlertTableViewCell.NoSearchResults" = "Ничего не найдено по данному запросу.\nПопробуйте что-нибудь еще.";
+"GZAlertTableViewCell.NoSearchResults" = "Ничего не найдено по данному запросу.\nПопробуйте что-нибудь еще";
 "GZSearchViewController.title" = "Поиск";
 "GZSearchViewController.recentlySearched" = "Недавно вы искали";
 "GZSearchViewController.clearSearch" = "Очистить историю поиска";

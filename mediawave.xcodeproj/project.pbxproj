@@ -166,6 +166,9 @@
 		99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByAlbumMbID.swift; sourceTree = "<group>"; };
 		99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadPlaylistsBySelectedTags.swift; sourceTree = "<group>"; };
 		99F00D871C99A33600FEF016 /* kGZConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kGZConstants.swift; sourceTree = "<group>"; };
+		99F3BBD71CBE789E00B3714B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		99F3BBD81CBE789F00B3714B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		99F3BBD91CBE789F00B3714B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99F5D13D1C6796AF0068D4AF /* GZTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTabBarController.swift; sourceTree = "<group>"; };
 		99F6EE461C3E77F1000E4D77 /* trackAdvancedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = trackAdvancedCell.xib; sourceTree = "<group>"; };
 		99F6EE481C3EB208000E4D77 /* GZtrackAdvancedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZtrackAdvancedCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -629,6 +632,7 @@
 				en,
 				Base,
 				ru,
+				uk,
 			);
 			mainGroup = 995BEEF21C2984D3001F8518;
 			productRefGroup = 995BEEFC1C2984D3001F8518 /* Products */;
@@ -823,6 +827,7 @@
 			children = (
 				995BEF031C2984D3001F8518 /* Base */,
 				99B07E831CB71EE400792BA1 /* ru */,
+				99F3BBD81CBE789F00B3714B /* uk */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -832,6 +837,7 @@
 			children = (
 				995BEF081C2984D3001F8518 /* Base */,
 				99B07E821CB71EE400792BA1 /* ru */,
+				99F3BBD71CBE789E00B3714B /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -841,6 +847,7 @@
 			children = (
 				99B07E871CB71F3A00792BA1 /* en */,
 				99B07E881CB71F7F00792BA1 /* ru */,
+				99F3BBD91CBE789F00B3714B /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

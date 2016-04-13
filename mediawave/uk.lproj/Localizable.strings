@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  mediawave
+
+  Created by George Zinyakov on 4/5/16.
+  Copyright © 2016 George Zinyakov. All rights reserved.
+*/
+
+"Continue" = "Продовжити";
+"Unknown error" = "Невідома помилка";
+"Untitled" = "Без назви";
+"Yes" = "Так";
+"No" = "Ні";
+"Cancel" = "Відміна";
+"Edit" = "Змінити";
+"Load more" = "Завантажити ще";
+
+"GZTagsSelectViewController.introLabel" = "Оберіть 5 основних тем";
+"GZFeedViewController.title" = "Рекомендації";
+"GZTrackViewController.title" = "Програвач";
+"GZAlertTableViewCell.NoSearchCache" = "Через пошук ви можете шукати будь-яких виконавців, альбоми і композиції";
+"GZAlertTableViewCell.NoSearchResults" = "Нічого не знайдено по даному запиту.\nСпробуйте щось ще";
+"GZSearchViewController.title" = "Пошук";
+"GZSearchViewController.recentlySearched" = "Нещодавно ви шукали";
+"GZSearchViewController.clearSearch" = "Очистити історію пошуку";
+"GZSearchViewController.clearSearchDescript" = "Ви можете очистити історию нещодавніх пошукових запитів";
+"GZSearchViewController.clearSearchPromt" = "Ви дійсно хочете видалити всю історію пошуку?";
+"GZSearchResultsController.artists" = "Виконавці";
+"GZSearchResultsController.albums" = "Альбоми";
+"GZSearchResultsController.tracks" = "Композиції";
+"GZArtistDetails.topalbums" = "Кращі альбоми";
+"GZArtistDetails.toptracks" = "Кращі композиції";
+"GZTrackViewController.foundAlert" = "Знайдено в mediawave:";

@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "Untitled track"; ObjectID = "44I-Kx-Tyz"; */
+"44I-Kx-Tyz.text" = "Untitled track";
+
+/* Class = "UITabBarItem"; title = "Поиск"; ObjectID = "5G3-DL-c4k"; */
+"5G3-DL-c4k.title" = "Поиск";
+
+/* Class = "UIButton"; normalTitle = "Play"; ObjectID = "5lN-5H-zra"; */
+"5lN-5H-zra.normalTitle" = "Play";
+
+/* Class = "UINavigationItem"; title = "Рекомендации"; ObjectID = "9p4-DB-bmX"; */
+"9p4-DB-bmX.title" = "Рекомендации";
+
+/* Class = "UITabBarItem"; title = "Проигрыватель"; ObjectID = "FNq-Hg-reH"; */
+"FNq-Hg-reH.title" = "Проигрыватель";
+
+/* Class = "UINavigationItem"; title = "Проигрыватель"; ObjectID = "GKI-83-hoJ"; */
+"GKI-83-hoJ.title" = "Проигрыватель";
+
+/* Class = "UILabel"; text = "by Unknown artist"; ObjectID = "M15-3e-WoT"; */
+"M15-3e-WoT.text" = "by Unknown artist";
+
+/* Class = "UILabel"; text = "Выберите 5 основных тем"; ObjectID = "MSh-OP-oKQ"; */
+"MSh-OP-oKQ.text" = "Выберите 5 основных тем";
+
+/* Class = "UISearchBar"; placeholder = "Найти любую музыку"; ObjectID = "WLO-uh-Jsq"; */
+"WLO-uh-Jsq.placeholder" = "Найти любую музыку";
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "ZDY-xW-MVS"; */
+"ZDY-xW-MVS.normalTitle" = "Продолжить";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "ZoR-qk-tUS"; */
+"ZoR-qk-tUS.normalTitle" = "Next";
+
+/* Class = "UITabBarItem"; title = "Поиск"; ObjectID = "ai1-bp-C8p"; */
+"ai1-bp-C8p.title" = "Поиск";
+
+/* Class = "UINavigationItem"; title = "Поиск"; ObjectID = "dFZ-aE-GMf"; */
+"dFZ-aE-GMf.title" = "Поиск";
+
+/* Class = "UITabBarItem"; title = "Реккомендации"; ObjectID = "hWQ-4B-qBE"; */
+"hWQ-4B-qBE.title" = "Реккомендации";
+
+/* Class = "UITabBarItem"; title = "Рекомендации"; ObjectID = "owJ-R6-grX"; */
+"owJ-R6-grX.title" = "Рекомендации";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "t41-cj-Ocx"; */
+"t41-cj-Ocx.text" = "00:00";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "tKT-mu-iHR"; */
+"tKT-mu-iHR.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ttq-sJ-OF8"; */
+"ttq-sJ-OF8.normalTitle" = "Button";
