@@ -4,17 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>FSQCollectionViewAlignedLayout.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PureLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,35 +14,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>YoutubeSourceParserKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>23EA8FF605526DDEB18A6BA1A3019650</key>
+		<key>A31841C2D22ED2DD2A9282B4F1F9C951</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5AA33F692CA610C34D5959871D5BD88C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D901EE7FB2512A54206E4685D577D843</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4A85A108DB5B60FD7CF045EA46AF4D3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ECDA29466F2DC80E8746054F6AAA1CAA</key>
+		<key>E8EB5C592163D4094AA1837D00A36AEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

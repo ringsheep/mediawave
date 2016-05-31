@@ -79,7 +79,7 @@ extension GZTagsSelectViewController {
         continueButtonOutlet.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
         
         introLabel.text = kGZConstants.introLabel
-        continueButtonOutlet.titleLabel?.text = kGZConstants.continueLabel
+        continueButtonOutlet.setTitle(kGZConstants.continueLabel, forState: UIControlState.Normal)
         
         // awake selected tags from NSUserDefaults and link them to all tags array
         selectedTagsArray = awakeSelectedTags()
@@ -173,8 +173,18 @@ extension GZTagsSelectViewController {
             // let's check out the size of the text label inside this cell
             // we need this to make them fit to their content size in sizeForItemAtIndexPath
             let tagNSString:NSString = topTags[indexPath.row].name as NSString
-            let tagSize:CGSize = tagNSString.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(18.0)])
-            return tagSize
+            var tagSize:CGSize?
+            if ( DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P ) {
+                tagSize = tagNSString.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(19.0)])
+                tagSize?.height = 30.0
+            }
+            else if (DeviceType.IS_IPHONE_4_OR_LESS) {
+                tagSize = tagNSString.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(16.0)])
+            }
+            else {
+                tagSize = tagNSString.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(18.0)])
+            }
+            return tagSize!
         }
         else {
             return CGSizeMake(40.0, 15.0)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rAG-eD-SZW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rAG-eD-SZW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,7 @@
         <!--Поиск-->
         <scene sceneID="2gQ-VC-3Vh">
             <objects>
-                <tableViewController id="jNQ-Yy-p4g" customClass="GZSearchViewController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jNQ-Yy-p4g" customClass="GZSearchViewController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fHN-th-8gE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="S9Q-vC-XpM">
             <objects>
-                <tabBarController storyboardIdentifier="feedController" id="QPh-yJ-Ck1" customClass="GZTabBarController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="feedController" id="QPh-yJ-Ck1" customClass="GZTabBarController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jti-KQ-8ve"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -116,7 +116,7 @@
         <!--Проигрыватель-->
         <scene sceneID="lqA-HJ-bjk">
             <objects>
-                <viewController restorationIdentifier="trackViewController" id="ADg-Th-yXf" customClass="GZTrackViewController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="trackViewController" id="ADg-Th-yXf" customClass="GZTrackViewController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iEP-Yu-XEv"/>
                         <viewControllerLayoutGuide type="bottom" id="yHm-5N-eDh"/>
@@ -417,7 +417,7 @@
         <!--Album Controller-->
         <scene sceneID="xib-Z1-AUz">
             <objects>
-                <tableViewController id="djn-KP-sXp" customClass="GZAlbumController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="djn-KP-sXp" customClass="GZAlbumController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D1k-ot-qZ7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,7 +474,7 @@
         <!--Рекомендации-->
         <scene sceneID="cYT-Wf-8iV">
             <objects>
-                <tableViewController id="Enq-EI-8gy" customClass="GZFeedViewController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Enq-EI-8gy" customClass="GZFeedViewController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="YLi-4Y-VoB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,15 +516,15 @@
         <!--Tracklist View Controller-->
         <scene sceneID="EU4-xI-yXv">
             <objects>
-                <tableViewController id="FMX-Xh-myo" customClass="GZTracklistViewController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ct2-Jx-rNK">
+                <tableViewController id="FMX-Xh-myo" customClass="GZTracklistViewController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ct2-Jx-rNK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nFF-ap-4m2">
-                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nFF-ap-4m2" id="bzL-36-UUi">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -546,7 +546,7 @@
         <!--Artist Details-->
         <scene sceneID="l0z-4s-pIK">
             <objects>
-                <tableViewController id="lU5-qJ-5Fc" customClass="GZArtistDetails" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="lU5-qJ-5Fc" customClass="GZArtistDetails" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0UH-sq-hqx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,7 +578,7 @@
         <!--Search Results Controller-->
         <scene sceneID="BtH-MU-XvA">
             <objects>
-                <tableViewController id="jFc-SZ-ZcF" customClass="GZSearchResultsController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jFc-SZ-ZcF" customClass="GZSearchResultsController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IiQ-9P-4vT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -645,7 +645,7 @@
         <!--Tags Select View Controller-->
         <scene sceneID="CES-Vr-3zR">
             <objects>
-                <viewController storyboardIdentifier="tagsSelectController" id="GOm-mu-15h" customClass="GZTagsSelectViewController" customModule="mediawave" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tagsSelectController" id="GOm-mu-15h" customClass="GZTagsSelectViewController" customModule="Media_Wave" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jqg-NI-OmI"/>
                         <viewControllerLayoutGuide type="bottom" id="oRS-XZ-MtZ"/>
@@ -673,7 +673,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KWr-o3-8c5">
-                                <rect key="frame" x="40" y="86" width="240" height="419.5"/>
+                                <rect key="frame" x="30" y="86" width="260" height="419.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="422" id="apl-ee-IgV"/>
@@ -705,15 +705,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MSh-OP-oKQ" firstAttribute="top" secondItem="jqg-NI-OmI" secondAttribute="bottom" constant="24" id="2db-by-dj6"/>
-                            <constraint firstItem="KWr-o3-8c5" firstAttribute="leading" secondItem="qlP-ek-gyG" secondAttribute="leadingMargin" constant="24" id="49t-Zx-VQm">
-                                <variation key="widthClass=compact" constant="24"/>
-                                <variation key="widthClass=regular" constant="42"/>
+                            <constraint firstItem="KWr-o3-8c5" firstAttribute="leading" secondItem="qlP-ek-gyG" secondAttribute="leading" constant="30" id="49t-Zx-VQm">
+                                <variation key="widthClass=compact" constant="30"/>
+                                <variation key="widthClass=regular" constant="60"/>
                             </constraint>
                             <constraint firstItem="ZDY-xW-MVS" firstAttribute="top" secondItem="KWr-o3-8c5" secondAttribute="bottom" constant="8" id="9Wu-co-Th8"/>
                             <constraint firstItem="MSh-OP-oKQ" firstAttribute="centerX" secondItem="qlP-ek-gyG" secondAttribute="centerX" id="CSw-MD-nkU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KWr-o3-8c5" secondAttribute="trailing" constant="24" id="eBS-JT-5pt">
-                                <variation key="widthClass=compact" constant="24"/>
-                                <variation key="widthClass=regular" constant="42"/>
+                            <constraint firstAttribute="trailing" secondItem="KWr-o3-8c5" secondAttribute="trailing" constant="30" id="eBS-JT-5pt">
+                                <variation key="widthClass=compact" constant="30"/>
+                                <variation key="widthClass=regular" constant="60"/>
                             </constraint>
                             <constraint firstItem="KWr-o3-8c5" firstAttribute="top" secondItem="MSh-OP-oKQ" secondAttribute="bottom" constant="16" id="f1a-C3-cLl"/>
                             <constraint firstItem="oRS-XZ-MtZ" firstAttribute="top" secondItem="ZDY-xW-MVS" secondAttribute="bottom" constant="24" id="iDG-5D-j44"/>

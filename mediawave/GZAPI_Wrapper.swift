@@ -50,7 +50,7 @@ class GZAPI_WRAPPER: NSObject
             }
         }
         
-//        print("url string : \(urlString)") // Печатаем полученный запрос для проверки
+        print("url string : \(urlString)") // Печатаем полученный запрос для проверки
         
         let url = NSURL (string: urlString) // Приводим сформированный запрос к формату NSURL (оборачиваем к класс NSURL)
         
@@ -67,7 +67,7 @@ class GZAPI_WRAPPER: NSObject
         if ( data != nil) // Если данные не пустые
         {
             let jsonResponse = JSON ( data: data!, options: NSJSONReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
-            //print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
+            print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
             success ( jsonResponse: jsonResponse) // Возвращаем результаты в success block
         }
         else

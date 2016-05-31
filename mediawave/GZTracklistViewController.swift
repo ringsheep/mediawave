@@ -61,14 +61,22 @@ extension GZTracklistViewController {
 // MARK: - TableView DataSource
 extension GZTracklistViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ( section == 0 ) {
+            return 1
+        }
         return self.playlistTracks.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZPlaylistTableViewCell) as! GZPlaylistTableViewCell
+            configureInfoCell(tableViewCell: cell, indexPath: NSIndexPath(forRow: 0, inSection: 0))
+            return cell
+        }
         // infinite scroll
         if ( indexPath.row == (self.playlistTracks.count - 1) && nextPageTokens.last != "" ) {
             GZTracksManager.getYTPlaylistItems(selectedPlaylist!.playlistID, perPage: self.perPage, nextPageToken: nextPageTokens.last!) { (resultTracks, nextPageToken) -> Void in
@@ -76,7 +84,7 @@ extension GZTracklistViewController {
                 var newRowsIndexArray = Array<NSIndexPath>()
                 for (index, element) in resultTracks.enumerate() {
                     let newIndex = index + self.playlistTracks.count
-                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 0)
+                    let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
                     newRowsIndexArray.append(newIndexPath)
                 }
                 
@@ -112,23 +120,17 @@ extension GZTracklistViewController {
 // MARK: - TableView Delegate
 extension GZTracklistViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.section == 0) {
+            return kGZConstants.playlistCellHeight
+        }
         // playlist tracks section with list of tracks
         return kGZConstants.simpleCellHeight
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 210.0
-    }
-    
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kGZConstants.GZPlaylistTableViewCell) as! GZPlaylistTableViewCell
-        configureInfoCell(tableViewCell: cell, indexPath: NSIndexPath(forRow: 0, inSection: 0))
-        let view = UIView(frame: cell.frame)
-        view.addSubview(cell)
-        return view
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.section == 0) {
+            return
+        }
         // playlist tracks section with list of tracks
         selectedRow = indexPath.row
         for viewController:UIViewController in self.tabBarController!.viewControllers! {
@@ -149,7 +151,7 @@ extension GZTracklistViewController {
             self.playlistTracks = resultTracks
             self.nextPageTokens.append(nextPageToken)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
             })
         }
         self.refreshControl?.endRefreshing()

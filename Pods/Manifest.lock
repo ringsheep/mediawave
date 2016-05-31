@@ -1,21 +1,12 @@
 PODS:
-  - FSQCollectionViewAlignedLayout (1.1.1)
-  - PureLayout (3.0.1)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - YoutubeSourceParserKit (0.2.4)
 
 DEPENDENCIES:
-  - FSQCollectionViewAlignedLayout
-  - PureLayout
   - SDWebImage
-  - YoutubeSourceParserKit
 
 SPEC CHECKSUMS:
-  FSQCollectionViewAlignedLayout: 122006b230bf5635ae159f1ad1eaa9b5ef11391e
-  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  YoutubeSourceParserKit: d1506222a62718ed41f18ab52ebbc1b1d9ecabcc
 
 COCOAPODS: 0.39.0

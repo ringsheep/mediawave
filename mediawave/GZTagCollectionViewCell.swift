@@ -12,7 +12,11 @@ class GZTagCollectionViewCell: UICollectionViewCell
 {
     @IBOutlet weak var itemTag: UILabel!
     var cellSelected:Bool = false
-    let mediawaveColor = UIColor(red: 255/255, green: 96/255, blue: 152/255, alpha: 1)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        prepareForReuse()
+    }
     
     func configureSelfWithDataModel(tag: GZLFTag) {
         itemTag.text = tag.name
@@ -26,19 +30,28 @@ class GZTagCollectionViewCell: UICollectionViewCell
     
     func enable() {
         self.layer.cornerRadius = self.bounds.size.height/2
-        self.backgroundColor = self.mediawaveColor
+        self.backgroundColor = kGZConstants.mediawaveColor
         self.itemTag.textColor = UIColor.whiteColor()
     }
     
     func disable() {
         self.backgroundColor = UIColor.clearColor()
-        self.itemTag.textColor = self.mediawaveColor
+        self.itemTag.textColor = kGZConstants.mediawaveColor
     }
     
     override func prepareForReuse() {
         itemTag.text = nil
+        if (DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P) {
+            itemTag.font = itemTag.font.fontWithSize(15.0)
+        }
+        else if (DeviceType.IS_IPHONE_4_OR_LESS) {
+            itemTag.font = itemTag.font.fontWithSize(12.0)
+        }
+        else {
+            itemTag.font = itemTag.font.fontWithSize(14.0)
+        }
         self.backgroundColor = UIColor.clearColor()
-        self.itemTag.textColor = self.mediawaveColor
+        self.itemTag.textColor = kGZConstants.mediawaveColor
     }
 
 }
