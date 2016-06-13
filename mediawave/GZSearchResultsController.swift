@@ -28,6 +28,7 @@ class GZSearchResultsController: GZTableViewController {
     // delegate object for previous controller
     var FeedVCDelegate:GZSearchViewController = GZSearchViewController()
     
+    var searchIsPending:Bool = false
     var searchIsEnded:Bool = false
     var searchNoResults:Bool = false
     
@@ -96,7 +97,7 @@ extension GZSearchResultsController {
         // hide keyboard
         FeedVCDelegate.searchController?.searchBar.resignFirstResponder()
         // add selected string to search field and refresh search results with advanced layout
-        if (searchNoResults) {
+        if (searchNoResults || searchIsPending) {
             return
         }
         if (searchIsEnded)
@@ -233,11 +234,20 @@ extension GZSearchResultsController {
             }
             else {
                 cell.activityIndicator.startAnimating()
-                GZTracksManager.getTracksYTMedia(withTrack: requestTrack, success: { (resultTrack) -> Void in
+                GZTracksManager.getTracksYTMedia(withTrack: requestTrack, success: { (resultTrack) in
+                    
                     self.resultTracks[indexPath.row] = resultTrack
                     let noMedia = resultTrack.sourceID.isEmpty
                     cell.configureSelfWithDataModel(resultTrack.imageMedium, title: resultTrack.title, artist: resultTrack.artistName, noMedia: noMedia)
                     self.configuredCells.setValue("configured", forKey: String(indexPath.row))
+                    
+                    }, failure: { (sourceTrack) in
+                        
+                        self.resultTracks[indexPath.row] = sourceTrack
+                        let noMedia = sourceTrack.sourceID.isEmpty
+                        cell.configureSelfWithDataModel(sourceTrack.imageMedium, title: sourceTrack.title, artist: sourceTrack.artistName, noMedia: noMedia)
+                        self.configuredCells.setValue("configured", forKey: String(indexPath.row))
+                        
                 })
             }
             
@@ -271,53 +281,44 @@ extension GZSearchResultsController {
 extension GZSearchResultsController {
     func searchContent( withQuery query: String )
     {
+        clearData()
         print("a new search is launched with a query \(query)")
         print("queue items: \(GZQueueManager.searchQueue.operations)")
+        self.searchIsPending = true
         self.activityIndicator.startAnimating()
         
         GZArtistManager.getArtistsLF(query, perPage: perPage, pageNumber: 1) { (resultArtists) -> Void in
             self.resultArtists = resultArtists
-            
-            if ( self.resultArtists.count == 0 ) {
-               return
-            }
+
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.activityIndicator.stopAnimating()
                 self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
             })
-        }
-        
-        GZAlbumManager.getAlbumsLF(query, perPage: perPage, pageNumber: 1) { (resultAlbums) -> Void in
-            self.resultAlbums = resultAlbums
             
-            if ( self.resultAlbums.count == 0 ) {
-                return
-            }
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
-            })
-        }
-        
-        GZTracksManager.getTracksLF(query, perPage: perPage, pageNumber: 1) { (resultTracks) -> Void in
-            self.resultTracks = resultTracks
-            
-            if (self.resultArtists.count == 0 && self.resultAlbums.count == 0 && self.resultTracks.count == 0) {
-                self.searchNoResults = true
+            GZAlbumManager.getAlbumsLF(query, perPage: self.perPage, pageNumber: 1) { (resultAlbums) -> Void in
+                self.resultAlbums = resultAlbums
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.activityIndicator.stopAnimating()
-                    self.tableView.reloadData()
+                    self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
                 })
-                return
+                
+                GZTracksManager.getTracksLF(query, perPage: self.perPage, pageNumber: 1) { (resultTracks) -> Void in
+                    self.resultTracks = resultTracks
+                    self.searchIsPending = false
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.activityIndicator.stopAnimating()
+                        self.tableView.reloadSections(NSIndexSet(index: 3), withRowAnimation: .Fade)
+                    })
+                    
+                    if (self.resultArtists.count == 0 && self.resultAlbums.count == 0 && self.resultTracks.count == 0) {
+                        self.searchNoResults = true
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.tableView.reloadData()
+                        })
+                    }
+                    
+                }
             }
-            else if ( self.resultTracks.count == 0 ) {
-                return
-            }
-            else {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadSections(NSIndexSet(index: 3), withRowAnimation: .Fade)
-                })
-            }
-            
         }
 
     }

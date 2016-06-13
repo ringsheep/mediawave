@@ -41,6 +41,8 @@
 		995C9D261C4C0F4B0015CE93 /* GZtrackSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995C9D251C4C0F4B0015CE93 /* GZtrackSimpleCell.xib */; };
 		995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7831C380074002D9776 /* GZSearchResultsController.swift */; };
 		995CF7861C3828EF002D9776 /* GZSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF7851C3828EF002D9776 /* GZSearchViewController.swift */; };
+		995DD2AC1D0F5A0600FC31CD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995DD2AA1D0F5A0600FC31CD /* Fabric.framework */; };
+		995DD2AD1D0F5A0600FC31CD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */; };
 		9960E8951C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */; };
 		9978C6FF1C4FDF0B0044143D /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */; };
 		9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9978C7001C4FDF4C0044143D /* Assets.bundle */; };
@@ -133,6 +135,8 @@
 		995C9D251C4C0F4B0015CE93 /* GZtrackSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZtrackSimpleCell.xib; sourceTree = "<group>"; };
 		995CF7831C380074002D9776 /* GZSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchResultsController.swift; sourceTree = "<group>"; };
 		995CF7851C3828EF002D9776 /* GZSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZSearchViewController.swift; sourceTree = "<group>"; };
+		995DD2AA1D0F5A0600FC31CD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmAlbumsByQuery.swift; sourceTree = "<group>"; };
 		9978C6FD1C4FDF0B0044143D /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"; sourceTree = "<group>"; };
 		9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.m"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			files = (
 				99209F781CADF012003DB829 /* CoreText.framework in Frameworks */,
 				D6F4EB102B20A1BF84CF568C /* Pods.framework in Frameworks */,
+				995DD2AD1D0F5A0600FC31CD /* Crashlytics.framework in Frameworks */,
+				995DD2AC1D0F5A0600FC31CD /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +256,8 @@
 				995BEEFC1C2984D3001F8518 /* Products */,
 				C7F1D8F5080ADA7CB7D4FE8F /* Pods */,
 				3F919D7D1A56DDC859071D58 /* Frameworks */,
+				995DD2AA1D0F5A0600FC31CD /* Fabric.framework */,
+				995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -531,6 +539,7 @@
 				995BEEF91C2984D3001F8518 /* Resources */,
 				3CB50D6FCA492899B2424BA0 /* Embed Pods Frameworks */,
 				7EC6E2045498673B72A8D785 /* Copy Pods Resources */,
+				995DD2A91D0F59B600FC31CD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -711,6 +720,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		995DD2A91D0F59B600FC31CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 49c9d42d72e2cf59bbcc5b23ddbb5731a0c4736f 3b5eadf37bcb5b59bcc9c1e310a4c22e6b22453d6f09cc5192a20574cd8b1fca";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -925,6 +947,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.mediawave;
@@ -942,6 +968,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mediawave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.mediawave;

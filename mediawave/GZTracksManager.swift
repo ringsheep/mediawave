@@ -83,12 +83,17 @@ extension GZTracksManager {
 // MARK: Search for tracks by query
 extension GZTracksManager
 {
-    class func getTracksYTMedia(withTrack track: GZTrack, success: ( resultTrack : GZTrack ) -> Void)
+    class func getTracksYTMedia(withTrack track: GZTrack, success: ( resultTrack : GZTrack ) -> Void , failure: ( sourceTrack : GZTrack ) -> Void)
     {
         print("GZdownloadTracksYTMediaByQuery init")
-        self.downloadTracksYTMediaByQuery = GZdownloadTracksYTMediaByQuery(withTrack: track) { (resultTrack) -> Void in
+        self.downloadTracksYTMediaByQuery = GZdownloadTracksYTMediaByQuery(withTrack: track, success: { (resultTrack) in
+            
             success(resultTrack: resultTrack)
-        }
+            
+            }, failure: { (resultTrack) in
+                
+                failure(sourceTrack: resultTrack)
+        })
         
         if (self.downloadLastfmTracksByQuery != nil && self.downloadLastfmTracksByQuery?.finished == false) {
             self.downloadTracksYTMediaByQuery?.addDependency(self.downloadLastfmTracksByQuery!)

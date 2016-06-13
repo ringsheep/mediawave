@@ -275,13 +275,22 @@ extension GZArtistDetails {
         }
         else {
             cell.activityIndicator.startAnimating()
-            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) -> Void in
+            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) in
+                
                 self.artistTracks[indexPath.row] = resultTrack
                 let noMedia = self.artistTracks[indexPath.row].sourceID.isEmpty
                 cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
-                
                 self.configuredCells.setValue("configured", forKey: String(indexPath.row))
+                
+                }, failure: { (sourceTrack) in
+                    
+                    self.artistTracks[indexPath.row] = sourceTrack
+                    let noMedia = self.artistTracks[indexPath.row].sourceID.isEmpty
+                    cell.configureSelfWithDataModel(sourceTrack.title, imageMedium: sourceTrack.imageMedium, noMedia: noMedia)
+                    self.configuredCells.setValue("configured", forKey: String(indexPath.row))
+                    
             })
+            
         }
     }
 }

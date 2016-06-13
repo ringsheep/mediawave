@@ -16,13 +16,16 @@ class GZdownloadTracksYTMediaByQuery: NSOperation {
     var perPage: Int?
     var pageNumber: Int?
     var successBlock: (resultTrack : GZTrack) -> Void
+    var failureBlock: (resultTrack : GZTrack) -> Void
     
     init(
         withTrack track: GZTrack,
-        success: (resultTrack : GZTrack) -> Void
+        success: (resultTrack : GZTrack) -> Void,
+        failure: (resultTrack : GZTrack) -> Void
         ) {
             self.track = track
             self.successBlock = success
+            self.failureBlock = failure
             super.init()
     }
     
@@ -51,7 +54,7 @@ class GZdownloadTracksYTMediaByQuery: NSOperation {
                 }
                 
                 print("GZdownloadTracksYTMediaByQuery finished with no media item")
-                self.successBlock(resultTrack: self.track!)
+                self.failureBlock(resultTrack: self.track!)
                 dispatch_semaphore_signal(semaphore)
             }
             else {

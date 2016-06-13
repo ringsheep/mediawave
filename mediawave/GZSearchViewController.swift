@@ -112,11 +112,10 @@ extension GZSearchViewController
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let cachedQuery = self.cacheFetchResultsController.objectAtIndexPath(indexPath) as! GZSearchCache
-        self.searchQuery = cachedQuery.title
-        self.searchController?.searchBar.text = self.searchQuery
+        self.searchController?.searchBar.text = cachedQuery.title
         self.searchController?.active = true
-        self.searchResultsController!.searchContent(withQuery: self.searchQuery)
-        self.searchResultsController?.endCurrentSearch(withQuery: self.searchQuery)
+        self.searchResultsController!.searchContent(withQuery: cachedQuery.title)
+        self.searchResultsController?.endCurrentSearch(withQuery: cachedQuery.title)
     }
 }
 
@@ -178,7 +177,6 @@ extension GZSearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        searchQuery = searchText
         if (searchText == "") {
             updateSearchHistory()
         }
@@ -234,24 +232,25 @@ extension GZSearchViewController: UIActionSheetDelegate {
 extension GZSearchViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         // flag to control if search is made once before secondsToWait is elapced
-        guard ( searchRequestIsMade == false && searchResultsController!.searchIsEnded == false && searchController.active && searchController.searchBar.text != "" ) else {
+        guard ( searchRequestIsMade == false
+                && searchController.active
+                && searchController.searchBar.text != ""
+                && self.searchQuery != searchController.searchBar.text ) else {
             return
         }
-        if (searchResultsController!.searchNoResults) {
-            searchResultsController?.clearData()
-        }
-        self.searchQuery = searchController.searchBar.text!
+        // launch the search after 2 secs
+        self.searchRequestIsMade = true
         if (self.searchController!.searchBar.isFirstResponder()) {
-            searchRequestIsMade = true
-            // search for content each time the search field is updated
             let secondsToWait:Double = 2
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(secondsToWait * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.searchQuery = searchController.searchBar.text!
                 self.searchResultsController!.searchContent(withQuery: self.searchQuery)
                 self.searchRequestIsMade = false
             }
         }
         else {
+            self.searchQuery = searchController.searchBar.text!
             self.searchResultsController!.searchContent(withQuery: self.searchQuery)
             self.searchRequestIsMade = false
         }

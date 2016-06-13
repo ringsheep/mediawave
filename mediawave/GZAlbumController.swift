@@ -96,10 +96,17 @@ extension GZAlbumController {
         }
         else {
             cell.activityIndicator.startAnimating()
-            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) -> Void in
-                self.currentAlbumTracks[indexPath.row] = resultTrack
-                let noMedia = resultTrack.sourceID.isEmpty
-                cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
+            GZTracksManager.getTracksYTMedia(withTrack: track, success: { (resultTrack) in
+                
+                    self.currentAlbumTracks[indexPath.row] = resultTrack
+                    let noMedia = resultTrack.sourceID.isEmpty
+                    cell.configureSelfWithDataModel(resultTrack.title, imageMedium: resultTrack.imageMedium, noMedia: noMedia)
+                
+                }, failure: { (sourceTrack) in
+                
+                    self.currentAlbumTracks[indexPath.row] = sourceTrack
+                    let noMedia = sourceTrack.sourceID.isEmpty
+                    cell.configureSelfWithDataModel(sourceTrack.title, imageMedium: sourceTrack.imageMedium, noMedia: noMedia)
             })
         }
     }
