@@ -13,7 +13,7 @@ import Foundation
 
 // Youtube
 let kBaseURLYT = "https://www.googleapis.com/youtube/v3/"
-let kApiKeyYT = "XXX"
+let kApiKeyYT = "AIzaSyDmKKXWUeSTP5cfDaivcznCoxC6tN30weo"
 
 // Soundcloud
 let kBaseURLSC = "http://api.soundcloud.com/"
@@ -21,7 +21,7 @@ let kApiKeySC = "CLIENTKEY"
 
 // Last.fm
 let kBaseURLLF = "http://ws.audioscrobbler.com/2.0/"
-let kApiKeyLF = "XXX"
+let kApiKeyLF = "c53a4c298a6c585e5cc6fb18c2e456b9"
 
 var services:NSDictionary = ["youtube" : kBaseURLYT, "soundcloud": kBaseURLSC, "lastfm": kBaseURLLF]
 
