@@ -95,8 +95,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "getArtistsLF(_:perPage:pageNumber:success:)"
-            landmarkType = "5">
+            landmarkName = "getArtistsLF(searchQuery:perPage:pageNumber:success:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -111,8 +111,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "getArtistsLF(_:perPage:pageNumber:success:)"
-            landmarkType = "5">
+            landmarkName = "getArtistsLF(searchQuery:perPage:pageNumber:success:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -288,7 +288,7 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "main()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -304,7 +304,7 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "main()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -28,24 +28,21 @@ var services:NSDictionary = ["youtube" : kBaseURLYT, "soundcloud": kBaseURLSC, "
 class GZAPI_WRAPPER: NSObject
 {
     // parameters - аргумент - словарь <имя аргумента - значение агрумента> endpoint - начало ссылки - тот скрипт на фликре к которому мы обращемеся. На выходе готовая ссылка в формате https://www.googleapis.com/youtube/v3/<endpoint>?<имя аргумента из словаря=значение аргумента>&<имя аргумента из словаря=значение аргумента>....
-    private class func composeHTTPRequestWithParameters (parameters : NSDictionary? , service : String , endpoint : String ) -> NSURLRequest
+    class func composeHTTPRequestWithParameters (parameters : NSDictionary? , service : String , endpoint : String ) -> NSURLRequest
     {
-        var urlString = (services.objectForKey(service) as! String) + endpoint + "?" //Формируем начало ссылки
+        var urlString = (services.object(forKey: service) as! String) + endpoint + "?" //Формируем начало ссылки
         
         let keysArray = parameters?.allKeys //Берем все ключи из словаря и засовываем в массив keysArray
         
-        for ( var i = 0 ; i < keysArray?.count ; i++) // Цикл
-        {
+        for (index, element) in keysArray!.enumerated() {
             
-            let key = keysArray![i] as! String //Получаем i-ый ключ из массива
-            let value = parameters!.objectForKey(key) as! String //Получаем значение из массива по ключу
+            let key = element as! String //Получаем i-ый ключ из массива
+            let value = parameters!.object(forKey: key) as! String //Получаем значение из массива по ключу
             
-            if ( i < keysArray!.count - 1) // Проверяем, дошли до конца массива или нет
-            {
+            if ( index < keysArray!.count - 1) {
                 urlString = urlString + key + "=" + value + "&" //Формируем запрос по частям если не конец
             }
-            else
-            {
+            else {
                 urlString = urlString + key + "=" + value // Добавляем в запрос последнее значение (без &)
             }
         }
@@ -54,7 +51,7 @@ class GZAPI_WRAPPER: NSObject
         
         let url = NSURL (string: urlString) // Приводим сформированный запрос к формату NSURL (оборачиваем к класс NSURL)
         
-        return NSMutableURLRequest (URL: url!) //Возвращаем объект запросf в интернет (mutable - можем менять)
+        return NSMutableURLRequest (url: url! as URL) //Возвращаем объект запросf в интернет (mutable - можем менять)
         
     }
     
@@ -62,11 +59,11 @@ class GZAPI_WRAPPER: NSObject
     // responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.).
     // error - объект ошибки класса NSError (содержит код ошибки).
     
-    class func genericCompletionHandler ( data : NSData? , response : NSURLResponse?, ErrorType : NSError? , success : ( jsonResponse : JSON) -> Void , failure : () -> Void)
+    class func genericCompletionHandler ( data : NSData? , response : URLResponse?, ErrorType : NSError? , success : ( _ jsonResponse : JSON) -> Void , failure : () -> Void)
     {
         if ( data != nil) // Если данные не пустые
         {
-            let jsonResponse = JSON ( data: data!, options: NSJSONReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
+            let jsonResponse = JSON ( data: data!, options: JSONSerialization.ReadingOptions(), error: nil ) // конвертируем пришедшие данные из формата NSData в формат JSON для дальнейшего парсинга
             print("internet answer : json response: \(jsonResponse)") // Печатаем  результаты запроса для проверки
             success ( jsonResponse: jsonResponse) // Возвращаем результаты в success block
         }
@@ -80,25 +77,25 @@ class GZAPI_WRAPPER: NSObject
 // MARK: YOUTUBE
 // MARK: Search youtube media by query
 extension GZAPI_WRAPPER {
-    class func getAllYoutubeMediaByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : ( jsonResponse : JSON) -> Void , failure : () -> Void) -> NSURLSessionDataTask
+    class func getAllYoutubeMediaByQuery ( searchQuery : String , perPage : Int , pageNumber : Int , success : @escaping ( _ jsonResponse : JSON) -> Void , failure : @escaping () -> Void) -> URLSessionDataTask
     {
         let parameteresDictionary = NSMutableDictionary ()
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        let escapedSearchQuery = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print("query is \(escapedSearchQuery)")
-        parameteresDictionary.setObject("snippet", forKey : "part")
-        parameteresDictionary.setObject("10", forKey : "videoCategoryId")
-        parameteresDictionary.setObject("video", forKey : "type")
-        parameteresDictionary.setObject("\(perPage)", forKey : "maxResults")
-        parameteresDictionary.setObject("\(escapedSearchQuery)", forKey: "q")
-        parameteresDictionary.setObject(kApiKeyYT, forKey: "key")
+        parameteresDictionary["part"] = "snippet"
+        parameteresDictionary["videoCategoryId"] = "10"
+        parameteresDictionary["type"] = "video"
+        parameteresDictionary["maxResults"] = "\(perPage)"
+        parameteresDictionary["q"] = "\(escapedSearchQuery)"
+        parameteresDictionary["key"] = kApiKeyYT
         
-        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "youtube", endpoint: "search")
+        let request = composeHTTPRequestWithParameters(parameters: parameteresDictionary, service: "youtube", endpoint: "search")
         //request - получили объект классса NSURLRequest
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data , responce , error) -> Void in
             
             // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
-            genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)
+            genericCompletionHandler(data: data as! NSData , response: responce , ErrorType: error as? NSError , success : success , failure : failure)
             
         } //task  - объект типа NSURLSessionDataTask
         
@@ -109,29 +106,30 @@ extension GZAPI_WRAPPER {
 
 // MARK: Search youtube playlists by query
 extension GZAPI_WRAPPER {
-    class func getAllYoutubePlaylistsByQuery ( tags : Array<GZLFTag> , perPage : Int , nextPage : String , success : ( jsonResponse : JSON) -> Void , failure : () -> Void) -> NSURLSessionDataTask
+    class func getAllYoutubePlaylistsByQuery ( tags : Array<GZLFTag> , perPage : Int , nextPage : String , success : ( _ jsonResponse : JSON) -> Void , failure : () -> Void) -> URLSessionDataTask
     {
         let parameteresDictionary = NSMutableDictionary ()
         var searchQuery:String = ""
         for tag:GZLFTag in tags {
             searchQuery += tag.name + "|"
         }
-        let escapedSearchQuery = searchQuery.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
-        print("query is \(escapedSearchQuery)")
-        parameteresDictionary.setObject("snippet", forKey : "part")
-        parameteresDictionary.setObject("playlist", forKey : "type")
-        parameteresDictionary.setObject("\(perPage)", forKey : "maxResults")
-        parameteresDictionary.setObject("\(escapedSearchQuery)", forKey: "q")
-        if !(nextPage.isEmpty) {
-            parameteresDictionary.setObject(nextPage, forKey: "pageToken")
-        }
-        parameteresDictionary.setObject(kApiKeyYT, forKey: "key")
+        let escapedSearchQuery = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
-        let request = composeHTTPRequestWithParameters(parameteresDictionary, service: "youtube", endpoint: "search")
+        print("query is \(escapedSearchQuery)")
+        parameteresDictionary["part"] = "snippet"
+        parameteresDictionary["type"] = "playlist"
+        parameteresDictionary["maxResults"] = "\(perPage)"
+        parameteresDictionary["q"] = "\(escapedSearchQuery)"
+        if !(nextPage.isEmpty) {
+            parameteresDictionary["pageToken"] = nextPage
+        }
+        parameteresDictionary["key"] = kApiKeyYT
+        
+        let request = composeHTTPRequestWithParameters(parameters: parameteresDictionary, service: "youtube", endpoint: "search")
         //request - получили объект классса NSURLRequest
         
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data , responce , error) -> Void in
+        let task = URLSession.sharedSession.dataTaskWithRequest(request as URLRequest) { (data , responce , error) -> Void in
             
             // в этот БЛОК приходи ответ из интернета. data - объект класса NSData - байты из интернета. responce - объект класса NSURLResponce (содержит статус ошибки, статус сообщения и пр.). error - объект ошибки класса NSError (содержит код ошибки).
             genericCompletionHandler(data , response: responce , ErrorType: error , success : success , failure : failure)

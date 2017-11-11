@@ -9,7 +9,7 @@
 import UIKit
 
 class GZArtistManager: GZQueueManager {
-    static var artistManagerQueue:NSOperationQueue = NSOperationQueue()
+    static var artistManagerQueue:OperationQueue = NSOperationQueue()
     
     static var downloadLastfmArtistsByQuery:GZdownloadLastfmArtistsByQuery?
     static var downloadLastfmArtistsInfoByMbID:GZdownloadLastfmArtistsInfoByMbID?
@@ -17,13 +17,13 @@ class GZArtistManager: GZQueueManager {
 
 // MARK: Search artists by query
 extension GZArtistManager {
-    class func getArtistsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultArtists : Array<GZArtist> ) -> Void)
+    class func getArtistsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( _ resultArtists : Array<GZArtist> ) -> Void)
     {
         print("GZdownloadLastfmArtistsByQuery init")
         super.searchQueue.maxConcurrentOperationCount = 1
         
         self.downloadLastfmArtistsByQuery = GZdownloadLastfmArtistsByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultArtists) -> Void in
-            success(resultArtists: resultArtists)
+            success(resultArtists)
         }
         
         super.searchQueue.addOperation(downloadLastfmArtistsByQuery!)
@@ -33,13 +33,13 @@ extension GZArtistManager {
 
 // MARK: download summary to the requested artist
 extension GZArtistManager {
-    class func getArtistsInfoLF(artist: GZArtist, success: ( resultArtist : GZArtist ) -> Void)
+    class func getArtistsInfoLF(artist: GZArtist, success: ( _ resultArtist : GZArtist ) -> Void)
     {
         print("GZdownloadLastfmArtistsInfoByMbID init")
         super.searchQueue.maxConcurrentOperationCount = 1
         
         self.downloadLastfmArtistsInfoByMbID = GZdownloadLastfmArtistsInfoByMbID(withArtist: artist) { (resultArtist) -> Void in
-            success(resultArtist: resultArtist)
+            success(resultArtist)
         }
         
         super.searchQueue.addOperation(downloadLastfmArtistsInfoByMbID!)

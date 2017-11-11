@@ -8,16 +8,16 @@
 
 import Foundation
 
-class GZdownloadPlaylistsBySelectedTags: NSOperation {
+class GZdownloadPlaylistsBySelectedTags: Operation {
     
-    var internetTask:NSURLSessionDataTask?
+    var internetTask:URLSessionDataTask?
     var tags: Array<GZLFTag>?
     
     var perPage: Int?
     var nextPageToken: String?
-    var successBlock: (resultPlaylists : Array<GZPlaylist>, nextPageToken : String) -> Void
+    var successBlock: (_ resultPlaylists : Array<GZPlaylist>, _ nextPageToken : String) -> Void
     
-    init( tags: Array<GZLFTag>, perPage: Int, nextPageToken: String, success: (resultPlaylists : Array<GZPlaylist>, nextPageToken : String) -> Void ) {
+    init( tags: Array<GZLFTag>, perPage: Int, nextPageToken: String, success: @escaping @escaping (_ resultPlaylists : Array<GZPlaylist>, _ nextPageToken : String) -> Void ) {
         self.tags = tags
         self.perPage = perPage
         self.nextPageToken = nextPageToken
@@ -31,7 +31,7 @@ class GZdownloadPlaylistsBySelectedTags: NSOperation {
     }
     
     override func main() {
-        let semaphore = dispatch_semaphore_create(0)
+        let semaphore = DispatchSemaphore(value: 0)
         
         internetTask = GZAPI_WRAPPER.getAllYoutubePlaylistsByQuery(tags!, perPage: perPage!, nextPage:
             nextPageToken!, success: { (jsonResponse) -> Void in
@@ -75,7 +75,7 @@ class GZdownloadPlaylistsBySelectedTags: NSOperation {
                 
         }
         
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        dispatch_semaphore_wait(semaphore, dispatch_time_t(DISPATCH_TIME_FOREVER))
     }
 
 }

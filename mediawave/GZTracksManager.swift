@@ -21,7 +21,7 @@ class GZTracksManager: GZQueueManager {
 //MARK: Get youtube playlist items by playlist ID
 extension GZTracksManager
 {   
-    class func getYTPlaylistItems( id: String, perPage: Int, nextPageToken: String, success: ( resultTracks : Array<GZTrack>, nextPageToken : String ) -> Void )
+    class func getYTPlaylistItems( id: String, perPage: Int, nextPageToken: String, success: ( _ resultTracks : Array<GZTrack>, _ nextPageToken : String ) -> Void )
     {
         print("GZdownloadPlaylistItemsByID init")
         self.downloadPlaylistItemsByID = GZdownloadPlaylistItemsByID(withPlaylistID: id, perPage: perPage, nextPageToken: nextPageToken) { (resultTracks, nextPageToken) -> Void in
@@ -37,11 +37,11 @@ extension GZTracksManager
 // MARK: Search for tracks by query
 extension GZTracksManager
 {
-    class func getTracksLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultTracks : Array<GZTrack> ) -> Void)
+    class func getTracksLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( _ resultTracks : Array<GZTrack> ) -> Void)
     {
         print("GZdownloadLastfmTracksByQuery init")
         self.downloadLastfmTracksByQuery = GZdownloadLastfmTracksByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultTracks) -> Void in
-            success(resultTracks: resultTracks)
+            success(resultTracks)
         }
 
         super.searchQueue.maxConcurrentOperationCount = 1
@@ -52,11 +52,11 @@ extension GZTracksManager
 
 // MARK: Search for top tracks by artist MBID
 extension GZTracksManager {
-    class func getTracksLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: ( resultTracks : Array<GZTrack> ) -> Void)
+    class func getTracksLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: ( _ resultTracks : Array<GZTrack> ) -> Void)
     {
         print("GZdownloadLastfmTracksByMbID init")
         self.downloadLastfmTracksByMbID = GZdownloadLastfmTracksByMbID(withMbID: mbID, perPage: perPage, pageNumber: pageNumber) { (resultTracks) -> Void in
-            success(resultTracks: resultTracks)
+            success(resultTracks)
         }
         
         super.searchQueue.maxConcurrentOperationCount = 1
@@ -67,11 +67,11 @@ extension GZTracksManager {
 
 // MARK: Search for top tracks by album MBID
 extension GZTracksManager {
-    class func getTracksLF(byAlbumMbID mbID: String, success: ( resultTracks : Array<GZTrack> ) -> Void)
+    class func getTracksLF(byAlbumMbID mbID: String, success: ( _ resultTracks : Array<GZTrack> ) -> Void)
     {
         print("GZdownloadLastfmTracksByMbID init")
         self.downloadLastfmTracksByAlbumMbID = GZdownloadLastfmTracksByAlbumMbID(withMbID: mbID) { (resultTracks) -> Void in
-            success(resultTracks: resultTracks)
+            success(resultTracks)
         }
         
         super.searchQueue.maxConcurrentOperationCount = 1
@@ -83,16 +83,16 @@ extension GZTracksManager {
 // MARK: Search for tracks by query
 extension GZTracksManager
 {
-    class func getTracksYTMedia(withTrack track: GZTrack, success: ( resultTrack : GZTrack ) -> Void , failure: ( sourceTrack : GZTrack ) -> Void)
+    class func getTracksYTMedia(withTrack track: GZTrack, success: ( _ resultTrack : GZTrack ) -> Void , failure: ( _ sourceTrack : GZTrack ) -> Void)
     {
         print("GZdownloadTracksYTMediaByQuery init")
         self.downloadTracksYTMediaByQuery = GZdownloadTracksYTMediaByQuery(withTrack: track, success: { (resultTrack) in
             
-            success(resultTrack: resultTrack)
+            success(resultTrack)
             
             }, failure: { (resultTrack) in
                 
-                failure(sourceTrack: resultTrack)
+                failure(resultTrack)
         })
         
         if (self.downloadLastfmTracksByQuery != nil && self.downloadLastfmTracksByQuery?.finished == false) {

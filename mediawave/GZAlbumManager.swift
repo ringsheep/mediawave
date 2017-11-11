@@ -9,7 +9,7 @@
 import UIKit
 
 class GZAlbumManager: GZQueueManager {
-    static var albumManagerQueue:NSOperationQueue = NSOperationQueue()
+    static var albumManagerQueue:OperationQueue = OperationQueue()
     
     static var downloadLastfmAlbumsByQuery:GZdownloadLastfmAlbumsByQuery?
     static var downloadLastfmAlbumsByMbID:GZdownloadLastfmAlbumsByMbID?
@@ -17,11 +17,11 @@ class GZAlbumManager: GZQueueManager {
 
 // MARK: Search albums by query
 extension GZAlbumManager {
-    class func getAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( resultAlbums : Array<GZAlbum> ) -> Void)
+    class func getAlbumsLF(searchQuery: String, perPage: Int, pageNumber: Int, success: ( _ resultAlbums : Array<GZAlbum> ) -> Void)
     {
         print("GZdownloadLastfmAlbumsByQuery init")
         self.downloadLastfmAlbumsByQuery = GZdownloadLastfmAlbumsByQuery(withSearchQuery: searchQuery, perPage: perPage, pageNumber: pageNumber) { (resultAlbums) -> Void in
-            success(resultAlbums: resultAlbums)
+            success(resultAlbums)
         }
         super.searchQueue.maxConcurrentOperationCount = 1
         super.searchQueue.addOperation(downloadLastfmAlbumsByQuery!)
@@ -31,11 +31,11 @@ extension GZAlbumManager {
 
 // MARK: Search top albums by artist MBID
 extension GZAlbumManager {
-    class func getAlbumsLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: ( resultAlbums : Array<GZAlbum>, totalPages: Int ) -> Void)
+    class func getAlbumsLF(byArtistMbID mbID: String, perPage: Int, pageNumber: Int, success: @escaping ( _ resultAlbums : Array<GZAlbum>, _ totalPages: Int ) -> Void)
     {
         print("GZdownloadLastfmAlbumsByMbID init")
         self.downloadLastfmAlbumsByMbID = GZdownloadLastfmAlbumsByMbID(withMbID: mbID, perPage: perPage, pageNumber: pageNumber) { (resultAlbums, totalPages) -> Void in
-            success(resultAlbums: resultAlbums, totalPages: totalPages)
+            success(resultAlbums, totalPages)
         }
         super.searchQueue.maxConcurrentOperationCount = 1
         super.searchQueue.addOperation(downloadLastfmAlbumsByMbID!)

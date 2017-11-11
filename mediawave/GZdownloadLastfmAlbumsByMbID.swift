@@ -8,20 +8,20 @@
 
 import Foundation
 
-class GZdownloadLastfmAlbumsByMbID: NSOperation {
+class GZdownloadLastfmAlbumsByMbID: Operation {
 
-    var internetTask:NSURLSessionDataTask?
+    var internetTask:URLSessionDataTask?
     var mbID:String?
     
     var perPage: Int?
     var pageNumber: Int?
-    var successBlock: (resultAlbums : Array<GZAlbum>, totalPages : Int) -> Void
+    var successBlock: (_ resultAlbums : Array<GZAlbum>, _ totalPages : Int) -> Void
     
     init(
         withMbID mbID: String,
         perPage: Int,
         pageNumber: Int,
-        success: (resultAlbums : Array<GZAlbum>, totalPages : Int) -> Void
+        success: @escaping (_ resultAlbums : Array<GZAlbum>, _ totalPages : Int) -> Void
         ) {
             self.mbID = mbID
             self.perPage = perPage
@@ -36,7 +36,7 @@ class GZdownloadLastfmAlbumsByMbID: NSOperation {
     }
     
     override func main() {
-        let semaphore = dispatch_semaphore_create(0)
+        let semaphore = DispatchSemaphore(value: 0)
         
         internetTask = GZAPI_WRAPPER.getTopLastfmAlbumsByArtist(mbID!, perPage: perPage!, pageNumber: pageNumber!, success: { (jsonResponse) -> Void in
             

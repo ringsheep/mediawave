@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627EFA3DC5CC643039870F71 /* libPods-mediawave.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B573DF98BBC8238411C5E3DD /* libPods-mediawave.a */; };
 		990837571C9C1209003CA0C0 /* GZQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990837561C9C1209003CA0C0 /* GZQueueManager.swift */; };
 		990837591C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990837581C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift */; };
 		9910F25E1C7089A20091E4F8 /* GZTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9910F25D1C7089A20091E4F8 /* GZTrack.swift */; };
@@ -44,8 +45,6 @@
 		995DD2AC1D0F5A0600FC31CD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995DD2AA1D0F5A0600FC31CD /* Fabric.framework */; };
 		995DD2AD1D0F5A0600FC31CD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */; };
 		9960E8951C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */; };
-		9978C6FF1C4FDF0B0044143D /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */; };
-		9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9978C7001C4FDF4C0044143D /* Assets.bundle */; };
 		998BB6001C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998BB5FF1C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift */; };
 		998F8F5B1C6506E5000790DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 998F8F5A1C6506E5000790DC /* Assets.xcassets */; };
 		999149A71C4C1083005719FD /* GZTrackSimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */; };
@@ -57,10 +56,8 @@
 		999BAFC21CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */; };
 		999BAFC41CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999BAFC31CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift */; };
 		99AD26621C299C8D00A2CCA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */; };
-		99AEC9C71CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 99AEC9C61CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.m */; };
 		99B07E841CB71F3400792BA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99B07E861CB71F3400792BA1 /* Localizable.strings */; };
 		99C9DD7D1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9DD7C1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift */; };
-		99E867601C5BB968007CFE6C /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */; };
 		99E9A6891C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9A6881C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift */; };
 		99E9A68B1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */; };
 		99E9C1351C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */; };
@@ -73,7 +70,6 @@
 		99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */; };
 		99F6EE5D1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */; };
 		99FCEB611CA58AA00087139F /* GZDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FCEB601CA58AA00087139F /* GZDescriptionTableViewCell.swift */; };
-		D6F4EB102B20A1BF84CF568C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9158C18DD64C594048286D64 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		651CEF47A671DDCEA6A2CADC /* Pods-mediawave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mediawave.release.xcconfig"; path = "Pods/Target Support Files/Pods-mediawave/Pods-mediawave.release.xcconfig"; sourceTree = "<group>"; };
 		9158C18DD64C594048286D64 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		990837561C9C1209003CA0C0 /* GZQueueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZQueueManager.swift; sourceTree = "<group>"; };
 		990837581C9C1F2A003CA0C0 /* GZdownloadLastfmArtistsInfoByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmArtistsInfoByMbID.swift; sourceTree = "<group>"; };
@@ -138,9 +135,6 @@
 		995DD2AA1D0F5A0600FC31CD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9960E8941C9815A000C52CC4 /* GZdownloadLastfmAlbumsByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmAlbumsByQuery.swift; sourceTree = "<group>"; };
-		9978C6FD1C4FDF0B0044143D /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h"; sourceTree = "<group>"; };
-		9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "../../../../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.m"; sourceTree = "<group>"; };
-		9978C7001C4FDF4C0044143D /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Assets.bundle; path = "../../../../../Downloads/youtube-ios-player-helper-master/youtube-ios-player-helper/Assets.bundle"; sourceTree = "<group>"; };
 		998BB5FF1C96BBDC00916A1A /* GZdownloadLastfmArtistsByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmArtistsByQuery.swift; sourceTree = "<group>"; };
 		998F8F5A1C6506E5000790DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		999149A61C4C1083005719FD /* GZTrackSimpleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTrackSimpleTableViewCell.swift; sourceTree = "<group>"; };
@@ -152,14 +146,11 @@
 		999BAFC11CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZLoaderTableViewCell.xib; sourceTree = "<group>"; };
 		999BAFC31CA96FDC00A2F8F7 /* GZLoaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZLoaderTableViewCell.swift; sourceTree = "<group>"; };
 		99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		99AEC9C51CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSQCollectionViewAlignedLayout.h; path = ../../../../../FSQCollectionViewAlignedLayout.h; sourceTree = "<group>"; };
-		99AEC9C61CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSQCollectionViewAlignedLayout.m; path = ../../../../../FSQCollectionViewAlignedLayout.m; sourceTree = "<group>"; };
 		99B07E821CB71EE400792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		99B07E831CB71EE400792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		99B07E871CB71F3A00792BA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99B07E881CB71F7F00792BA1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99C9DD7C1C98211C00E51450 /* GZdownloadLastfmAlbumsByMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmAlbumsByMbID.swift; sourceTree = "<group>"; };
-		99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageEffects.swift; path = "../../../../../Downloads/SwiftUIImageEffects-master/Source/UIImageEffects.swift"; sourceTree = "<group>"; };
 		99E9A6881C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadTracksYTMediaByQuery.swift; sourceTree = "<group>"; };
 		99E9A68A1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadLastfmTracksByAlbumMbID.swift; sourceTree = "<group>"; };
 		99E9C1341C8F3343008619A4 /* GZdownloadPlaylistsBySelectedTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZdownloadPlaylistsBySelectedTags.swift; sourceTree = "<group>"; };
@@ -176,8 +167,8 @@
 		99F6EE5A1C42FD55000E4D77 /* GZTagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTagCollectionViewCell.xib; sourceTree = "<group>"; };
 		99F6EE5C1C42FDB5000E4D77 /* GZTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		99FCEB601CA58AA00087139F /* GZDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZDescriptionTableViewCell.swift; sourceTree = "<group>"; };
-		DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		F095448A50778CBED7C68244 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E6E65502EB56598ACD9D489 /* Pods-mediawave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mediawave.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mediawave/Pods-mediawave.debug.xcconfig"; sourceTree = "<group>"; };
+		B573DF98BBC8238411C5E3DD /* libPods-mediawave.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mediawave.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,9 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99209F781CADF012003DB829 /* CoreText.framework in Frameworks */,
-				D6F4EB102B20A1BF84CF568C /* Pods.framework in Frameworks */,
 				995DD2AD1D0F5A0600FC31CD /* Crashlytics.framework in Frameworks */,
 				995DD2AC1D0F5A0600FC31CD /* Fabric.framework in Frameworks */,
+				627EFA3DC5CC643039870F71 /* libPods-mediawave.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,11 +200,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D004AF4C2305728343ADB37 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E6E65502EB56598ACD9D489 /* Pods-mediawave.debug.xcconfig */,
+				651CEF47A671DDCEA6A2CADC /* Pods-mediawave.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3F919D7D1A56DDC859071D58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				99209F771CADF012003DB829 /* CoreText.framework */,
 				9158C18DD64C594048286D64 /* Pods.framework */,
+				B573DF98BBC8238411C5E3DD /* libPods-mediawave.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,10 +255,10 @@
 				995BEF121C2984D3001F8518 /* mediawaveTests */,
 				995BEF1D1C2984D3001F8518 /* mediawaveUITests */,
 				995BEEFC1C2984D3001F8518 /* Products */,
-				C7F1D8F5080ADA7CB7D4FE8F /* Pods */,
 				3F919D7D1A56DDC859071D58 /* Frameworks */,
 				995DD2AA1D0F5A0600FC31CD /* Fabric.framework */,
 				995DD2AB1D0F5A0600FC31CD /* Crashlytics.framework */,
+				3D004AF4C2305728343ADB37 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -361,10 +362,7 @@
 		995CF7921C3D30DB002D9776 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				99E8675F1C5BB968007CFE6C /* UIImageEffects.swift */,
-				9978C6FC1C4FDEE90044143D /* youtube-ios-player-helper */,
 				99AD26611C299C8D00A2CCA6 /* SwiftyJSON.swift */,
-				99AEC9C01CC5062C006CDE5F /* FSQCollectionViewAlignedLayout */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -385,16 +383,6 @@
 				99F6EE591C42A980000E4D77 /* Classes */,
 			);
 			name = CustomViews;
-			sourceTree = "<group>";
-		};
-		9978C6FC1C4FDEE90044143D /* youtube-ios-player-helper */ = {
-			isa = PBXGroup;
-			children = (
-				9978C7001C4FDF4C0044143D /* Assets.bundle */,
-				9978C6FD1C4FDF0B0044143D /* YTPlayerView.h */,
-				9978C6FE1C4FDF0B0044143D /* YTPlayerView.m */,
-			);
-			name = "youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
 		997C9F011CAC818B00FF9861 /* Xibs */ = {
@@ -446,16 +434,6 @@
 				995C9D1C1C49A3980015CE93 /* GZPlaylistTableViewCell.xib */,
 			);
 			name = content;
-			sourceTree = "<group>";
-		};
-		99AEC9C01CC5062C006CDE5F /* FSQCollectionViewAlignedLayout */ = {
-			isa = PBXGroup;
-			children = (
-				99AEC9C51CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.h */,
-				99AEC9C61CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.m */,
-			);
-			name = FSQCollectionViewAlignedLayout;
-			path = ../Pods/FSQCollectionViewAlignedLayout;
 			sourceTree = "<group>";
 		};
 		99E9C1331C8F32AF008619A4 /* Operations */ = {
@@ -517,15 +495,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		C7F1D8F5080ADA7CB7D4FE8F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */,
-				F095448A50778CBED7C68244 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,13 +502,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 995BEF231C2984D3001F8518 /* Build configuration list for PBXNativeTarget "mediawave" */;
 			buildPhases = (
-				7C3843F29ECC973263561A50 /* Check Pods Manifest.lock */,
+				56098049B0C29C67E2CB3574 /* [CP] Check Pods Manifest.lock */,
 				995BEEF71C2984D3001F8518 /* Sources */,
 				995BEEF81C2984D3001F8518 /* Frameworks */,
 				995BEEF91C2984D3001F8518 /* Resources */,
-				3CB50D6FCA492899B2424BA0 /* Embed Pods Frameworks */,
-				7EC6E2045498673B72A8D785 /* Copy Pods Resources */,
 				995DD2A91D0F59B600FC31CD /* ShellScript */,
+				034D73069997C045A5E1484A /* [CP] Embed Pods Frameworks */,
+				7DAD14760480A5D48B086827 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -646,7 +615,6 @@
 			files = (
 				999BAFBE1CA95BB800A2F8F7 /* GZAlertTableViewCell.xib in Resources */,
 				999BAFC21CA96E9700A2F8F7 /* GZLoaderTableViewCell.xib in Resources */,
-				9978C7011C4FDF4C0044143D /* Assets.bundle in Resources */,
 				995C9D261C4C0F4B0015CE93 /* GZtrackSimpleCell.xib in Resources */,
 				995BEF091C2984D3001F8518 /* LaunchScreen.storyboard in Resources */,
 				99F6EE5B1C42FD55000E4D77 /* GZTagCollectionViewCell.xib in Resources */,
@@ -676,49 +644,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CB50D6FCA492899B2424BA0 /* Embed Pods Frameworks */ = {
+		034D73069997C045A5E1484A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mediawave/Pods-mediawave-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C3843F29ECC973263561A50 /* Check Pods Manifest.lock */ = {
+		56098049B0C29C67E2CB3574 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mediawave-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7EC6E2045498673B72A8D785 /* Copy Pods Resources */ = {
+		7DAD14760480A5D48B086827 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mediawave/Pods-mediawave-resources.sh",
+				"${PODS_ROOT}/youtube-ios-player-helper/youtube-ios-player-helper/Assets.bundle",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mediawave/Pods-mediawave-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		995DD2A91D0F59B600FC31CD /* ShellScript */ = {
@@ -746,7 +720,6 @@
 				99F00D881C99A33600FEF016 /* kGZConstants.swift in Sources */,
 				990837571C9C1209003CA0C0 /* GZQueueManager.swift in Sources */,
 				995CF7841C380074002D9776 /* GZSearchResultsController.swift in Sources */,
-				99AEC9C71CC506A0006CDE5F /* FSQCollectionViewAlignedLayout.m in Sources */,
 				999212BE1C4563DE006649EB /* GZTagsSelectViewController.swift in Sources */,
 				992539AD1C6DEB9D004100BF /* GZMediaData.xcdatamodeld in Sources */,
 				999149A71C4C1083005719FD /* GZTrackSimpleTableViewCell.swift in Sources */,
@@ -782,12 +755,10 @@
 				99E9A6891C9F08CB00657201 /* GZdownloadTracksYTMediaByQuery.swift in Sources */,
 				995C9D191C491C100015CE93 /* GZLFTag.swift in Sources */,
 				99FCEB611CA58AA00087139F /* GZDescriptionTableViewCell.swift in Sources */,
-				9978C6FF1C4FDF0B0044143D /* YTPlayerView.m in Sources */,
 				9933891A1C983513003481E7 /* GZdownloadLastfmTracksByMbID.swift in Sources */,
 				9910F2601C708BB50091E4F8 /* GZArtist.swift in Sources */,
 				993389181C982ECC003481E7 /* GZdownloadLastfmTracksByQuery.swift in Sources */,
 				9910F26A1C73600D0091E4F8 /* GZPlaylistManager.swift in Sources */,
-				99E867601C5BB968007CFE6C /* UIImageEffects.swift in Sources */,
 				9933891C1C986BCD003481E7 /* GZdownloadPlaylistItemsByID.swift in Sources */,
 				99E9A68B1CA2A53000657201 /* GZdownloadLastfmTracksByAlbumMbID.swift in Sources */,
 			);
@@ -943,7 +914,7 @@
 		};
 		995BEF241C2984D3001F8518 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEFF1F84B6AD3EAC40F43BF0 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 9E6E65502EB56598ACD9D489 /* Pods-mediawave.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -957,6 +928,7 @@
 				PRODUCT_NAME = "Media Wave";
 				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/lib";
 			};
@@ -964,7 +936,7 @@
 		};
 		995BEF251C2984D3001F8518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F095448A50778CBED7C68244 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 651CEF47A671DDCEA6A2CADC /* Pods-mediawave.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -977,6 +949,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.mediawave;
 				PRODUCT_NAME = "Media Wave";
 				SWIFT_OBJC_BRIDGING_HEADER = "mediawave/mediawave-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/lib";
 			};
